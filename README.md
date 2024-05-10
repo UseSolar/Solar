@@ -31,7 +31,7 @@ npm start
 
 ### Github Codespace
 > [!NOTE]  
->  Github Codespace has a 120 minutes for free and 180 minutes for pay.
+>  Github Codespace has a 120 minutes for free and 180 minutes for pay per month.
 
 ```
 npm i
