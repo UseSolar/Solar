@@ -10,6 +10,8 @@ since: 2024
 - Tab Cloaking
 
 # Self Hosting
+> [!IMPORTANT]  
+> If you fork this repo, Please ⭐️ This one.
 
 ### Console Method
 
@@ -42,3 +44,10 @@ npm start
 ```
 > [!IMPORTANT]  
 > If you have issues, press the make public button.
+
+
+# Supporters
+
+<a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
+</a>
