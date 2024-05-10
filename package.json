@@ -1,1 +1,27 @@
-
+{
+  "name": "starlight",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoStarLight/StarLight.git"
+  },
+  "keywords": [
+    "math"
+  ],
+  "author": "Bwigal22116",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoStarLight/StarLight/issues"
+  },
+  "homepage": "https://github.com/GoStarLight/StarLight",
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^2.0.3",
+    "express": "^4.19.2"
+  },
+  "type": "module"
+}
