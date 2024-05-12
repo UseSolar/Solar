@@ -1,8 +1,14 @@
 {
   "name": "starlight",
   "version": "1.0.0",
-  "description": "",
+  "description": "StarLight is a web proxy that has features coming soon.",
   "main": "server.js",
+  "dependencies": {
+    "@tomphttp/bare-server-node": "^2.0.3",
+    "express": "^4.19.2"
+  },
+  "type": "module",
+  "devDependencies": {},
   "scripts": {
     "start": "node server.js"
   },
@@ -11,17 +17,13 @@
     "url": "git+https://github.com/GoStarLight/StarLight.git"
   },
   "keywords": [
-    "math"
+    "math",
+    "edu"
   ],
-  "author": "Bwigal22116",
-  "license": "GPL-2.0-only",
+  "author": "bwigal22116",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/GoStarLight/StarLight/issues"
   },
-  "homepage": "https://github.com/GoStarLight/StarLight",
-  "dependencies": {
-    "@tomphttp/bare-server-node": "^2.0.3",
-    "express": "^4.19.2"
-  },
-  "type": "module"
+  "homepage": "https://github.com/GoStarLight/StarLight#readme"
 }
