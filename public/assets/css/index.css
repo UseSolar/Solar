@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(to bottom, #247ba0, #ff008c);
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-size: 85px;
+    margin-top: 75px;
+}
+
+p {
+    color: black;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+input {
+    position: absolute;
+    padding: 0em;
+    padding-left: 0.5em;
+    margin: 0;
+    left: 0;
+    bottom: 358px;
+    text-align: center;
+    justify-content: center;
+    width: 80vw;
+    height: 10vh;
+    margin-left: 80px;
+    border: 0;
+    outline: 0;
+    color: aliceblue;
+    background-color: #25252a;
+    font-size: 5vh;
+}

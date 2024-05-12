@@ -11,7 +11,7 @@ since: 2024
 
 # Self Hosting
 > [!IMPORTANT]  
-> If you fork this repo, Please ⭐️ This one.
+> If you fork this repo, Please ⭐️ this one.
 
 ### Console Method
 
@@ -46,8 +46,14 @@ npm start
 > If you have issues, press the make public button.
 
 
-# Supporters
+# Issues
+To Make A Issue
 
+- Press the Issue Tab 
+- Tap Create Issue
+- Choose a template
+
+# Supporters
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
 </a>
