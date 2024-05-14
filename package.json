@@ -3,5 +3,32 @@
     "@tomphttp/bare-server-node": "^2.0.3",
     "express": "^4.19.2"
   },
-  "type": "module"
+  "type": "module",
+  "name": "starlight",
+  "version": "1.0.0",
+  "description": "StarLight is a web proxy that has features coming soon.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "precommit": "pretty-quick --staged",
+    "prepare": "husky install .husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoStarLight/StarLight.git"
+  },
+  "keywords": [
+    "educational"
+  ],
+  "author": "bwigal22116",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoStarLight/StarLight/issues"
+  },
+  "homepage": "https://github.com/GoStarLight/StarLight#readme",
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "prettier": "^3.2.5",
+    "pretty-quick": "^4.0.0"
+  }
 }
