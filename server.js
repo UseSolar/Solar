@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = join(fileURLToPath(import.meta.url), "..");
-const bare = createBareServer("/bare/");
+const bare = createBareServer("/b/");
 const app = express();
 
 app.use(express.static("public"));
