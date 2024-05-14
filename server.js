@@ -7,13 +7,12 @@ import { fileURLToPath } from "node:url";
 const __dirname = join(fileURLToPath(import.meta.url), "..");
 const bare = createBareServer("/bare/");
 const app = express();
-const publicPath = "public"; 
 
 app.use(express.static(publicPath));
 
 app.use((req, res) => {
     res.status(404);
-    res.sendFile(join(__dirname, publicPath, "404.html")); 
+    res.sendFile(join(__dirname, "public", "404.html")); 
 });
 
 const server = createServer();
