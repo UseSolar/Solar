@@ -1,0 +1,22 @@
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#image-container a {
+  flex: 0 0 auto;
+  margin-right: 25px;
+  margin-bottom: 40px;
+}
+.image {
+  border-radius: 20px;
+}
+
+p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(to bottom, #247ba0, #ff008c);
+}
