@@ -1,15 +1,19 @@
-const imageContainer = document.getElementById("image-container");
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./uv/sw.js", {
+      scope: __uv$config.prefix,
+    });
+  });
+}
 
+const imageContainer = document.getElementById("image-container");
 fetch("./assets/json/g.json")
   .then((response) => response.json())
   .then((data) => {
     data.forEach((image) => {
       const imageElement = document.createElement("a");
-      imageElement.href = image.src;
-
       const imgContainer = document.createElement("div");
       imgContainer.className = "image-container";
-
       const img = document.createElement("img");
       img.src = image.logo;
       img.alt = image.title || "ERROR";
@@ -23,7 +27,8 @@ fetch("./assets/json/g.json")
       imageElement.addEventListener("click", function (event) {
         event.preventDefault();
         if (!image.alert) {
-          localStorage.setItem("Iframe", image.src);
+           let url = image.link
+           localStorage.setItem("Iframe",__uv$config.prefix + __uv$config.encodeUrl(url),);
           window.location.href = "./go.html";
         } else {
           alert(image.alert);
@@ -35,8 +40,6 @@ fetch("./assets/json/g.json")
       imageElement.appendChild(imgContainer);
       imageContainer.appendChild(imageElement);
     });
-
-    updateGridLayout();
   })
   .catch((error) => {
     console.error("Error fetching JSON data:", error);

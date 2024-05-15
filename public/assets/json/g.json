@@ -1,8 +1,8 @@
 [
   {
-    "title": "",
-    "logo": "",
-    "src": "",
+    "title": "Discord",
+    "logo": "./assets/img/discord.png",
+    "link": "https://discord.com/login",
     "alert": ""
   }
 ]
