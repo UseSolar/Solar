@@ -5,7 +5,7 @@
   },
   "type": "module",
   "name": "starlight",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "StarLight is a web proxy that has features coming soon.",
   "main": "server.js",
   "scripts": {

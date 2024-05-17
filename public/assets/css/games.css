@@ -5,7 +5,7 @@
   height: 60px;
   width: 100vh;
   text-align: center;
-  margin: 0 auto;
+  margin: 20px auto auto auto;
 }
 
 .topnav a {
@@ -46,5 +46,5 @@ p {
 }
 
 body {
-  background: linear-gradient(to bottom, #247ba0, #ff008c);
+  background-color: black;
 }

@@ -4,5 +4,23 @@
     "logo": "./assets/img/discord.png",
     "link": "https://discord.com/login",
     "alert": ""
+  },
+  {
+    "title": "Character.ai",
+    "logo": "./assets/img/ai.png",
+    "link": "https://character.ai",
+    "alert": ""
+  },
+  {
+    "title": "CoolMathGames",
+    "logo": "./assets/img/cmg.png",
+    "link": "https://coolmathgames.com",
+    "alert": ""
+  },
+  {
+    "title": "shuttle.lol",
+    "logo": "./assets/img/shuttle.png",
+    "link": "https://shuttle.lol",
+    "alert": ""
   }
 ]
