@@ -27,8 +27,11 @@ fetch("./assets/json/g.json")
       imageElement.addEventListener("click", function (event) {
         event.preventDefault();
         if (!image.alert) {
-           let url = image.link
-           localStorage.setItem("Iframe", __uv$config.prefix + __uv$config.encodeUrl(url),);
+          let url = image.link;
+          localStorage.setItem(
+            "Iframe",
+            __uv$config.prefix + __uv$config.encodeUrl(url),
+          );
           window.location.href = "./go.html";
         } else {
           alert(image.alert);

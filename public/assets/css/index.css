@@ -29,13 +29,12 @@ body {
 
 h1 {
   background-image: linear-gradient(to bottom, #247ba0, #ff008c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: 86px;
-    text-align: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 86px;
+  text-align: center;
 }
-
 
 p {
   color: pink;
@@ -47,7 +46,7 @@ p {
 
 input {
   padding-left: 0.5em;
-  margin: 140px auto 0 auto; 
+  margin: 140px auto 0 auto;
   display: block;
   width: 80vw;
   height: 10vh;
