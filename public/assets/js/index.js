@@ -44,7 +44,7 @@ if (AB == "on") {
 }
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./uv/sw.js", {
+    navigator.serviceWorker.register("./e/sw.js", {
       scope: __uv$config.prefix,
     });
   });

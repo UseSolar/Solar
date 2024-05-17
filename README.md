@@ -6,7 +6,6 @@ StarLight is a web proxy that has features coming soon.
 
 since: 2024
 # Features
-
 - Tab Cloaking
 
 # Self Hosting
@@ -47,8 +46,7 @@ npm start
 
 
 # Issues
-To Make A Issue
-
+To make a Issue / Report
 - Press the Issue Tab 
 - Tap Create Issue
 - Choose a template

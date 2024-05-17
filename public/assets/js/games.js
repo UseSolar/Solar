@@ -1,6 +1,6 @@
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./uv/sw.js", {
+    navigator.serviceWorker.register("./e/sw.js", {
       scope: __uv$config.prefix,
     });
   });
@@ -19,7 +19,7 @@ fetch("./assets/json/g.json")
       img.alt = image.title || "ERROR";
       img.style.width = "150px";
       img.style.height = "150px";
-      img.className = "image";
+      img.className = "classy";
 
       const altText = document.createElement("div");
       altText.textContent = img.alt;
@@ -28,7 +28,7 @@ fetch("./assets/json/g.json")
         event.preventDefault();
         if (!image.alert) {
            let url = image.link
-           localStorage.setItem("Iframe",__uv$config.prefix + __uv$config.encodeUrl(url),);
+           localStorage.setItem("Iframe", __uv$config.prefix + __uv$config.encodeUrl(url),);
           window.location.href = "./go.html";
         } else {
           alert(image.alert);

@@ -1,14 +1,42 @@
+.topnav {
+  background-color: rgba(128, 128, 128, 0.2);
+  overflow: hidden;
+  border-radius: 40px;
+  height: 60px;
+  width: 100vh;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.topnav a {
+  color: lightblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  list-style: none;
+  display: inline-block;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 #image-container {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 #image-container a {
   flex: 0 0 auto;
-  margin-right: 25px;
+    margin-right: 25px;
   margin-bottom: 40px;
+  float: left;
 }
-.image {
+
+.classy {
   border-radius: 20px;
 }
 

@@ -1,21 +1,10 @@
-<style>
-    body {
-        background-color: white;
-    }
-</style>
-<div id="result"></div>
-<script>
-window.onerror = function (error, source, lineno, colno, error) {
-    let output = document.getElementById("result");
-         output.innerHTML += "Message : " + error + "<br>";
-         
-         
-         output.innerHTML += "Url : " + source + "<br>";
-         
-         output.innerHTML += "Line number : " + lineno + "<br>";
-         
-         output.innerHTML += "Column number : " + colno + "<br>";
-         
-         output.innerHTML += "Error Object : " + error;
-      }
-</script>
+<link rel="stylesheet" href="/assets/css/404.css"></link>
+<script src="/assets/js/404.js"></script>
+<h1>404</h1>
+<p>Failed to find the page you were looking for</p>
+<p>If this keeps incurring, Please report it to a link below</p>
+<br>
+<br>
+<a href="https://github.com/GoStarLight/StarLight/issues/new" target="_blank" class="gr">Github</a>
+<br>
+<a href="./index.html" class="bb">Back</a>

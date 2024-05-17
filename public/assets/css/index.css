@@ -1,15 +1,15 @@
 .topnav {
-  background-color: #333;
+  background-color: rgba(128, 128, 128, 0.2);
   overflow: hidden;
   border-radius: 60px;
-  height: 60px;
+  height: 10vh;
   width: 100vh;
   text-align: center;
-  margin: 0 auto;
+  margin: 20px auto auto auto;
 }
 
 .topnav a {
-  color: #f2f2f2;
+  color: lightblue;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -24,22 +24,18 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #247ba0, #ff008c);
+  background-color: black;
 }
 
 h1 {
-  color: yellow;
-  text-align: center;
-  font-size: 85px;
-  margin-top: 75px;
+  background-image: linear-gradient(to bottom, #247ba0, #ff008c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 86px;
+    text-align: center;
 }
 
-span {
-  color: black;
-  text-align: center;
-  font-size: 85px;
-  margin-top: 75px;
-}
 
 p {
   color: pink;
@@ -51,7 +47,7 @@ p {
 
 input {
   padding-left: 0.5em;
-  margin: 0 auto;
+  margin: 140px auto 0 auto; 
   display: block;
   width: 80vw;
   height: 10vh;
