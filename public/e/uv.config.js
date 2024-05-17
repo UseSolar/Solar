@@ -1,7 +1,7 @@
 /*global Ultraviolet*/
 self.__uv$config = {
   prefix: "/uv/service/",
-  bare: "/b/",
+  bare: "starlight-nine.duckdns.org", 
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/e/uv.handler.js",
