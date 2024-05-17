@@ -5,8 +5,5 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "server.js" }
-  ],
-  "builds": [
-    { "src": "package.json", "use": "@vercel/npm" }
   ]
 }
