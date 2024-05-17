@@ -6,7 +6,10 @@
   "builds": [
     { "src": "/server.js", "use": "@vercel/node" }
   ],
-  "static": {
-    "source": "public"
-  }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/public/$1"
+    }
+  ]
 }
