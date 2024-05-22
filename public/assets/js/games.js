@@ -1,6 +1,6 @@
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./e/sw.js", {
+    navigator.serviceWorker.register("./sw.js", {
       scope: __uv$config.prefix,
     });
   });
@@ -27,12 +27,16 @@ fetch("./assets/json/g.json")
       imageElement.addEventListener("click", function (event) {
         event.preventDefault();
         if (!image.alert) {
-          let url = image.link;
-          localStorage.setItem(
-            "Iframe",
-            __uv$config.prefix + __uv$config.encodeUrl(url),
-          );
-          window.location.href = "./go.html";
+          if (!image.redirect) {
+            let url = image.link;
+            localStorage.setItem(
+              "Iframe",
+              __uv$config.prefix + __uv$config.encodeUrl(url),
+            );
+            window.location.href = "go.html";
+          } else {
+            window.open(image.redirect);
+          }
         } else {
           alert(image.alert);
         }

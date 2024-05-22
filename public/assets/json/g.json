@@ -1,26 +1,69 @@
 [
   {
+    "title": "Game / App Request",
+    "logo": "./assets/img/gr.png",
+    "redirect": "https://forms.gle/v4pCauCRYaFJeP466",
+    "alert": ""
+  },
+  {
     "title": "Discord",
     "logo": "./assets/img/discord.png",
     "link": "https://discord.com/login",
     "alert": ""
   },
+
   {
     "title": "Character.ai",
     "logo": "./assets/img/ai.png",
     "link": "https://character.ai",
     "alert": ""
   },
+
   {
     "title": "CoolMathGames",
     "logo": "./assets/img/cmg.png",
     "link": "https://coolmathgames.com",
     "alert": ""
   },
+
   {
     "title": "shuttle.lol",
     "logo": "./assets/img/shuttle.png",
     "link": "https://shuttle.lol",
+    "alert": ""
+  },
+
+  {
+    "title": "Smash Karts",
+    "logo": "./assets/img/sk.png",
+    "link": "https://smashkarts.io",
+    "alert": ""
+  },
+
+  {
+    "title": "Poki",
+    "logo": "./assets/img/poki.png",
+    "link": "https://poki.com",
+    "alert": ""
+  },
+
+  {
+    "title": "CrazyGames",
+    "logo": "./assets/img/cg.png",
+    "link": "https://crazygames.com",
+    "alert": ""
+  },
+
+  {
+    "title": "Roblox",
+    "logo": "./assets/img/roblox.png",
+    "link": "https://shuttle.lol/apps/roblox-corporation/5349/roblox.html",
+    "alert": ""
+  },
+  {
+    "title": "1v1.lol",
+    "logo": "./assets/img/1v1.png",
+    "link": "https://1v1.lol",
     "alert": ""
   }
 ]

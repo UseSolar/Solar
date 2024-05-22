@@ -7,8 +7,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = join(fileURLToPath(import.meta.url), "..");
 const bare = createBareServer("/b/");
 const app = express();
-
-app.use(express.static("public"));
+app.use(express.static(join(__dirname, "public")));
 
 app.use((req, res) => {
   res.status(404);

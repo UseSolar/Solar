@@ -57,6 +57,8 @@ To make a Issue / Report
 
 # Supporters
 
+Thank you to all of your supporters!
+
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
 </a>

@@ -1,21 +1,26 @@
 .topnav {
-  background-color: rgba(128, 128, 128, 0.2);
+  background-color: rgba(128, 128, 128, 0.3);
   overflow: hidden;
-  border-radius: 40px;
-  height: 60px;
+  border-radius: 60px;
+  height: 7.5vh;
   width: 100vh;
   text-align: center;
-  margin: 20px auto auto auto;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
 }
 
 .topnav a {
-  color: lightblue;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  list-style: none;
-  display: inline-block;
 }
 
 .topnav a:hover {
@@ -47,4 +52,11 @@ p {
 
 body {
   background-color: black;
+}
+
+.index {
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  overflow: hidden;
 }

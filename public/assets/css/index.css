@@ -1,30 +1,7 @@
-.topnav {
-  background-color: rgba(128, 128, 128, 0.2);
-  overflow: hidden;
-  border-radius: 60px;
-  height: 10vh;
-  width: 100vh;
-  text-align: center;
-  margin: 20px auto auto auto;
-}
-
-.topnav a {
-  color: lightblue;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  list-style: none;
-  display: inline-block;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
 body {
-  background-color: black;
+  background-color: #000;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -34,6 +11,7 @@ h1 {
   color: transparent;
   font-size: 86px;
   text-align: center;
+  margin: 0;
 }
 
 p {
@@ -53,7 +31,47 @@ input {
   border: 0;
   text-align: center;
   outline: 0;
-  color: aliceblue;
   background-color: #25252a;
   font-size: 5vh;
+  color: black;
+}
+
+.topnav {
+  background-color: rgba(128, 128, 128, 0.3);
+  overflow: hidden;
+  border-radius: 60px;
+  height: 7.5vh;
+  width: 100vh;
+  text-align: center;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.topnav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.index {
+  width: 46px;
+  height: 46px;
+}
+
+.star {
+  size: 16px;
+  color: yellow;
 }
