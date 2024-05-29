@@ -7,6 +7,7 @@ since: 2024
 # Features
 
 - Tab Cloaking
+- Password Protection (in [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js) file)
 
 # Self Hosting
 
@@ -48,16 +49,13 @@ npm start
 > If you have issues, press the make public button.
 
 # Issues
+make a github issue or join the [Discord Server](https://discord.gg/Y9tGpfCwUf) and we will respond.
 
-To make a Issue / Report
-
-- Press the Issue Tab
-- Tap Create Issue
-- Choose a template
 
 # Supporters
 
-Thank you to all of your supporters!
+Thank you to all the supporters!
+
 
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />

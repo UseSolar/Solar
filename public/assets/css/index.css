@@ -41,7 +41,7 @@ input {
   overflow: hidden;
   border-radius: 60px;
   height: 7.5vh;
-  width: 100vh;
+  width: 60vw;
   text-align: center;
   margin: 20px auto;
   display: flex;
@@ -74,4 +74,7 @@ input {
 .star {
   size: 16px;
   color: yellow;
+}
+.vs {
+  font-size: 35px;
 }

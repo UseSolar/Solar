@@ -1,10 +1,12 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js", {
-      scope: __uv$config.prefix,
+window.addEventListener("load", () => {
+  navigator.serviceWorker.register("./sw.js").then(() => {
+    navigator.serviceWorker.ready.then(() => {
+       console.log('Successfully Registered Service Workers')
     });
+  }).catch(error => {
+    console.error("Service Worker registration failed:", error);
   });
-}
+});
 
 const imageContainer = document.getElementById("image-container");
 fetch("./assets/json/g.json")

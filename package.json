@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@tomphttp/bare-server-node": "^2.0.3",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-basic-auth": "^1.2.1"
   },
   "type": "module",
   "name": "starlight",
