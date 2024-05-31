@@ -6,8 +6,8 @@
   },
   "type": "module",
   "name": "starlight",
-  "version": "1.0.3",
-  "description": "StarLight is a web proxy that has features coming soon.",
+  "version": "1.1.0",
+  "description": "StarLight is a web proxy that has many features.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -27,17 +27,13 @@
   "homepage": "https://github.com/GoStarLight/StarLight#readme",
   "devDependencies": {
     "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "lint-staged": "^15.2.5",
     "prettier": "^3.2.5"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [
       "prettier --write"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    ],
+    "*.{js,css,md}": "prettier --write"
   }
 }

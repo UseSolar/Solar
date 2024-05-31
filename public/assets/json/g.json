@@ -55,15 +55,51 @@
   },
 
   {
-    "title": "Roblox",
-    "logo": "./assets/img/roblox.png",
-    "link": "https://shuttle.lol/apps/roblox-corporation/5349/roblox.html",
-    "alert": ""
-  },
-  {
     "title": "1v1.lol",
     "logo": "./assets/img/1v1.png",
     "link": "https://1v1.lol",
+    "alert": ""
+  },
+
+  {
+    "title": "idle breakout",
+    "logo": "./assets/img/ib.png",
+    "link": "https://useproton.github.io/games/Idle-Breakout/index.html",
+    "alert": ""
+  },
+
+  {
+    "title": "Idle Startup Tycoon",
+    "logo": "./assets/img/ist.png",
+    "link": "https://www.mortgagecalculator.org/money-games/idle-startup-tycoon/",
+    "alert": ""
+  },
+
+  {
+    "title": "OvO",
+    "logo": "./assets/img/ovo.png",
+    "link": "https://www.coolmathgames.com/0-ovo/play",
+    "alert": ""
+  },
+
+  {
+    "title": "Paper.Io",
+    "logo": "./assets/img/pi2.png",
+    "link": "https://www.paper-io.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "yohoho.io",
+    "logo": "./assets/img/yhh.png",
+    "link": "https://yohoho.io/",
+    "alert": ""
+  },
+
+  {
+    "title": "Monkey Mart",
+    "logo": "./assets/img/mm.png",
+    "link": "https://useproton.github.io/games/Monkey-Mart/monkey-mart/index.html",
     "alert": ""
   }
 ]

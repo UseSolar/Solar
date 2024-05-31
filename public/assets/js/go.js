@@ -1,10 +1,10 @@
-
 const GoTitle = document.getElementById("gt");
 const iframe = document.createElement("iframe");
 window.onload = function () {
   var encUrl = localStorage.getItem("Iframe");
   iframe.className = "iframe";
-  iframe.sandbox = "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts"
+  iframe.sandbox =
+    "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
   iframe.id = "iframeWindow";
   iframe.src = encUrl;
   document.body.appendChild(iframe);
@@ -18,7 +18,7 @@ function TU() {
 function refresh() {
   iframe.src = iframe.src;
 }
- 
+
 function forw() {
   iframe.contentWindow.history.forward();
 }
@@ -28,15 +28,13 @@ function ba() {
 }
 
 function ff() {
-  if (iframe.fullscreenElement){ 
-  iframe.exitFullscreen() 
-} else { 
- iframe.requestFullscreen();
-} 
+  if (iframe.fullscreenElement) {
+    iframe.exitFullscreen();
+  } else iframe.requestFullscreen();
 }
 
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape' || event.key === 'Esc') { 
-      ff()
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" || event.key === "Esc") {
+    ff();
   }
 });
