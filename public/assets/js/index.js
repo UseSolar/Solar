@@ -1,3 +1,4 @@
+// Blank Tab
 let inFrame;
 const AB = localStorage.getItem("AB") || "on";
 try {
@@ -112,7 +113,7 @@ function startUpdateCheck() {
   }, 1000);
 }
 
-// startUpdateCheck();
+startUpdateCheck();
 
 const input = document.getElementById("input");
 input.addEventListener("keydown", function (event) {
