@@ -7,8 +7,10 @@ This is StarLight, A web proxy that has many features.
 - Tab Cloaking
 - Fast & Easy to Use
 - Password Protection (in [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js))
+- Ad Free
+- Variety Of Games
 
-## Self Hosting Options
+## Deployment Options
 
 > [!IMPORTANT]  
 > If you forked this repo, Please ⭐️ this one!
@@ -18,7 +20,7 @@ This is StarLight, A web proxy that has many features.
 ```
 git clone https://github.com/GoStarLight/StarLight
 cd StarLight
-npm i
+npm install
 npm start
 ```
 
@@ -27,20 +29,20 @@ npm start
 1. Make a Github Account
 2. Press the green "code" button
 3. press the blue "create codespace on main" button
-4. run
+4. run the following
 
 ```
 npm i
 npm start
 ```
 
-# Reporting Issues / Help
+## Reporting Issues / Help
 
 Make a github issue or join the [Discord Server](https://discord.gg/Y9tGpfCwUf)
 
-# Supporters
+## Supporters
 
-Thank you to the supporters!
+Thank you to all the supporters!
 
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />

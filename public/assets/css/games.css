@@ -51,7 +51,7 @@ p {
 }
 
 body {
-  background-color: black;
+  background-image: linear-gradient(to right, black, #ffff99);
 }
 
 .index {

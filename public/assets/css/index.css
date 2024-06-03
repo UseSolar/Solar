@@ -1,5 +1,5 @@
 body {
-  background-color: #000;
+  background-image: linear-gradient(to right, black, #ffff99);
   margin: 0;
   padding: 0;
 }
@@ -15,18 +15,18 @@ h1 {
 }
 
 p {
-  color: pink;
+  color: #247ba0;
   position: absolute;
   top: 8px;
   right: 16px;
-  font-size: 20px;
+  font-size: 36px;
 }
 
 input {
   padding-left: 0.5em;
   margin: 140px auto 0 auto;
   display: block;
-  width: 80vw;
+  width: 65vw;
   height: 10vh;
   border: 0;
   text-align: center;

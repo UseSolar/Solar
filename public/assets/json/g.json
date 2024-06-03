@@ -101,5 +101,40 @@
     "logo": "./assets/img/mm.png",
     "link": "https://useproton.github.io/games/Monkey-Mart/monkey-mart/index.html",
     "alert": ""
+  },
+
+  {
+    "title": "Slice Masters",
+    "logo": "./assets/img/sm.png",
+    "link": "https://www.coolmathgames.com/0-slice-master/play",
+    "alert": ""
+  },
+
+  {
+    "title": "Drive Mad",
+    "logo": "./assets/img/dm.png",
+    "link": "https://useproton.github.io/games/DriveMad/index.html",
+    "alert": ""
+  },
+
+  {
+    "title": "2048",
+    "logo": "./assets/img/2048.png",
+    "link": "https://useproton.github.io/games/2048/index.html",
+    "alert": ""
+  },
+
+  {
+    "title": "Core Ball",
+    "logo": "./assets/img/cb.png",
+    "link": "https://useproton.github.io/games/core-ball/index.html",
+    "alert": ""
+  },
+
+  {
+    "title": "Tiny Fishing",
+    "logo": "./assets/img/tf.png",
+    "link": "https://useproton.github.io/games/tiny-fishing/index.html",
+    "alert": ""
   }
 ]
