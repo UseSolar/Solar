@@ -136,5 +136,82 @@
     "logo": "./assets/img/tf.png",
     "link": "https://useproton.github.io/games/tiny-fishing/index.html",
     "alert": ""
+  },
+
+  {
+    "title": "Wordle",
+    "logo": "./assets/img/word.png",
+    "link": "https://www.nytimes.com/games/wordle/index.html",
+    "alert": ""
+  },
+
+  {
+    "title": "mut.gg",
+    "logo": "./assets/img/mut.png",
+    "link": "https://www.mut.gg/",
+    "alert": ""
+  },
+
+  {
+    "title": "NFL",
+    "logo": "./assets/img/nfl.png",
+    "link": "https://www.nfl.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "123 Movies",
+    "logo": "./assets/img/123.png",
+    "link": "https://ww16.0123movie.net/",
+    "alert": ""
+  },
+
+  {
+    "title": "MLB",
+    "logo": "./assets/img/nlb.png",
+    "link": "https://www.mlb.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "NBA",
+    "logo": "./assets/img/nba.png",
+    "link": "https://www.nba.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "OneFootBall",
+    "logo": "./assets/img/ofb.png",
+    "link": "https://onefootball.com/en/home",
+    "alert": ""
+  },
+
+  {
+    "title": "Gforce Now",
+    "logo": "./assets/img/gn.png",
+    "link": "https://www.nvidia.com/en-us/geforce-now/",
+    "alert": ""
+  },
+
+  {
+    "title": "Vercel",
+    "logo": "./assets/img/vercel.png",
+    "link": "https://www.vercel.app",
+    "alert": ""
+  },
+
+  {
+    "title": "Garlic Phone",
+    "logo": "./assets/img/gp.png",
+    "link": "https://www.garticphone.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "Tiktok",
+    "logo": "./assets/img/tk.png",
+    "link": "https://www.tiktok.com",
+    "alert": ""
   }
 ]

@@ -63,58 +63,6 @@ window.addEventListener("load", () => {
       console.error("Service Worker registration failed:", error);
     });
 });
-
-// Update Checker
-function startUpdateCheck() {
-  const checkInterval = setInterval(async () => {
-    if (localStorage.getItem("re") === "true") {
-      localStorage.removeItem("re");
-      clearInterval(checkInterval);
-
-      async function checkForUpdate(repoOwner, repoName, currentVersion) {
-        const url = `https://api.github.com/repos/${repoOwner}/${repoName}/releases`;
-        try {
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`Error fetching releases: ${response.statusText}`);
-          }
-          const data = await response.json();
-
-          const latestRelease = data.find(
-            (release) => !release.draft && !release.prerelease,
-          );
-          if (latestRelease) {
-            return latestRelease.name;
-          } else {
-            return null;
-          }
-        } catch (error) {
-          console.error("An error occurred:", error);
-          return null;
-        }
-      }
-
-      (async () => {
-        const currentVersion = document
-          .getElementById("Version")
-          .textContent.trim();
-        const latestVersion = await checkForUpdate(
-          "GoStarLight",
-          "StarLight",
-          currentVersion,
-        );
-        if (currentVersion === latestVersion) {
-          console.log("Link is up to date!");
-        } else {
-          alert("This link is out of date, Please update it");
-        }
-      })();
-    }
-  }, 1000);
-}
-
-startUpdateCheck();
-
 const input = document.getElementById("input");
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {

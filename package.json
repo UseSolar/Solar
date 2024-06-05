@@ -10,8 +10,7 @@
   "description": "StarLight is a web proxy that has many features.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "prepare": "husky install"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
