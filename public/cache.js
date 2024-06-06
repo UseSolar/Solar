@@ -1,5 +1,6 @@
-const CACHE_NAME = "cache-v1";
+const CACHE_NAME = "Cache-v1.0";
 const urlsToCache = [
+  "/",
   "./assets/css/index.css",
   "./assets/js/index.js",
   "./index.html",

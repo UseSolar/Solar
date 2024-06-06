@@ -51,26 +51,37 @@ if (AB == "on") {
   localStorage.setItem("re", "true");
 }
 
-window.addEventListener("load", () => {
-  navigator.serviceWorker
-    .register("./sw.js")
-    .then(() => {
-      console.log("Successfully Registered Service Worker");
-    })
-    .catch((error) => {
-      console.error("Service Worker registration failed:", error);
-    });
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./sw.js", { scope: __uv$config.prefix })
+      .then((registration) => {
+        console.log(
+          "UV Service Worker registered with scope:",
+          registration.scope,
+        );
+      })
+      .catch((error) => {
+        console.error("UV Service Worker registration failed:", error);
+      });
+  });
+}
 
-  navigator.serviceWorker
-    .register("./assets/js/cache.js")
-    .then(() => {
-      console.log("Successfully Registered Cache Service Worker");
-    })
-    .catch((error) => {
-      console.error("Cache Service Worker registration failed:", error);
-    });
-});
-
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./cache.js")
+      .then((registration) => {
+        console.log(
+          "Cache Service Worker registered with scope:",
+          registration.scope,
+        );
+      })
+      .catch((error) => {
+        console.error("Cache Service Worker registration failed:", error);
+      });
+  });
+}
 const input = document.getElementById("input");
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
