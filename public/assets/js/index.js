@@ -101,11 +101,6 @@ function enter() {
     }
   }
 
-  if (!url.includes(".com")) {
-    alert("Please enter a valid URL including '.com'.");
-    return;
-  }
-
   localStorage.setItem(
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
@@ -121,8 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
   const addFavorite = (url, nickname) => {
-    if (!url.includes(".com")) {
-      alert("Please enter a valid URL including '.com'.");
+    if (!url.includes(".")) {
+      alert("Please enter a valid URL including '.com or .org ect.'.");
       return;
     }
 
