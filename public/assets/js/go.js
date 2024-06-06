@@ -16,7 +16,7 @@ function TU() {
 }
 
 function refresh() {
-  iframe.src = iframe.src;
+  iframe.src = iframe.contentWindow.location.href
 }
 
 function forw() {
