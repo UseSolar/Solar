@@ -2,8 +2,8 @@
   background-color: rgba(128, 128, 128, 0.3);
   overflow: hidden;
   border-radius: 60px;
-  height: 7.5vh;
-  width: 60vw;
+  height: 7.2vh;
+  width: 65vw;
   text-align: center;
   margin: 20px auto;
   display: flex;
@@ -51,7 +51,7 @@ p {
 }
 
 body {
-  background-image: linear-gradient(to right, black, #ffff99);
+  background-color: black;
 }
 
 .index {

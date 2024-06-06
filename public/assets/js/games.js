@@ -30,7 +30,7 @@ fetch("./assets/json/g.json")
 
       const altText = document.createElement("div");
       altText.textContent = image.title;
-      altText.style.color = "white";
+      altText.style.color = "yellow";
       altText.style.textAlign = "center";
       altText.style.marginTop = "10px";
 

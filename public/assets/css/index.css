@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(to right, black, #ffff99);
+  background-color: black;
   margin: 0;
   padding: 0;
 }
@@ -9,7 +9,7 @@ h1 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 86px;
+  font-size: 72px;
   text-align: center;
   margin: 0;
 }
@@ -24,16 +24,18 @@ p {
 
 input {
   padding-left: 0.5em;
-  margin: 140px auto 0 auto;
+  margin: 100px auto 0 auto;
   display: block;
-  width: 65vw;
-  height: 10vh;
+  width: 59vw;
+  height: 7.3vh;
   border: 0;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   outline: 0;
   background-color: #25252a;
   font-size: 5vh;
-  color: #247ba0;
+  color: grey;
 }
 ::placeholder {
   color: grey;
@@ -43,8 +45,8 @@ input {
   background-color: rgba(128, 128, 128, 0.3);
   overflow: hidden;
   border-radius: 60px;
-  height: 7.5vh;
-  width: 60vw;
+  height: 7.2vh;
+  width: 65vw;
   text-align: center;
   margin: 25px auto;
   display: flex;
@@ -62,6 +64,7 @@ input {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  text-align: center;
 }
 
 .topnav a:hover {
@@ -74,5 +77,60 @@ input {
 }
 
 .vs {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#favorites-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 35px;
+}
+
+.favorites-text {
+  background-image: linear-gradient(to right, #ffbb00, grey);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#add-favorite {
+  height: 65px;
+  width: 65px;
+  margin-right: 25px;
+}
+
+#favorites-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.favorite-item {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.favorite-item:hover {
+  background-color: #e0e0e0;
+}
+
+.favorite-item img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
 }
