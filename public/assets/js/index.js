@@ -57,12 +57,12 @@ if ("serviceWorker" in navigator) {
       .register("./sw.js", { scope: __uv$config.prefix })
       .then((registration) => {
         console.log(
-          "UV Service Worker registered with scope:",
+          "Service Worker registered with scope:",
           registration.scope,
         );
       })
       .catch((error) => {
-        console.error("UV Service Worker registration failed:", error);
+        console.error("Service Worker registration failed:", error);
       });
   });
 }
@@ -82,6 +82,7 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
 const input = document.getElementById("input");
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const addFavorite = (url, nickname) => {
     if (!url.includes(".")) {
-      alert("Please enter a valid URL including '.com or .org ect.'.");
+      alert("Please enter a valid URL including '.com or .org etc.'.");
       return;
     }
 
@@ -131,15 +132,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    favorites.push({ url, nickname });
+    let ur = decodeURIComponent(url);
+    let searchUrl = "https://www.google.com/search?q=";
+    if (!ur.includes(".")) {
+      ur = searchUrl + encodeURIComponent(ur);
+    } else {
+      if (!ur.startsWith("http://") && !ur.startsWith("https://")) {
+        ur = "https://" + ur;
+      }
+    }
+
+    const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(ur);
+    favorites.push({ url: encodedUrl, nickname, orurl: url });
     localStorage.setItem("favorites", JSON.stringify(favorites));
-    addFavoriteToDOM(url, nickname);
+    addFavoriteToDOM(encodedUrl, nickname, url);
   };
 
-  const addFavoriteToDOM = (url, nickname) => {
+  const addFavoriteToDOM = (url, nickname, orurl) => {
     const favoriteItem = document.createElement("div");
     favoriteItem.className = "favorite-item";
-    favoriteItem.innerHTML = `<img alt="favicon" src="https://www.google.com/s2/favicons?domain=${url}"><span>${nickname}</span>`;
+    favoriteItem.innerHTML = `<img alt="favicon" src="https://www.google.com/s2/favicons?domain=${orurl}"><span>${nickname}</span>`;
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "x";
@@ -158,20 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     favoriteItem.appendChild(deleteButton);
 
     favoriteItem.addEventListener("click", () => {
-      let ur = encodeURIComponent(url);
-      let searchUrl = "https://www.google.com/search?q=";
-      if (!ur.includes(".")) {
-        ur = searchUrl + encodeURIComponent(ur);
-      } else {
-        if (!ur.startsWith("http://") && !ur.startsWith("https://")) {
-          ur = "https://" + ur;
-        }
-      }
-
-      localStorage.setItem(
-        "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(ur),
-      );
+      localStorage.setItem("Iframe", url);
       window.location.href = `./go.html`;
     });
 
@@ -184,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   favorites.forEach((favorite) =>
-    addFavoriteToDOM(favorite.url, favorite.nickname),
+    addFavoriteToDOM(favorite.url, favorite.nickname, favorite.orurl),
   );
 
   addFavoriteButton.addEventListener("click", () => {

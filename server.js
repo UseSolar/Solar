@@ -6,9 +6,12 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import pass from "./p.js";
 
-const __dirname = join(fileURLToPath(import.meta.url), "..");
+// Fix the __dirname equivalent for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = join(__filename, "..");
+
 const bare = createBareServer("/b/");
-const path = "public"; // change this to the folder with the files in it
+const path = "public"; // Change this to the folder with the files in it
 const app = express();
 
 if (pass.challenge) {
@@ -22,6 +25,10 @@ if (pass.challenge) {
 }
 
 app.use(express.static(join(__dirname, path)));
+
+app.get("/gms", (req, res) => {
+  res.sendFile(join(__dirname, path, "games.html"));
+});
 
 app.use((req, res) => {
   res.status(404);
@@ -45,7 +52,7 @@ server.on("upgrade", (req, socket, head) => {
 });
 
 let port = parseInt(process.env.PORT || "", 10);
-if (isNaN(port)) port = 8080; // change this to whatever port you want
+if (isNaN(port)) port = 8080; // Change this to whatever port you want
 
 server.on("listening", () => {
   const address = server.address();

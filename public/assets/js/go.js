@@ -16,7 +16,7 @@ function TU() {
 }
 
 function refresh() {
-  iframe.src = iframe.contentWindow.location.href
+  iframe.src = iframe.contentWindow.location.href;
 }
 
 function forw() {
@@ -31,6 +31,30 @@ function ff() {
   if (iframe.fullscreenElement) {
     iframe.exitFullscreen();
   } else iframe.requestFullscreen();
+}
+function fav() {
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  const addFavorite = (url, nickname) => {
+    const existingNickname = favorites.find(
+      (favorite) => favorite.nickname === nickname,
+    );
+    if (existingNickname) {
+      alert(
+        `Nickname '${nickname}' is already in use. Please choose a different one.`,
+      );
+      return;
+    }
+
+    favorites.push({ url, nickname });
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  };
+
+  const nickname = prompt("Enter a nickname for the favorite:").trim();
+  if (!nickname) return;
+
+  const url = iframe.contentWindow.location.href;
+  addFavorite(url, nickname);
 }
 
 document.addEventListener("keydown", function (event) {

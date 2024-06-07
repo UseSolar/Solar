@@ -36,7 +36,25 @@ npm i
 npm start
 ```
 
-## Reporting Issues / Help
+## Updating Deployments
+
+> [!IMPORTANT]  
+> Updating Deployments May Overwrite Changes You Made
+
+# Console & Github Codespace
+
+```
+cd StarLight
+git pull --force --allow-unrelated-histories
+```
+
+# Github Repo
+
+1. Go to your StarLight Forked Repo
+2. Press "Sync Fork" near the top of the page
+3. Press "Update Branch"
+
+## Reporting Issues
 
 Make a github issue or join the [Discord Server](https://discord.gg/Y9tGpfCwUf)
 

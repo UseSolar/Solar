@@ -213,5 +213,47 @@
     "logo": "./assets/img/tk.png",
     "link": "https://www.tiktok.com",
     "alert": ""
+  },
+
+  {
+    "title": "Youtube",
+    "logo": "./assets/img/yt.png",
+    "link": "https://www.youtube.com",
+    "alert": ""
+  },
+
+  {
+    "title": "Revolt",
+    "logo": "./assets/img/revolt.png",
+    "link": "https://www.revolt.chat",
+    "alert": ""
+  },
+
+  {
+    "title": "Guilded",
+    "logo": "./assets/img/guilded.png",
+    "link": "https://www.guilded.gg",
+    "alert": ""
+  },
+
+  {
+    "title": "VS Code",
+    "logo": "./assets/img/vsc.png",
+    "link": "https://code.visualstudio.com/",
+    "alert": ""
+  },
+
+  {
+    "title": "Youtube Playables",
+    "logo": "./assets/img/ytp.png",
+    "link": "https://www.youtube.com/playables",
+    "alert": ""
+  },
+
+  {
+    "title": "ChatGPT",
+    "logo": "./assets/img/cgpt.png",
+    "link": "https://chatgpt.com/",
+    "alert": ""
   }
 ]
