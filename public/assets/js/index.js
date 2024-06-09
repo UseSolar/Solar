@@ -90,7 +90,7 @@ function enter() {
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
   );
-  window.location.href = "./g?v=1";
+  window.location.href = "./g";
 }
 
 // Favorites
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     favoriteItem.addEventListener("click", () => {
       localStorage.setItem("Iframe", url);
-      window.location.href = `./g?v=1`;
+      window.location.href = `./g`;
     });
 
     favoritesContainer.appendChild(favoriteItem);

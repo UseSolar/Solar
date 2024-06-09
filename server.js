@@ -42,6 +42,7 @@ app.get("/gms", (req, res) => {
 app.get("/g", (req, res) => {
   res.sendFile(join(__dirname, maindir, "go.html"));
 });
+
 app.use((req, res) => {
   res.status(404);
   res.sendFile(join(__dirname, maindir, "404.html"));

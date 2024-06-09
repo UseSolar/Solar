@@ -43,7 +43,7 @@ fetch("./assets/json/g.json?v=1")
               "Iframe",
               __uv$config.prefix + __uv$config.encodeUrl(url),
             );
-            window.location.href = "./g?v=1";
+            window.location.href = "./g";
           } else {
             window.open(image.redirect);
           }
