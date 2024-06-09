@@ -7,7 +7,7 @@ try {
   inFrame = true;
   localStorage.setItem("re", "true");
 }
-if (AB == "on") {
+if (AB === "on") {
   if (!inFrame && !navigator.userAgent.includes("Firefox")) {
     const popup = open("about:blank", "_blank");
     if (!popup || popup.closed) {
@@ -63,22 +63,6 @@ if ("serviceWorker" in navigator) {
       })
       .catch((error) => {
         console.error("Service Worker registration failed:", error);
-      });
-  });
-}
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./cache.js")
-      .then((registration) => {
-        console.log(
-          "Cache Service Worker registered with scope:",
-          registration.scope,
-        );
-      })
-      .catch((error) => {
-        console.error("Cache Service Worker registration failed:", error);
       });
   });
 }

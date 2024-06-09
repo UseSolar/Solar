@@ -22,7 +22,19 @@ if (pass.challenge) {
   );
 }
 
-app.use(express.static(join(__dirname, maindir)));
+app.use(
+  express.static(join(__dirname, maindir), {
+    maxAge: "1d",
+    setHeaders: function (res, path, stat) {
+      const version = Date.now();
+      res.setHeader("Cache-Control", "public, max-age=86400");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
+      res.setHeader("ETag", version);
+    },
+  }),
+);
 
 app.get("/gms", (req, res) => {
   res.sendFile(join(__dirname, maindir, "games.html"));
