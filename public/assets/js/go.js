@@ -71,3 +71,32 @@ document.addEventListener("keydown", function (event) {
     toggleFullScreen();
   }
 });
+
+function toggleEruda() {
+  let erudaLoaded = false;
+  let erudaActive = false;
+  const iframe = document.getElementById("iframe");
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+  if (!erudaLoaded) {
+    const erudaScript = iframeDoc.createElement("script");
+    erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
+    erudaScript.onload = () => {
+      erudaLoaded = true;
+      toggleEruda(iframe);
+    };
+    iframeDoc.head.appendChild(erudaScript);
+  } else {
+    toggleEruda(iframe);
+  }
+
+  function toggleEruda(iframe) {
+    if (erudaActive) {
+      iframe.contentWindow.eruda.destroy();
+      erudaActive = false;
+    } else {
+      iframe.contentWindow.eruda.init();
+      erudaActive = true;
+    }
+  }
+}

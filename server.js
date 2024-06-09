@@ -21,7 +21,6 @@ if (pass.challenge) {
     }),
   );
 }
-
 app.use(
   express.static(join(__dirname, maindir), {
     maxAge: "1d",

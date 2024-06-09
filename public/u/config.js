@@ -1,6 +1,6 @@
 self.__uv$config = {
   prefix: "/p/",
-  bare: "/b/",
+  bare: "https://lunarlearningcenter.space/bare/",
   encodeUrl: Ultraviolet.codec.xor.encode,
   decodeUrl: Ultraviolet.codec.xor.decode,
   handler: "/u/handler.js",

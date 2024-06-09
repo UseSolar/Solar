@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
   navigator.serviceWorker
-    .register("./sw.js")
+    .register("./sw.js?v=1")
     .then(() => {
       navigator.serviceWorker.ready.then(() => {
         console.log("Successfully Registered Service Workers");
@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 
 const imageContainer = document.getElementById("image-container");
 
-fetch("./assets/json/g.json")
+fetch("./assets/json/g.json?v=1")
   .then((response) => response.json())
   .then((data) => {
     data.forEach((image) => {
@@ -43,7 +43,7 @@ fetch("./assets/json/g.json")
               "Iframe",
               __uv$config.prefix + __uv$config.encodeUrl(url),
             );
-            window.location.href = "./g";
+            window.location.href = "./g?v=1";
           } else {
             window.open(image.redirect);
           }

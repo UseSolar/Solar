@@ -54,7 +54,7 @@ if (AB === "on") {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("./sw.js", { scope: __uv$config.prefix })
+      .register("./sw.js?v=1", { scope: __uv$config.prefix })
       .then((registration) => {
         console.log(
           "Service Worker registered with scope:",
@@ -90,7 +90,7 @@ function enter() {
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
   );
-  window.location.href = "./go.html";
+  window.location.href = "./g?v=1";
 }
 
 // Favorites
@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(ur);
+
     favorites.push({ url: encodedUrl, nickname, orurl: url });
     localStorage.setItem("favorites", JSON.stringify(favorites));
     addFavoriteToDOM(encodedUrl, nickname, url);
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     favoriteItem.addEventListener("click", () => {
       localStorage.setItem("Iframe", url);
-      window.location.href = `./go.html`;
+      window.location.href = `./g?v=1`;
     });
 
     favoritesContainer.appendChild(favoriteItem);
