@@ -2,7 +2,7 @@ importScripts("/u/bundle.js"), importScripts("/u/config.js");
 class UVServiceWorker extends EventEmitter {
   constructor(e = __uv$config) {
     super(),
-      e.bare || (e.bare = "/b/"),
+      e.bare || (e.bare = __uv$config.bare),
       (this.addresses =
         "string" == typeof e.bare
           ? [new URL(e.bare, location)]

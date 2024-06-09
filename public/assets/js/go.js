@@ -1,18 +1,20 @@
 const GoTitle = document.getElementById("gt");
 const iframe = document.createElement("iframe");
+
+iframe.className = "iframe";
+iframe.sandbox =
+  "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
+iframe.id = "iframeWindow";
+
 window.onload = function () {
-  var encUrl = localStorage.getItem("Iframe");
-  iframe.className = "iframe";
-  iframe.sandbox =
-    "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
-  iframe.id = "iframeWindow";
+  const encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
   document.body.appendChild(iframe);
-  setInterval(TU, 1000);
+  setInterval(updateTitle, 1000);
 };
 
-function TU() {
-  document.getElementById("gt").textContent = iframe.contentDocument.title;
+function updateTitle() {
+  GoTitle.textContent = iframe.contentDocument.title;
 }
 
 function refresh() {
@@ -27,38 +29,45 @@ function ba() {
   iframe.contentWindow.history.back();
 }
 
-function ff() {
+window.addEventListener("unload", function (event) {
+  var url = iframe.contentWindow.location.href;
+  var parts = url.split("/");
+  var index = parts.indexOf("p");
+  var desiredSegment = parts[index + 1];
+  localStorage.setItem("Iframe", "/p/" + desiredSegment);
+});
+
+function toggleFullScreen() {
   if (iframe.fullscreenElement) {
     iframe.exitFullscreen();
-  } else iframe.requestFullscreen();
+  } else {
+    iframe.requestFullscreen();
+  }
 }
-function fav() {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  const addFavorite = (url, nickname) => {
-    const existingNickname = favorites.find(
-      (favorite) => favorite.nickname === nickname,
-    );
-    if (existingNickname) {
-      alert(
-        `Nickname '${nickname}' is already in use. Please choose a different one.`,
-      );
-      return;
-    }
+function addFavorite() {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    favorites.push({ url, nickname });
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  };
-
-  const nickname = prompt("Enter a nickname for the favorite:").trim();
+  const nickname = prompt("Enter a nickname for the favorite:")?.trim();
   if (!nickname) return;
 
+  const existingNickname = favorites.find(
+    (favorite) => favorite.nickname === nickname,
+  );
+  if (existingNickname) {
+    alert(
+      `Nickname '${nickname}' is already in use. Please choose a different one.`,
+    );
+    return;
+  }
+
   const url = iframe.contentWindow.location.href;
-  addFavorite(url, nickname);
+  favorites.push({ url, nickname });
+  localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape" || event.key === "Esc") {
-    ff();
+    toggleFullScreen();
   }
 });

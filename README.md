@@ -9,6 +9,7 @@ This is StarLight, A web proxy that has many features.
 - Password Protection (in [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js))
 - Ad Free
 - Variety Of Games
+- Favorites Bar
 
 ## Deployment Options
 
@@ -38,10 +39,10 @@ npm start
 
 ## Updating Deployments
 
-> [!IMPORTANT]  
-> Updating Deployments May Overwrite Changes You Made
-
 # Console & Github Codespace
+
+> [!IMPORTANT]  
+> This Method May Overwrite Changes You Made
 
 ```
 cd StarLight
@@ -49,6 +50,9 @@ git pull --force --allow-unrelated-histories
 ```
 
 # Github Repo
+
+> [!IMPORTANT]  
+> This Method Will Overwrite Changes You Made
 
 1. Go to your StarLight Forked Repo
 2. Press "Sync Fork" near the top of the page

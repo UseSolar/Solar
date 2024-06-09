@@ -6,11 +6,12 @@
   },
   "type": "module",
   "name": "starlight",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "StarLight is a web proxy that has many features.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,6 @@
   "lint-staged": {
     "*.{js,json,css,md}": [
       "prettier --write"
-    ],
-    "*.{js,css,md}": "prettier --write"
+    ]
   }
 }

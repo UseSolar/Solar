@@ -1,11 +1,19 @@
+html {
+  background: linear-gradient(to bottom, #11111b, #585b70);
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  background-color: black;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
-  background-image: linear-gradient(to bottom, #247ba0, #ff008c);
+  background-image: linear-gradient(to bottom, #f9e2af, #f5c2e7);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -15,16 +23,19 @@ h1 {
 }
 
 p {
-  color: #247ba0;
+  color: #99d1db;
   position: absolute;
   top: 8px;
   right: 16px;
   font-size: 36px;
 }
-
+.star {
+  width: 85px;
+  height: 85px;
+}
 input {
   padding-left: 0.5em;
-  margin: 100px auto 0 auto;
+  margin: 140px auto 0 auto;
   display: block;
   width: 59vw;
   height: 7.3vh;
@@ -33,22 +44,23 @@ input {
   align-items: center;
   justify-content: center;
   outline: 0;
-  background-color: #25252a;
+  background-image: linear-gradient(to bottom, #303446, #24273a);
   font-size: 5vh;
-  color: grey;
+  color: #6c7086;
 }
+
 ::placeholder {
-  color: grey;
+  color: #6c7086;
 }
 
 .topnav {
-  background-color: rgba(128, 128, 128, 0.3);
+  background-color: rgba(128, 128, 128, 0.1);
   overflow: hidden;
   border-radius: 60px;
   height: 7.2vh;
   width: 65vw;
   text-align: center;
-  margin: 25px auto;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,30 +70,32 @@ input {
 }
 
 .topnav a {
+  color: #6c7086;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .topnav a:hover {
-  color: black;
+  background-color: #8c8fa1;
+  transform: scale(0.9);
 }
 
 .index {
-  width: 46px;
-  height: 46px;
+  width: 39px;
+  height: 39px;
 }
 
 .vs {
   font-size: 25px;
-}
-
-body {
-  font-family: Arial, sans-serif;
+  color: #8c8fa1;
 }
 
 #favorites-bar {
@@ -133,4 +147,9 @@ body {
   border-radius: 50%;
   margin-right: 10px;
   object-fit: cover;
+}
+
+.delete-button {
+  margin-left: 10px;
+  color: red;
 }

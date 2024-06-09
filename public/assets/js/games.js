@@ -30,7 +30,7 @@ fetch("./assets/json/g.json")
 
       const altText = document.createElement("div");
       altText.textContent = image.title;
-      altText.style.color = "yellow";
+      altText.style.color = "#8087a2";
       altText.style.textAlign = "center";
       altText.style.marginTop = "10px";
 
@@ -43,7 +43,7 @@ fetch("./assets/json/g.json")
               "Iframe",
               __uv$config.prefix + __uv$config.encodeUrl(url),
             );
-            window.location.href = "go.html";
+            window.location.href = "./g";
           } else {
             window.open(image.redirect);
           }

@@ -48,7 +48,8 @@ body {
 .forw,
 .ba,
 .re,
-.gf {
+.gf,
+.af {
   width: 46px;
   height: 46px;
   justify-content: center;

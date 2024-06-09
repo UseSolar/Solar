@@ -1,4 +1,4 @@
-const CACHE_NAME = "Cache-v1.0";
+const CACHE_NAME = "Cache-v1.1";
 const urlsToCache = [
   "/",
   "./assets/css/index.css",
@@ -12,47 +12,48 @@ const urlsToCache = [
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("Opened cache");
       return cache.addAll(urlsToCache);
     }),
   );
 });
 
 self.addEventListener("fetch", (event) => {
-  const requestUrl = new URL(event.request.url);
-
-  if (
-    requestUrl.origin === location.origin &&
-    (requestUrl.pathname.startsWith("/assets/img/") ||
-      requestUrl.pathname.startsWith("/assets/js/") ||
-      requestUrl.pathname.startsWith("/assets/css/"))
-  ) {
-    event.respondWith(
-      fetch(event.request)
-        .then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-        .catch(() => {
-          return caches.match(event.request);
-        }),
-    );
-  } else {
-    event.respondWith(
-      fetch(event.request)
-        .then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-        .catch(() => {
-          return caches.match(event.request);
-        }),
-    );
+  if (event.request.method !== "GET") {
+    return;
   }
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          if (
+            !networkResponse ||
+            networkResponse.status !== 200 ||
+            networkResponse.type !== "basic"
+          ) {
+            return networkResponse;
+          }
+
+          return caches.open(CACHE_NAME).then((cache) => {
+            if (event.request.method === "GET") {
+              const responseToCache = networkResponse.clone();
+              cache.put(event.request, responseToCache).catch((error) => {
+                console.error("Cache put failed:", error);
+              });
+            }
+            return networkResponse;
+          });
+        })
+        .catch((error) => {
+          console.error("Fetch failed; returning cached page instead.", error);
+          return caches.match(event.request);
+        });
+    }),
+  );
 });
 
 self.addEventListener("activate", (event) => {

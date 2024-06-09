@@ -1,5 +1,5 @@
 .topnav {
-  background-color: rgba(128, 128, 128, 0.3);
+  background-color: rgba(128, 128, 128, 0.1);
   overflow: hidden;
   border-radius: 60px;
   height: 7.2vh;
@@ -15,19 +15,23 @@
 }
 
 .topnav a {
+  color: #6c7086;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #8c8fa1;
+  transform: scale(0.9);
 }
-
 #image-container {
   display: block;
   flex-wrap: wrap;
@@ -40,7 +44,9 @@
   margin-bottom: 40px;
   float: left;
 }
-
+#image-container a:hover {
+  transform: scale(0.9);
+}
 .classy {
   border-radius: 20px;
 }
@@ -49,9 +55,19 @@ p {
   margin-top: 10px;
   text-align: center;
 }
+html {
+  height: 100%;
+  width: 100%;
+}
 
 body {
-  background-color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #11111b, #585b70);
+  background-attachment: fixed;
 }
 
 .index {

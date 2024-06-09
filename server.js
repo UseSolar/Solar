@@ -6,12 +6,10 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import pass from "./p.js";
 
-// Fix the __dirname equivalent for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = join(__filename, "..");
-
 const bare = createBareServer("/b/");
-const path = "public"; // Change this to the folder with the files in it
+const maindir = "public"; // Change this to the folder with the files in it
 const app = express();
 
 if (pass.challenge) {
@@ -24,15 +22,18 @@ if (pass.challenge) {
   );
 }
 
-app.use(express.static(join(__dirname, path)));
+app.use(express.static(join(__dirname, maindir)));
 
 app.get("/gms", (req, res) => {
-  res.sendFile(join(__dirname, path, "games.html"));
+  res.sendFile(join(__dirname, maindir, "games.html"));
 });
 
+app.get("/g", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "go.html"));
+});
 app.use((req, res) => {
   res.status(404);
-  res.sendFile(join(__dirname, path, "404.html"));
+  res.sendFile(join(__dirname, maindir, "404.html"));
 });
 
 const server = http.createServer((req, res) => {
