@@ -27,6 +27,13 @@
   },
 
   {
+    "title" : "Github",
+    "logo": "./assets/img/github image.png",
+    "link": "https://github.com",
+    "alert": ""
+  },
+
+  {
     "title": "shuttle.lol",
     "logo": "./assets/img/shuttle.png",
     "link": "https://shuttle.lol",
