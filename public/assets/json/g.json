@@ -20,6 +20,13 @@
   },
 
   {
+    "title": "Slope",
+    "logo": "./assets/img/slopegame.png",
+    "link": "https://slopegame.online",
+    "alert": ""
+  },
+
+  {
     "title": "CoolMathGames",
     "logo": "./assets/img/cmg.png",
     "link": "https://coolmathgames.com",
