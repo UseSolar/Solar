@@ -90,7 +90,7 @@ function enter() {
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
   );
-  window.location.href = "./g";
+  window.location.href = "./go.html";
 }
 
 // Favorites
