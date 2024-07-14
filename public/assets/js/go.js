@@ -6,7 +6,12 @@ iframe.sandbox =
   "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
 iframe.id = "iframeWindow";
 
-window.onload = function () {
+window.onload = async function () {
+  let connection = new BareMux.BareMuxConnection("/b/worker.js");
+  let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/w/";
+	if (await connection.getTransport() !== "/e/index.mjs") {
+		await connection.setTransport("/e/index.mjs", [{ wisp: wispUrl }]);
+	}
   const encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
   document.body.appendChild(iframe);

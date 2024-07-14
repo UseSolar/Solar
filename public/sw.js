@@ -1,8 +1,18 @@
-importScripts("./u/bundle.js?v=1");
-importScripts("./u/config.js?v=1");
-importScripts("./u/sw.js?v=1");
+importScripts("./u/bundle.js?v=2");
+importScripts("./u/config.js?v=2");
+importScripts("./u/sw.js?v=2");
 
-const sw = new UVServiceWorker();
+const uv = new UVServiceWorker();
 let userKey = new URL(location).searchParams.get("userkey");
 
-self.addEventListener("fetch", (event) => event.respondWith(sw.fetch(event)));
+async function handleRequest(event) {
+    if (uv.route(event)) {
+        return await uv.fetch(event);
+    }
+    
+    return await fetch(event.request)
+}
+
+self.addEventListener('fetch', (event) => {
+    event.respondWith(handleRequest(event));
+});
