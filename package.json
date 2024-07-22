@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/GoStarLight/StarLight#readme",
   "dependencies": {
-    "@mercuryworkshop/bare-mux": "^2.0.2",
+    "@mercuryworkshop/bare-mux": "^2.0.3",
     "@mercuryworkshop/bare-as-module3": "^2.2.2",
     "@tomphttp/bare-server-node": "^2.0.3",
     "express": "^4.19.2",
