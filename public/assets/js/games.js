@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
   navigator.serviceWorker
-    .register("./sw.js?v=1")
+    .register("./sw.js?v=3")
     .then(() => {
       navigator.serviceWorker.ready.then(() => {
         console.log("Successfully Registered Service Workers");
@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 
 const imageContainer = document.getElementById("image-container");
 
-fetch("./assets/json/g.json?v=1")
+fetch("./assets/json/g.json?v=3")
   .then((response) => response.json())
   .then((data) => {
     data.forEach((image) => {
@@ -29,12 +29,19 @@ fetch("./assets/json/g.json?v=1")
       img.className = "classy";
 
       const altText = document.createElement("div");
+      altText.className = "game-name";
       altText.textContent = image.title;
-      altText.style.color = "#8087a2";
       altText.style.textAlign = "center";
       altText.style.marginTop = "10px";
 
       imageElement.addEventListener("click", function (event) {
+        gtag("event", "click", {
+          event_category: "Game Click",
+          event_label: image.title,
+        });
+      });
+
+      imgContainer.addEventListener("click", function (event) {
         event.preventDefault();
         if (!image.alert) {
           if (!image.redirect) {
@@ -62,3 +69,39 @@ fetch("./assets/json/g.json?v=1")
   .catch((error) => {
     console.error("Error fetching JSON data:", error);
   });
+
+const searchBox = document.getElementById("search-input");
+const imagesContainer = document.getElementById("image-container");
+
+searchBox.addEventListener("keyup", function () {
+  const searchTerm = this.value.toLowerCase();
+  const images = imagesContainer.querySelectorAll("img");
+
+  images.forEach(function (image) {
+    const altText = image.alt.toLowerCase();
+    const parentLink = image.parentElement.parentElement;
+
+    if (altText.includes(searchTerm)) {
+      parentLink.style.display = "block";
+    } else {
+      parentLink.style.display = "none";
+    }
+  });
+
+  updateGridLayout();
+});
+
+// Update Game Layout
+function updateGridLayout() {
+  const imageElements = Array.from(
+    document.querySelectorAll("#image-container > a"),
+  );
+  const visibleImageElements = imageElements.filter(
+    (imageElement) => imageElement.style.display !== "none",
+  );
+  const containerWidth = imageContainer.clientWidth;
+  const imageWidth = 150;
+  const numColumns = Math.floor(containerWidth / imageWidth);
+
+  imageContainer.style.gridTemplateColumns = `repeat(auto-fill, minmax(${imageWidth}px, 1fr))`;
+}

@@ -1,7 +1,7 @@
 services:
   - type: web
-    name: my-node-app
+    name: SL
     env: node
-    plan: starter
+    plan: free
     buildCommand: 'npm install'
     startCommand: 'npm start'

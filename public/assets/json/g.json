@@ -269,5 +269,68 @@
     "logo": "./assets/img/cgpt.png",
     "link": "https://chatgpt.com/",
     "alert": ""
-  }
+  },
+  {
+    "title": "Youtube Alternative",
+    "logo": "./assets/img/yt.png",
+    "link": "https://invidious.incogniweb.net/",
+    "alert": ""
+  },
+{
+"title": "retro bowl",
+"logo":"./assets/img/retro-bowl.png",
+ "link": "https://shawn43.github.io/retrobowl-unlimited/",
+ "alert": ""
+},
+
+{
+
+ "title": "mario",
+ "logo":"./assets/img/mario.png",
+ "link":"https://www.joshuakgoldberg.com/FullScreenMario/Source/",
+ "alert": ""
+},
+
+{
+ "title": "basketball stars",
+ "logo":"./assets/img/basketball-stars.png",
+ "link":" https://basketball-stars.co/",
+ "alert":""
+},
+
+{
+ "title": "Stickman hook",
+ "logo":"./assets/img/stickmanhook.png",
+ "link":"https://www.jopi.com/game/game/stickman-hook/",
+ "alert":""
+},
+{
+"title": "Vex 6",
+"logo":"./assets/img/vex-6.png",
+"link":"https://gaamess.com/vex-6/",
+"alert":""
+},
+{
+  "title": "basket random",
+  "logo":"./assets/img/basket-random.png",
+  "link":"https://basketballrandom.github.io/",
+  "alert":""
+},
+{
+ 
+ "title": "soccer random",
+ "logo":"./assets/img/soccer-random-1932.png",
+ "link":"https://soccer-random.github.io/",
+ "alert":""
+}
 ]
+
+
+
+
+
+
+
+
+
+
