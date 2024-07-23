@@ -57,9 +57,9 @@ starlight
     </a>
 </div>
 
-## Extra Instructions
+# Extra Instructions
 
-# Password Protection
+## Password Protection
 
 1. Go to [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js)
 2. Set "Challange" put it to true
@@ -89,7 +89,7 @@ export { pass, authenticate };
 
 3. Add users using the format username: "password",
 
-# Changing Port
+## Changing Port
 
 1. Go to [index.js](https://github.com/GoStarLight/StarLight/blob/main/index.js) (not in public)
 2. Locate the line: `const port = process.env.PORT || 8080;`
@@ -133,7 +133,7 @@ git pull --force --allow-unrelated-histories
 
 If you are having any kind of issues or error make a [Github Issue](https://github.com/GoStarLight/StarLight/issues) or join [Discord Server](https://discord.gg/Y9tGpfCwUf)
 
-## Contributors
+# Contributors
 
 Thank you to the Contributors who helped!
 
