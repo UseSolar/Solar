@@ -8,7 +8,7 @@ Our goal is to make StarLight fast and easy to use, deploy & customize.
 
 - Tab Cloaking
 - Fast & Easy to Use
-- Password Protection (in [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js))
+- [Password Protection](https://github.com/GoStarLight/StarLight/blob/main/p.js) (Optional)
 - Ad Free
 - Mobile Support
 

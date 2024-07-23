@@ -72,9 +72,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-let searchInput = document.getElementById("search-input");
-searchInput.placeholder =
-  "Search with " + " " + localStorage.getItem("sevalue") || "Google";
 
 function ocgh() {
   let choice = prompt(`Would you like Github to be Proxied or not?
@@ -170,7 +167,7 @@ function enter() {
 getSI();
 
 function getSI() {
-  let SIvalue = localStorage.getItem("sevalue") || "google";
+  let SIvalue = localStorage.getItem("sevalue") || localStorage.setItem("sevalue","google");
   const dropdown = document.getElementById("search-engine");
   dropdown.value = SIvalue;
 }
@@ -179,6 +176,9 @@ document
   .getElementById("search-engine")
   .addEventListener("change", function (event) {
     const selectedOption = event.target.value;
+let searchInput = document.getElementById("search-input");
+searchInput.placeholder =
+  "Search with " + selectedOption;
     if (selectedOption == "brave") {
       localStorage.setItem("se", "https://search.brave.com/search?q=");
       localStorage.setItem("sevalue", "brave");
@@ -211,6 +211,9 @@ document.getElementById("search-input").addEventListener("click", (event) => {
   }
 });
 
+let searchInput = document.getElementById("search-input");
+searchInput.placeholder =
+  "Search with " + localStorage.getItem("sevalue")
 // Search Suggestions
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");

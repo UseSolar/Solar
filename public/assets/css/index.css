@@ -14,7 +14,7 @@ body {
   background-color: #585b70;
   padding: 0 40px;
   height: 54px;
-  width: 768px;
+  width: 938px;
   border: none;
   margin-top: 10px;
   border-radius: 20px;
@@ -179,7 +179,7 @@ body {
   background-color: #585b70;
   height: 46px;
   width: 142px;
-  border-radius: 20%;
+  border-radius: 20px;
   justify-content: center;
   right: 25px;
   border: none;
@@ -197,14 +197,16 @@ body {
   align-items: center;
   position: relative;
   cursor: pointer;
+  border: none;
 }
 
 .icon img {
   width: 72%;
   height: 72%;
+  border: none;
   background-size: cover;
   background-position: center;
-  border-radius: 50%;
+  border-radius: 20px;
   transition:
     background-color 0.3s ease,
     transform 0.3s ease;
@@ -236,7 +238,7 @@ body {
 h1 {
   color: #797593;
   text-align: center;
-  font-size: 68px;
+  font-size: 38.5px;
   margin-top: 66px;
 }
 
@@ -258,7 +260,9 @@ p {
 
 h1 {
   color: #797593;
-  text-align: center;
-  font-size: 68px;
+text-align: center;
   margin-left: 76px;
+  text-align: center;
+  font-size: 62.5px;
+  margin-top: 66px;
 }
