@@ -15,7 +15,7 @@ if (cloakingStatus === "o") {
 
     if (!popupWindow || popupWindow.closed) {
       alert(
-        "Please Allow Popup & Redirects so we can cloak this tab using about://blank, if you cannot for whatever reason you can turn this message off in settings!",
+        "Please Allow Popup & Redirects so this tab cloaks into about://blank, if you cannot for whatever reason you can turn this message off in settings!"
       );
     } else {
       const popupDocument = popupWindow.document;
@@ -63,7 +63,7 @@ if ("serviceWorker" in navigator) {
       .then((registration) => {
         console.log(
           "Service Worker registered with scope:",
-          registration.scope,
+          registration.scope
         );
       })
       .catch((error) => {
@@ -71,6 +71,7 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
 let searchInput = document.getElementById("search-input");
 searchInput.placeholder =
   "Search with " + " " + localStorage.getItem("sevalue") || "Google";
@@ -87,7 +88,7 @@ function ocgh() {
       let url = "https://github.com/GoStarLight/StarLight";
       localStorage.setItem(
         "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url),
+        __uv$config.prefix + __uv$config.encodeUrl(url)
       );
       window.location.href = "./g";
     } else if (choice === "B") {
@@ -112,7 +113,7 @@ function ocdc() {
       let url = "https://discord.gg/H65c2HqfY8";
       localStorage.setItem(
         "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url),
+        __uv$config.prefix + __uv$config.encodeUrl(url)
       );
       window.location.href = "./g";
     } else if (choice === "B") {
@@ -160,7 +161,7 @@ function enter() {
 
   localStorage.setItem(
     "Iframe",
-    __uv$config.prefix + __uv$config.encodeUrl(url),
+    __uv$config.prefix + __uv$config.encodeUrl(url)
   );
   window.location.href = "./g";
 }
@@ -231,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestionsList.innerHTML = suggestions
       .map(
         (suggestion) =>
-          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`,
+          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`
       )
       .join("");
   }
@@ -246,6 +247,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  searchInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      suggestionsList.innerHTML = "";
+    }, 100);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      !suggestionsList.contains(e.target) &&
+      e.target !== searchInput
+    ) {
+      suggestionsList.innerHTML = "";
+    }
+  });
+
   suggestionsList.addEventListener("click", (e) => {
     if (
       e.target.classList.contains("suggestion-item") ||
@@ -254,7 +270,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       searchInput.value = e.target.textContent.trim();
       suggestionsList.innerHTML = "";
-
       enter();
     }
   });
