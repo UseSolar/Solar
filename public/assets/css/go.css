@@ -40,7 +40,7 @@ body {
   font-weight: bold;
   color: grey;
   border-radius: 20px;
-  background-color: #6A6D84;
+  background-color: #6a6d84;
   border-color: black;
 }
 
@@ -70,7 +70,9 @@ body {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .nav-links a img {
@@ -95,4 +97,3 @@ iframe#iframeWindow {
   box-sizing: border-box;
   z-index: 1001;
 }
-

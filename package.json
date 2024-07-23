@@ -3,7 +3,7 @@
   "name": "starlight",
   "version": "1.1.2",
   "description": "StarLight is a web proxy that has many features.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "pretty": "prettier --write '**/*.{js,css,html,md}'"

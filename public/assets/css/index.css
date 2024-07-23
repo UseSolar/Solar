@@ -1,6 +1,10 @@
 body {
   background-color: #313244;
   font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .navbar {
@@ -8,11 +12,14 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #585b70;
-  padding: 0 20px;
-  height: 60px;
+  padding: 0 40px;
+  height: 54px;
+  width: 768px;
   border: none;
   margin-top: 10px;
   border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo img {
@@ -80,8 +87,8 @@ body {
 
 #search-input {
   margin-top: 32px;
-  width: 632px;
-  height: 66px;
+  width: 368px;
+  height: 62px;
   padding-left: 36px;
   font-size: 20px;
   border: none;
@@ -95,6 +102,12 @@ body {
   background-color: #585b70;
   color: #cdd6f4;
   margin-right: 88px;
+  transition: width 0.3s ease;
+}
+
+#search-input:hover,
+#search-input:focus {
+  width: 632px;
 }
 
 ::placeholder {
@@ -148,26 +161,37 @@ body {
   background-color: #8c8fa1;
   border-radius: 10px;
 }
+
 .dot {
   width: 4px;
   height: 4px;
   background-color: #000;
   border-radius: 50%;
-  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .icon-container {
   position: fixed;
   bottom: 20px;
   text-align: center;
+  background-color: #585b70;
+  height: 46px;
+  width: 142px;
+  border-radius: 20%;
+  justify-content: center;
   right: 25px;
+  border: none;
   display: flex;
   flex-direction: row;
   gap: 10px;
+  align-items: center;
 }
 
 .icon {
-  width: 50px;
-  height: 50px;
+  width: 38px;
+  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,8 +200,10 @@ body {
 }
 
 .icon img {
-  width: 92%;
-  height: 92%;
+  width: 72%;
+  height: 72%;
+  background-size: cover;
+  background-position: center;
   border-radius: 50%;
   transition:
     background-color 0.3s ease,

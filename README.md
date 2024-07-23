@@ -10,7 +10,7 @@ Our goal is to make StarLight fast and easy to use, deploy & customize.
 - Fast & Easy to Use
 - Password Protection (in [p.js](https://github.com/GoStarLight/StarLight/blob/main/p.js))
 - Ad Free
-- Mobile Support 
+- Mobile Support
 
 # Deploy Options
 

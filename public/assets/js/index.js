@@ -71,6 +71,9 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+let searchInput = document.getElementById("search-input");
+searchInput.placeholder =
+  "Search with " + " " + localStorage.getItem("sevalue") || "Google";
 
 function ocgh() {
   let choice = prompt(`Would you like Github to be Proxied or not?
@@ -253,49 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
       suggestionsList.innerHTML = "";
 
       enter();
-
-
     }
   });
 });
-
-
-
-  
-
- 
-  
-    
-   
-      
-  
-    
-        
-      
-    
-           
-            
-        
-                                                                                                                            
-                                                                                                                                    
-                                                                                                                                              
-                                                                                                                                                     
-                                                                                                                                                      
-                                                                                                                                                        
-                                                                                                                                                                  
-                                                                                                                                                                      
-                                                                                                                                                                                
-                                                                                                                                                                                      
-                                                                                                                                                                                                  
-                                                                                                                                                                    
-                                                                                                                                                                                            
-                                                                                                                                                                                              
-                                                                                                                                                                                                    
-                                                                                                                                                                                                
-                                                                                                                                                                                                            
-                                                                                                                                                                                                          
-                                                                                                                                                                                                                    
-                                                                                                                                                                                                                    
-                                                                                                                                                                                                                          
-                          
-                                                                                  

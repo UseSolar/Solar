@@ -115,7 +115,6 @@ app.get("/fu", (req, res) => {
   res.sendFile(join(__dirname, maindir, "fun.html"));
 });
 
-
 app.use((req, res) => {
   res.status(404);
   res.sendFile(join(__dirname, maindir, "404.html"));
