@@ -72,7 +72,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-
 function ocgh() {
   let choice = prompt(`Would you like Github to be Proxied or not?
   Type the letter of the corresponding choice:
@@ -219,6 +218,7 @@ document.getElementById("search-input").addEventListener("click", (event) => {
 let searchInput = document.getElementById("search-input");
 searchInput.placeholder =
   "Search with " + localStorage.getItem("sevalue") + " or with a url"
+  
 // Search Suggestions
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");

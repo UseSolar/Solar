@@ -1,10 +1,7 @@
 body {
   background-color: #313244;
   font-family: "Inter", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+ 
 }
 
 .navbar {
@@ -165,7 +162,7 @@ body {
 .dot {
   width: 4px;
   height: 4px;
-  background-color: #000;
+  background-color: #CDD6F4;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -222,7 +219,7 @@ body {
   display: none;
   position: absolute;
   bottom: 60px;
-  left: 50%;
+  right: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
@@ -266,3 +263,16 @@ text-align: center;
   font-size: 62.5px;
   margin-top: 66px;
 }
+
+.settings {
+  position: fixed; 
+  bottom: 10px; 
+  left: 10px;
+  border-radius: 100%;
+  height: 36px;
+  width: 36px;
+  background-size: cover;
+  background-position: bottom left;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNDREQ2RjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZXR0aW5ncy0yIj48cGF0aCBkPSJNMjAgN2gtOSIvPjxwYXRoIGQ9Ik0xNCAxN0g1Ii8+PGNpcmNsZSBjeD0iMTciIGN5PSIxNyIgcj0iMyIvPjxjaXJjbGUgY3g9IjciIGN5PSI3IiByPSIzIi8+PC9zdmc+');
+}
+

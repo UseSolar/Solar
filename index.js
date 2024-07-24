@@ -115,6 +115,11 @@ app.get("/fu", (req, res) => {
   res.sendFile(join(__dirname, maindir, "fun.html"));
 });
 
+
+app.get("/cdits", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "credits.html"));
+});
+
 app.use((req, res) => {
   res.status(404);
   res.sendFile(join(__dirname, maindir, "404.html"));

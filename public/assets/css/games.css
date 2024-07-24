@@ -1,13 +1,12 @@
 body {
   background-color: #313244;
   font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin: 0;
   padding: 0;
-}
-
-.game-name {
-  color: #cdd6f4;
-  font-family: "Inter", sans-serif;
 }
 
 .navbar {
@@ -15,11 +14,14 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #585b70;
-  padding: 0 20px;
-  height: 60px;
+  padding: 0 24px;
+  height: 54px;
+  width: 938px;
   border: none;
   margin-top: 10px;
   border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .logo img {
@@ -32,6 +34,7 @@ body {
 .logo img:hover {
   background-color: #8c8fa1;
   transform: scale(0.9);
+  border-radius: 10px;
 }
 
 .nav-links {
@@ -67,7 +70,13 @@ body {
 
 .nav-links a:hover {
   background-color: #8c8fa1;
+  border-radius: 10px;
   transform: scale(0.9);
+}
+
+.game-name {
+  color: #cdd6f4;
+  font-family: "Inter", sans-serif;
 }
 
 #image-container {

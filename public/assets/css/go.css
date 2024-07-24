@@ -14,7 +14,7 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  background-color: #585b70;
+  background-color: #6c6a8a;
   padding: 0 20px;
   height: 48px;
   position: fixed;
@@ -30,20 +30,18 @@ body {
   align-items: center;
 }
 
-.nav-input {
+#search-input {
   width: 380px;
-  height: 28px;
-  padding: 6px;
-  margin-left: 20px;
+  height: 46px;
+  padding-left: 36px;
+  margin-left: 15px;
   font-size: 16px;
-  font-weight: bold;
-  color: #cdd6f4;
+  border: none;
   border-radius: 20px;
-  background-color: #6a6d84;
-  border-color: grey;
-  border-width: 6px;
+  text-align: left;
+  background-color: #585b70;
+  color: #cdd6f4;
 }
-
 .container {
   display: flex;
   align-items: center;
