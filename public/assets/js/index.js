@@ -167,35 +167,40 @@ function enter() {
 getSI();
 
 function getSI() {
-  let SIvalue = localStorage.getItem("sevalue") || localStorage.setItem("sevalue","google");
+  let SIvalue = localStorage.getItem("sevalue");
+  if (!SIvalue) {
+    SIvalue = "google";
+    localStorage.setItem("sevalue", SIvalue);
+  }
   const dropdown = document.getElementById("search-engine");
   dropdown.value = SIvalue;
 }
+document.getElementById("search-engine").addEventListener("change", function (event) {
+  const selectedOption = event.target.value;
+  let searchInput = document.getElementById("search-input");
 
-document
-  .getElementById("search-engine")
-  .addEventListener("change", function (event) {
-    const selectedOption = event.target.value;
-let searchInput = document.getElementById("search-input");
-searchInput.placeholder =
-  "Search with " + selectedOption;
-    if (selectedOption == "brave") {
-      localStorage.setItem("se", "https://search.brave.com/search?q=");
-      localStorage.setItem("sevalue", "brave");
-    } else if (selectedOption == "google") {
-      localStorage.setItem("se", "https://www.google.com/search?q=");
-      localStorage.setItem("sevalue", "google");
-    } else if (selectedOption == "bing") {
-      localStorage.setItem("se", "https://www.bing.com/search?q=");
-      localStorage.setItem("sevalue", "bing");
-    } else if (selectedOption == "duckduckgo") {
-      localStorage.setItem("se", "https://duckduckgo.com/?q=");
-      localStorage.setItem("sevalue", "duckduckgo");
-    } else if (selectedOption == "startpage") {
-      localStorage.setItem("se", "https://startpage.com/sp/search?q=");
-      localStorage.setItem("sevalue", "startpage");
-    }
-  });
+  if (selectedOption == "brave") {
+    localStorage.setItem("se", "https://search.brave.com/search?q=");
+    localStorage.setItem("sevalue", "brave");
+    searchInput.placeholder = "Search with Brave or with a URL";
+  } else if (selectedOption == "google") {
+    localStorage.setItem("se", "https://www.google.com/search?q=");
+    localStorage.setItem("sevalue", "google");
+    searchInput.placeholder = "Search with Google or with a URL";
+  } else if (selectedOption == "bing") {
+    localStorage.setItem("se", "https://www.bing.com/search?q=");
+    localStorage.setItem("sevalue", "bing");
+    searchInput.placeholder = "Search with Bing or with a URL";
+  } else if (selectedOption == "duckduckgo") {
+    localStorage.setItem("se", "https://duckduckgo.com/?q=");
+    localStorage.setItem("sevalue", "duckduckgo");
+    searchInput.placeholder = "Search with DuckDuckGo or with a URL";
+  } else if (selectedOption == "startpage") {
+    localStorage.setItem("se", "https://startpage.com/sp/search?q=");
+    localStorage.setItem("sevalue", "startpage");
+    searchInput.placeholder = "Search with Startpage or with a URL";
+  }
+});
 
 document.getElementById("search-input").addEventListener("click", (event) => {
   const input = event.target;
@@ -213,7 +218,7 @@ document.getElementById("search-input").addEventListener("click", (event) => {
 
 let searchInput = document.getElementById("search-input");
 searchInput.placeholder =
-  "Search with " + localStorage.getItem("sevalue")
+  "Search with " + localStorage.getItem("sevalue") + " or with a url"
 // Search Suggestions
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");

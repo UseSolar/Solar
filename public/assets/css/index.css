@@ -12,7 +12,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #585b70;
-  padding: 0 40px;
+  padding: 0 24px;
   height: 54px;
   width: 938px;
   border: none;
@@ -94,14 +94,13 @@ body {
   border: none;
   border-radius: 20px;
   text-align: center;
-  justify-self: center;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 29px 29px;
   background-color: #585b70;
   color: #cdd6f4;
-  margin-right: 88px;
+  margin-right: 20px; 
   transition: width 0.3s ease;
 }
 
@@ -109,6 +108,7 @@ body {
 #search-input:focus {
   width: 632px;
 }
+
 
 ::placeholder {
   color: #cdd6f4;
