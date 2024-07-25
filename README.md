@@ -45,6 +45,8 @@ docker run -p 8080:8080 --name starlight_container
 starlight
 ```
 
+Change the 8080 to whatever port
+
 <div style="display: flex;">
     <a href="https://render.com/deploy?repo=https://github.com/GoStarLight/StarLight">
         <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render" />
@@ -129,9 +131,9 @@ git pull --force --allow-unrelated-histories
 2. Press "Sync Fork" near the top of the page
 3. Press "Update Branch"
 
-## Reporting Issues
+## More Help or Tutorials
 
-If you are having any kind of issues or error make a [Github Issue](https://github.com/GoStarLight/StarLight/issues) or join [Discord Server](https://discord.gg/Y9tGpfCwUf)
+If you are having any kind of issues or error make a [Github Issue](https://github.com/GoStarLight/StarLight/issues) or join [Discord Server](https://discord.gg/Y9tGpfCwUf) for more tutorials and help
 
 # Contributors
 

@@ -830,7 +830,7 @@
         ? t
         : e;
   }
-  var z;
+  var J;
   (function (e) {
     (e[(e.NUM = 35)] = "NUM"),
       (e[(e.SEMI = 59)] = "SEMI"),
@@ -844,7 +844,7 @@
       (e[(e.UPPER_A = 65)] = "UPPER_A"),
       (e[(e.UPPER_F = 70)] = "UPPER_F"),
       (e[(e.UPPER_Z = 90)] = "UPPER_Z");
-  })(z || (z = {}));
+  })(J || (J = {}));
   var Ls = 32,
     he;
   (function (e) {
@@ -853,31 +853,31 @@
       (e[(e.JUMP_TABLE = 127)] = "JUMP_TABLE");
   })(he || (he = {}));
   function Tu(e) {
-    return e >= z.ZERO && e <= z.NINE;
+    return e >= J.ZERO && e <= J.NINE;
   }
   function ks(e) {
     return (
-      (e >= z.UPPER_A && e <= z.UPPER_F) || (e >= z.LOWER_A && e <= z.LOWER_F)
+      (e >= J.UPPER_A && e <= J.UPPER_F) || (e >= J.LOWER_A && e <= J.LOWER_F)
     );
   }
   function Rs(e) {
     return (
-      (e >= z.UPPER_A && e <= z.UPPER_Z) ||
-      (e >= z.LOWER_A && e <= z.LOWER_Z) ||
+      (e >= J.UPPER_A && e <= J.UPPER_Z) ||
+      (e >= J.LOWER_A && e <= J.LOWER_Z) ||
       Tu(e)
     );
   }
   function Ps(e) {
-    return e === z.EQUALS || Rs(e);
+    return e === J.EQUALS || Rs(e);
   }
-  var J;
+  var z;
   (function (e) {
     (e[(e.EntityStart = 0)] = "EntityStart"),
       (e[(e.NumericStart = 1)] = "NumericStart"),
       (e[(e.NumericDecimal = 2)] = "NumericDecimal"),
       (e[(e.NumericHex = 3)] = "NumericHex"),
       (e[(e.NamedEntity = 4)] = "NamedEntity");
-  })(J || (J = {}));
+  })(z || (z = {}));
   var ye;
   (function (e) {
     (e[(e.Legacy = 0)] = "Legacy"),
@@ -889,7 +889,7 @@
       (this.decodeTree = t),
         (this.emitCodePoint = u),
         (this.errors = i),
-        (this.state = J.EntityStart),
+        (this.state = z.EntityStart),
         (this.consumed = 1),
         (this.result = 0),
         (this.treeIndex = 0),
@@ -898,7 +898,7 @@
     }
     startEntity(t) {
       (this.decodeMode = t),
-        (this.state = J.EntityStart),
+        (this.state = z.EntityStart),
         (this.result = 0),
         (this.treeIndex = 0),
         (this.excess = 1),
@@ -906,30 +906,30 @@
     }
     write(t, u) {
       switch (this.state) {
-        case J.EntityStart:
-          return t.charCodeAt(u) === z.NUM
-            ? ((this.state = J.NumericStart),
+        case z.EntityStart:
+          return t.charCodeAt(u) === J.NUM
+            ? ((this.state = z.NumericStart),
               (this.consumed += 1),
               this.stateNumericStart(t, u + 1))
-            : ((this.state = J.NamedEntity), this.stateNamedEntity(t, u));
-        case J.NumericStart:
+            : ((this.state = z.NamedEntity), this.stateNamedEntity(t, u));
+        case z.NumericStart:
           return this.stateNumericStart(t, u);
-        case J.NumericDecimal:
+        case z.NumericDecimal:
           return this.stateNumericDecimal(t, u);
-        case J.NumericHex:
+        case z.NumericHex:
           return this.stateNumericHex(t, u);
-        case J.NamedEntity:
+        case z.NamedEntity:
           return this.stateNamedEntity(t, u);
       }
     }
     stateNumericStart(t, u) {
       return u >= t.length
         ? -1
-        : (t.charCodeAt(u) | Ls) === z.LOWER_X
-          ? ((this.state = J.NumericHex),
+        : (t.charCodeAt(u) | Ls) === J.LOWER_X
+          ? ((this.state = z.NumericHex),
             (this.consumed += 1),
             this.stateNumericHex(t, u + 1))
-          : ((this.state = J.NumericDecimal), this.stateNumericDecimal(t, u));
+          : ((this.state = z.NumericDecimal), this.stateNumericDecimal(t, u));
     }
     addToNumericResult(t, u, i, n) {
       if (u !== i) {
@@ -972,12 +972,12 @@
             i.absenceOfDigitsInNumericCharacterReference(this.consumed),
           0
         );
-      if (t === z.SEMI) this.consumed += 1;
+      if (t === J.SEMI) this.consumed += 1;
       else if (this.decodeMode === ye.Strict) return 0;
       return (
         this.emitCodePoint(mu(this.result), this.consumed),
         this.errors &&
-          (t !== z.SEMI &&
+          (t !== J.SEMI &&
             this.errors.missingSemicolonAfterCharacterReference(),
           this.errors.validateNumericCharacterReference(this.result)),
         this.consumed
@@ -1000,7 +1000,7 @@
         if (
           ((n = i[this.treeIndex]), (s = (n & he.VALUE_LENGTH) >> 14), s !== 0)
         ) {
-          if (o === z.SEMI)
+          if (o === J.SEMI)
             return this.emitNamedEntityData(
               this.treeIndex,
               s,
@@ -1037,23 +1037,23 @@
     end() {
       var t;
       switch (this.state) {
-        case J.NamedEntity:
+        case z.NamedEntity:
           return this.result !== 0 &&
             (this.decodeMode !== ye.Attribute || this.result === this.treeIndex)
             ? this.emitNotTerminatedNamedEntity()
             : 0;
-        case J.NumericDecimal:
+        case z.NumericDecimal:
           return this.emitNumericEntity(0, 2);
-        case J.NumericHex:
+        case z.NumericHex:
           return this.emitNumericEntity(0, 3);
-        case J.NumericStart:
+        case z.NumericStart:
           return (
             (t = this.errors) === null ||
               t === void 0 ||
               t.absenceOfDigitsInNumericCharacterReference(this.consumed),
             0
           );
-        case J.EntityStart:
+        case z.EntityStart:
           return 0;
       }
     }
@@ -4522,7 +4522,7 @@
       e.sourceCodeLocation = { ...e.sourceCodeLocation, ...t };
     },
   };
-  var zi = "html",
+  var Ji = "html",
     Ys = "about:legacy-compat",
     Vs = "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd",
     $i = [
@@ -4601,33 +4601,33 @@
       "-//w3c//dtd html 4.01 frameset//",
       "-//w3c//dtd html 4.01 transitional//",
     ];
-  function Ji(e, t) {
+  function zi(e, t) {
     return t.some((u) => e.startsWith(u));
   }
   function en(e) {
     return (
-      e.name === zi &&
+      e.name === Ji &&
       e.publicId === null &&
       (e.systemId === null || e.systemId === Ys)
     );
   }
   function tn(e) {
-    if (e.name !== zi) return $.QUIRKS;
+    if (e.name !== Ji) return $.QUIRKS;
     let { systemId: t } = e;
     if (t && t.toLowerCase() === Vs) return $.QUIRKS;
     let { publicId: u } = e;
     if (u !== null) {
       if (((u = u.toLowerCase()), Xs.has(u))) return $.QUIRKS;
       let i = t === null ? Ws : $i;
-      if (Ji(u, i)) return $.QUIRKS;
-      if (((i = t === null ? Zi : js), Ji(u, i))) return $.LIMITED_QUIRKS;
+      if (zi(u, i)) return $.QUIRKS;
+      if (((i = t === null ? Zi : js), zi(u, i))) return $.LIMITED_QUIRKS;
     }
     return $.NO_QUIRKS;
   }
   var un = { TEXT_HTML: "text/html", APPLICATION_XML: "application/xhtml+xml" },
     Ks = "definitionurl",
     Gs = "definitionURL",
-    Js = new Map(
+    zs = new Map(
       [
         "attributeName",
         "attributeType",
@@ -4689,7 +4689,7 @@
         "zoomAndPan",
       ].map((e) => [e.toLowerCase(), e]),
     ),
-    zs = new Map([
+    Js = new Map([
       [
         "xlink:actuate",
         { prefix: "xlink", name: "actuate", namespace: C.XLINK },
@@ -4814,13 +4814,13 @@
   }
   function _u(e) {
     for (let t = 0; t < e.attrs.length; t++) {
-      let u = Js.get(e.attrs[t].name);
+      let u = zs.get(e.attrs[t].name);
       u != null && (e.attrs[t].name = u);
     }
   }
   function Ft(e) {
     for (let t = 0; t < e.attrs.length; t++) {
-      let u = zs.get(e.attrs[t].name);
+      let u = Js.get(e.attrs[t].name);
       u &&
         ((e.attrs[t].prefix = u.prefix),
         (e.attrs[t].name = u.name),
@@ -6476,7 +6476,7 @@
       e.openElements.generateImpliedEndTagsWithExclusion(a.RTC),
       e._insertElement(t, C.HTML);
   }
-  function Ja(e, t) {
+  function za(e, t) {
     e._reconstructActiveFormattingElements(),
       Cu(t),
       Ft(t),
@@ -6485,7 +6485,7 @@
         : e._insertElement(t, C.MATHML),
       (t.ackSelfClosing = !0);
   }
-  function za(e, t) {
+  function Ja(e, t) {
     e._reconstructActiveFormattingElements(),
       _u(t),
       Ft(t),
@@ -6591,7 +6591,7 @@
         break;
       }
       case a.SVG: {
-        za(e, t);
+        Ja(e, t);
         break;
       }
       case a.HTML: {
@@ -6623,7 +6623,7 @@
         break;
       }
       case a.MATH: {
-        Ja(e, t);
+        za(e, t);
         break;
       }
       case a.TABLE: {
@@ -8195,7 +8195,7 @@
   function Ge(e, t, u, i, ...n) {
     throw new Ke(e, t, u, i, ...n);
   }
-  function Je(e, t, u, i) {
+  function ze(e, t, u, i) {
     throw new Ke(e, t, u, i);
   }
   var Tt = ((e, t) => {
@@ -8502,7 +8502,7 @@
   function ae(e) {
     return e < 65 ? e - 48 : (e - 65 + 10) & 15;
   }
-  function J2(e) {
+  function z2(e) {
     switch (e) {
       case 134283266:
         return "NumericLiteral";
@@ -8536,7 +8536,7 @@
       7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 16384, 0, 0,
       0, 0,
     ],
-    z2 = [
+    J2 = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -8553,7 +8553,7 @@
       0, 0, 0,
     ];
   function Fu(e) {
-    return e <= 127 ? z2[e] : (Tt[(e >>> 5) + 34816] >>> e) & 31 & 1;
+    return e <= 127 ? J2[e] : (Tt[(e >>> 5) + 34816] >>> e) & 31 & 1;
   }
   function Gt(e) {
     return e <= 127
@@ -8980,14 +8980,14 @@
           for (; s >= 0 && p[i] & 4112; ) {
             if (i === 95) {
               (i = N(e)),
-                (i === 95 || u & 32) && Je(e.index, e.line, e.index + 1, 147),
+                (i === 95 || u & 32) && ze(e.index, e.line, e.index + 1, 147),
                 (c = 1);
               continue;
             }
             (c = 0), (n = 10 * n + (i - 48)), (i = N(e)), --s;
           }
           if (
-            (c && Je(e.index, e.line, e.index + 1, 148),
+            (c && ze(e.index, e.line, e.index + 1, 148),
             s >= 0 && !Fu(i) && i !== 46)
           )
             return (
@@ -9039,7 +9039,7 @@
       if (t === 95) {
         let { index: s } = e;
         (t = N(e)),
-          t === 95 && Je(e.index, e.line, e.index + 1, 147),
+          t === 95 && ze(e.index, e.line, e.index + 1, 147),
           (u = 1),
           (n += e.source.substring(i, s)),
           (i = e.index);
@@ -9048,7 +9048,7 @@
       (u = 0), (t = N(e));
     }
     return (
-      u && Je(e.index, e.line, e.index + 1, 148),
+      u && ze(e.index, e.line, e.index + 1, 148),
       n + e.source.substring(i, e.index)
     );
   }
@@ -9330,8 +9330,8 @@
       let o = e.index - 2;
       for (; p[N(e)] & 64; )
         (t = (t << 4) | ae(e.currentChar)),
-          t > 1114111 && Je(o, e.line, e.index + 1, 102);
-      return e.currentChar !== 125 && Je(o, e.line, e.index - 1, 6), N(e), t;
+          t > 1114111 && ze(o, e.line, e.index + 1, 102);
+      return e.currentChar !== 125 && ze(o, e.line, e.index - 1, 6), N(e), t;
     }
     p[u] & 64 || E(e, 6);
     let i = e.source.charCodeAt(e.index + 1);
@@ -9346,7 +9346,7 @@
       t
     );
   }
-  var Jn = [
+  var zn = [
     129, 129, 129, 129, 129, 129, 129, 129, 129, 128, 136, 128, 128, 130, 129,
     129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129,
     129, 129, 128, 16842800, 134283267, 131, 208897, 8457015, 8455751,
@@ -9367,17 +9367,17 @@
       (e.startPos = e.index),
       (e.startColumn = e.column),
       (e.startLine = e.line),
-      (e.token = zn(e, t, 0)),
+      (e.token = Jn(e, t, 0)),
       e.onToken && e.token !== 1048576)
     ) {
       let u = {
         start: { line: e.linePos, column: e.colPos },
         end: { line: e.line, column: e.column },
       };
-      e.onToken(J2(e.token), e.tokenPos, e.index, u);
+      e.onToken(z2(e.token), e.tokenPos, e.index, u);
     }
   }
-  function zn(e, t, u) {
+  function Jn(e, t, u) {
     let i = e.index === 0,
       n = e.source,
       s = e.index,
@@ -9387,7 +9387,7 @@
       (e.tokenPos = e.index), (e.colPos = e.column), (e.linePos = e.line);
       let c = e.currentChar;
       if (c <= 126) {
-        let d = Jn[c];
+        let d = zn[c];
         switch (d) {
           case 67174411:
           case 16:
@@ -11802,7 +11802,7 @@
       (e.startPos = e.tokenPos = e.index),
       (e.startColumn = e.colPos = e.column),
       (e.startLine = e.linePos = e.line),
-      (e.token = p[e.currentChar] & 8192 ? ho(e, t) : zn(e, t, 0)),
+      (e.token = p[e.currentChar] & 8192 ? ho(e, t) : Jn(e, t, 0)),
       e.token
     );
   }
@@ -11827,7 +11827,7 @@
       e.index >= e.end)
     )
       return (e.token = 1048576);
-    switch (Jn[e.source.charCodeAt(e.index)]) {
+    switch (zn[e.source.charCodeAt(e.index)]) {
       case 8456258: {
         N(e),
           e.currentChar === 47 ? (N(e), (e.token = 25)) : (e.token = 8456258);
@@ -11917,7 +11917,7 @@
         (t.type = "RestElement"), Te(e, t.argument);
     }
   }
-  function Jt(e, t, u, i, n) {
+  function zt(e, t, u, i, n) {
     t & 1024 &&
       ((i & 36864) === 36864 && E(e, 115),
       !n && (i & 537079808) === 537079808 && E(e, 116)),
@@ -11971,14 +11971,14 @@
       s
     );
   }
-  function zt(e) {
+  function Jt(e) {
     switch (e.type) {
       case "JSXIdentifier":
         return e.name;
       case "JSXNamespacedName":
         return e.namespace + ":" + e.name;
       case "JSXMemberExpression":
-        return zt(e.object) + "." + zt(e.property);
+        return Jt(e.object) + "." + Jt(e.property);
     }
   }
   function tu(e, t, u) {
@@ -12286,7 +12286,7 @@
       : ((T = Y(e, t, T, 0, 0, o, r, c)),
         (T = j(e, t, 0, 0, o, r, c, T)),
         e.token === 18 && (T = Ne(e, t, 0, o, r, c, T)),
-        ze(e, t, T, o, r, c));
+        Je(e, t, T, o, r, c));
   }
   function bt(e, t, u, i, n, s, o) {
     let r = [];
@@ -12308,14 +12308,14 @@
       D(e, t, u, i, n, { type: "ReturnStatement", argument: s })
     );
   }
-  function ze(e, t, u, i, n, s) {
+  function Je(e, t, u, i, n, s) {
     return (
       se(e, t | 32768),
       D(e, t, i, n, s, { type: "ExpressionStatement", expression: u })
     );
   }
   function ju(e, t, u, i, n, s, o, r, c, d, b, T) {
-    Jt(e, t, 0, r, 1), mo(e, n, s), k(e, t | 32768);
+    zt(e, t, 0, r, 1), mo(e, n, s), k(e, t | 32768);
     let h =
       c && !(t & 1024) && t & 256 && e.token === 86106
         ? Re(e, t, G(u, 2), i, 0, 0, 0, e.tokenPos, e.linePos, e.colPos)
@@ -12334,7 +12334,7 @@
         return (
           (T = m0(e, t, 1, o, r, c)),
           e.token === 18 && (T = Ne(e, t, 0, o, r, c, T)),
-          ze(e, t, T, o, r, c)
+          Je(e, t, T, o, r, c)
         );
     }
     return (
@@ -12347,7 +12347,7 @@
       (T = j(e, t, 0, 0, o, r, c, T)),
       (e.assignable = 1),
       e.token === 18 && (T = Ne(e, t, 0, o, r, c, T)),
-      ze(e, t, T, o, r, c)
+      Je(e, t, T, o, r, c)
     );
   }
   function Qu(e, t, u, i, n, s, o) {
@@ -12569,7 +12569,7 @@
         (d = Ct(e, t, b, [d], 0, n, s, o));
     } else (d = Y(e, t, d, 0, 0, n, s, o)), (d = j(e, t, 0, 0, n, s, o, d));
     return (
-      e.token === 18 && (d = Ne(e, t, 0, n, s, o, d)), ze(e, t, d, n, s, o)
+      e.token === 18 && (d = Ne(e, t, 0, n, s, o, d)), Je(e, t, d, n, s, o)
     );
   }
   function Hu(e, t, u, i, n, s, o, r) {
@@ -12825,10 +12825,10 @@
       U(e, t, 77934)
         ? ((e.token & 134217728) === 134217728 || e.token === 18
             ? E(e, 104)
-            : Jt(e, t, 16, e.token, 0),
+            : zt(e, t, 16, e.token, 0),
           (s = e.tokenValue),
           (b = q(e, t, 0)))
-        : (Jt(e, t, 16, n, 0), (b = d)),
+        : (zt(e, t, 16, n, 0), (b = d)),
         u && Pe(e, t, u, s, 8, 0),
         i.push(
           D(e, t, o, r, c, { type: "ImportSpecifier", local: b, imported: d }),
@@ -12850,7 +12850,7 @@
       (s = Y(e, t, s, 0, 0, u, i, n)),
       (s = j(e, t, 0, 0, u, i, n, s)),
       e.token === 18 && (s = Ne(e, t, 0, u, i, n, s)),
-      ze(e, t, s, u, i, n)
+      Je(e, t, s, u, i, n)
     );
   }
   function o0(e, t, u, i, n) {
@@ -12858,7 +12858,7 @@
     return (
       (s = Y(e, t, s, 0, 0, u, i, n)),
       e.token === 18 && (s = Ne(e, t, 0, u, i, n, s)),
-      ze(e, t, s, u, i, n)
+      Je(e, t, s, u, i, n)
     );
   }
   function Vo(e, t, u) {
@@ -13172,7 +13172,7 @@
         D(e, t, n, s, o, { type: "YieldExpression", argument: r, delegate: c })
       );
     }
-    return t & 1024 && E(e, 95, "yield"), zu(e, t, n, s, o);
+    return t & 1024 && E(e, 95, "yield"), Ju(e, t, n, s, o);
   }
   function Qo(e, t, u, i, n, s, o) {
     if ((i && (e.destructible |= 128), t & 4194304 || (t & 2048 && t & 8192))) {
@@ -13186,7 +13186,7 @@
         D(e, t, n, s, o, { type: "AwaitExpression", argument: r })
       );
     }
-    return t & 2048 && E(e, 96), zu(e, t, n, s, o);
+    return t & 2048 && E(e, 96), Ju(e, t, n, s, o);
   }
   function uu(e, t, u, i, n, s) {
     let { tokenPos: o, linePos: r, colPos: c } = e;
@@ -13301,7 +13301,7 @@
           let c = !1;
           (e.flags & 2048) === 2048 &&
             ((c = !0), (e.flags = (e.flags | 2048) ^ 2048));
-          let d = Ju(e, t, i);
+          let d = zu(e, t, i);
           (e.assignable = 2),
             (u = D(e, t, s, o, r, {
               type: "CallExpression",
@@ -13315,7 +13315,7 @@
           k(e, (t | 1073741824 | 8192) ^ 8192),
             (e.flags |= 2048),
             (e.assignable = 2),
-            (u = Jo(e, t, u, s, o, r));
+            (u = zo(e, t, u, s, o, r));
           break;
         }
         default:
@@ -13340,7 +13340,7 @@
       u
     );
   }
-  function Jo(e, t, u, i, n, s) {
+  function zo(e, t, u, i, n, s) {
     let o = !1,
       r;
     if (
@@ -13362,7 +13362,7 @@
           property: T,
         }));
     } else if (e.token === 67174411) {
-      let c = Ju(e, t, 0);
+      let c = zu(e, t, 0);
       (e.assignable = 2),
         (r = D(e, t, i, n, s, {
           type: "CallExpression",
@@ -13392,7 +13392,7 @@
         : q(e, t, 0)
     );
   }
-  function zo(e, t, u, i, n, s, o) {
+  function Jo(e, t, u, i, n, s, o) {
     u && E(e, 54), i || E(e, 0);
     let { token: r } = e;
     k(e, t | 32768);
@@ -13431,7 +13431,7 @@
     switch (e.token) {
       case 33619995:
       case 33619996:
-        return zo(e, t, i, r, c, d, b);
+        return Jo(e, t, i, r, c, d, b);
       case 16863278:
       case 16842800:
       case 16842801:
@@ -13476,7 +13476,7 @@
       case 8456258:
         if (t & 16) return ei(e, t, 1, c, d, b);
       default:
-        if (Wu(t, e.token)) return zu(e, t, c, d, b);
+        if (Wu(t, e.token)) return Ju(e, t, c, d, b);
         E(e, 28, Q[e.token & 255]);
     }
   }
@@ -13596,7 +13596,7 @@
       D(e, t, u, i, n, { type: "SpreadElement", argument: s })
     );
   }
-  function Ju(e, t, u) {
+  function zu(e, t, u) {
     k(e, t | 32768);
     let i = [];
     if (e.token === 16) return k(e, t | 65536), i;
@@ -14001,7 +14001,7 @@
               ((L |= 4),
               t & 1024 && (P & 537079808) === 537079808
                 ? (h |= 16)
-                : Jt(e, t, o, P, 0),
+                : zt(e, t, o, P, 0),
               u && Se(e, t, u, O, o, r),
               U(e, t | 32768, 1077936157))
             ) {
@@ -14458,7 +14458,7 @@
             : _)
     );
   }
-  function zu(e, t, u, i, n) {
+  function Ju(e, t, u, i, n) {
     let { tokenValue: s } = e,
       o = q(e, t, 0);
     if (((e.assignable = 1), e.token === 10)) {
@@ -14651,7 +14651,7 @@
       D(e, t, i, n, s, {
         type: "NewExpression",
         callee: T,
-        arguments: e.token === 67174411 ? Ju(e, t, u) : [],
+        arguments: e.token === 67174411 ? zu(e, t, u) : [],
       })
     );
   }
@@ -15067,8 +15067,8 @@
       c = T1(e, t, u, i, n, s);
     if (!c.selfClosing) {
       (r = Yn(e, t)), (o = d1(e, t, u, e.tokenPos, e.linePos, e.colPos));
-      let d = zt(o.name);
-      zt(c.name) !== d && E(e, 150, d);
+      let d = Jt(o.name);
+      Jt(c.name) !== d && E(e, 150, d);
     }
     return D(e, t, i, n, s, {
       type: "JSXElement",
@@ -16703,10 +16703,10 @@
         });
     });
   }
-  function J0(e) {
+  function z0(e) {
     let { js: t } = e;
     t.on("CallExpression", (u, i, n) => {
-      if (n !== "source" || !z0(u.callee)) return !1;
+      if (n !== "source" || !J0(u.callee)) return !1;
       switch (u.callee.property.name) {
         case "$wrap":
           {
@@ -16745,10 +16745,10 @@
       }
     });
   }
-  function z0(e) {
+  function J0(e) {
     return e.type !== "MemberExpression"
       ? !1
-      : e.property.name === "rewrite" && z0(e.object)
+      : e.property.name === "rewrite" && J0(e.object)
         ? !0
         : !(
             e.object.type !== "Identifier" ||
@@ -17082,7 +17082,7 @@
   }
   var K1 = ["ws:", "wss:"],
     G1 = [101, 204, 205, 304],
-    J1 = [301, 302, 303, 307, 308];
+    z1 = [301, 302, 303, 307, 308];
   var lu = class {
     constructor(t) {
       this.worker = new Di(t);
@@ -17250,7 +17250,7 @@
           (b.rawResponse = new Ci(d.body)),
           (b.finalURL = r.toString());
         let T = u?.redirect || i.redirect;
-        if (J1.includes(b.status))
+        if (z1.includes(b.status))
           switch (T) {
             case "follow": {
               let h = b.headers.get("location");
@@ -17360,7 +17360,7 @@
           X0(this),
           Q0(this),
           j0(this),
-          J0(this);
+          z0(this);
       }
       get rewriteHtml() {
         return this.html.rewrite.bind(this.html);

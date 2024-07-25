@@ -15,7 +15,7 @@ if (cloakingStatus === "o") {
 
     if (!popupWindow || popupWindow.closed) {
       alert(
-        "Please Allow Popup & Redirects so this tab cloaks into about://blank, if you cannot for whatever reason you can turn this message off in settings!"
+        "Please Allow Popup & Redirects so this tab cloaks into about://blank, if you cannot for whatever reason you can turn this message off in settings!",
       );
     } else {
       const popupDocument = popupWindow.document;
@@ -63,7 +63,7 @@ if ("serviceWorker" in navigator) {
       .then((registration) => {
         console.log(
           "Service Worker registered with scope:",
-          registration.scope
+          registration.scope,
         );
       })
       .catch((error) => {
@@ -84,7 +84,7 @@ function ocgh() {
       let url = "https://github.com/GoStarLight/StarLight";
       localStorage.setItem(
         "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url)
+        __uv$config.prefix + __uv$config.encodeUrl(url),
       );
       window.location.href = "./g";
     } else if (choice === "B") {
@@ -109,7 +109,7 @@ function ocdc() {
       let url = "https://discord.gg/H65c2HqfY8";
       localStorage.setItem(
         "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url)
+        __uv$config.prefix + __uv$config.encodeUrl(url),
       );
       window.location.href = "./g";
     } else if (choice === "B") {
@@ -157,7 +157,7 @@ function enter() {
 
   localStorage.setItem(
     "Iframe",
-    __uv$config.prefix + __uv$config.encodeUrl(url)
+    __uv$config.prefix + __uv$config.encodeUrl(url),
   );
   window.location.href = "./g";
 }
@@ -174,36 +174,34 @@ function getSI() {
   const dropdown = document.getElementById("search-engine");
   dropdown.value = SIvalue;
 }
-document.getElementById("search-engine").addEventListener("change", function (event) {
-  const selectedOption = event.target.value;
-  let searchInput = document.getElementById("search-input");
+document
+  .getElementById("search-engine")
+  .addEventListener("change", function (event) {
+    const selectedOption = event.target.value;
+    let searchInput = document.getElementById("search-input");
 
-  if (selectedOption == "brave") {
-    localStorage.setItem("se", "https://search.brave.com/search?q=");
-    localStorage.setItem("sevalue", "brave");
-    searchInput.placeholder = "Search with Brave or with a URL";
-  } else if (selectedOption == "google") {
-    localStorage.setItem("se", "https://www.google.com/search?q=");
-    localStorage.setItem("sevalue", "google");
-    searchInput.placeholder = "Search with Google or with a URL";
-  } else if (selectedOption == "bing") {
-    localStorage.setItem("se", "https://www.bing.com/search?q=");
-    localStorage.setItem("sevalue", "bing");
-    searchInput.placeholder = "Search with Bing or with a URL";
-  } else if (selectedOption == "duckduckgo") {
-    localStorage.setItem("se", "https://duckduckgo.com/?q=");
-    localStorage.setItem("sevalue", "duckduckgo");
-    searchInput.placeholder = "Search with DuckDuckGo or with a URL";
-  } else if (selectedOption == "startpage") {
-    localStorage.setItem("se", "https://startpage.com/sp/search?q=");
-    localStorage.setItem("sevalue", "startpage");
-    searchInput.placeholder = "Search with Startpage or with a URL";
-  }
-});
+    if (selectedOption == "brave") {
+      localStorage.setItem("se", "https://search.brave.com/search?q=");
+      localStorage.setItem("sevalue", "brave");
+      searchInput.placeholder = "Search with Brave or with a URL";
+    } else if (selectedOption == "google") {
+      localStorage.setItem("se", "https://www.google.com/search?q=");
+      localStorage.setItem("sevalue", "google");
+      searchInput.placeholder = "Search with Google or with a URL";
+    } else if (selectedOption == "bing") {
+      localStorage.setItem("se", "https://www.bing.com/search?q=");
+      localStorage.setItem("sevalue", "bing");
+      searchInput.placeholder = "Search with Bing or with a URL";
+    } else if (selectedOption == "duckduckgo") {
+      localStorage.setItem("se", "https://duckduckgo.com/?q=");
+      localStorage.setItem("sevalue", "duckduckgo");
+      searchInput.placeholder = "Search with DuckDuckGo or with a URL";
+    }
+  });
 
 document.getElementById("search-input").addEventListener("click", (event) => {
   const input = event.target;
-  const imageWidth = 29;
+  const imageWidth = 24;
   const inputRect = input.getBoundingClientRect();
   const clickX = event.clientX - inputRect.left;
 
@@ -217,8 +215,8 @@ document.getElementById("search-input").addEventListener("click", (event) => {
 
 let searchInput = document.getElementById("search-input");
 searchInput.placeholder =
-  "Search with " + localStorage.getItem("sevalue") + " or with a url"
-  
+  "Search with " + localStorage.getItem("sevalue") + " or with a url";
+
 // Search Suggestions
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");
@@ -240,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestionsList.innerHTML = suggestions
       .map(
         (suggestion) =>
-          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`
+          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`,
       )
       .join("");
   }
@@ -262,10 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", (e) => {
-    if (
-      !suggestionsList.contains(e.target) &&
-      e.target !== searchInput
-    ) {
+    if (!suggestionsList.contains(e.target) && e.target !== searchInput) {
       suggestionsList.innerHTML = "";
     }
   });

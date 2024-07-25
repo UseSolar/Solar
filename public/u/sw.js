@@ -1,7 +1,7 @@
 "use strict";
 (() => {
-  var d = self.Ultraviolet,
-    v = [
+  var h = self.Ultraviolet,
+    C = [
       "cross-origin-embedder-policy",
       "cross-origin-opener-policy",
       "cross-origin-resource-policy",
@@ -19,85 +19,85 @@
       "x-powered-by",
       "x-xss-protection",
     ],
-    x = ["GET", "HEAD"],
-    p = class extends d.EventEmitter {
+    E = ["GET", "HEAD"],
+    g = class extends h.EventEmitter {
       constructor(e = __uv$config) {
         super(),
           e.prefix || (e.prefix = "/service/"),
           (this.config = e),
-          (this.bareClient = new d.BareClient());
+          (this.bareClient = new h.BareClient());
       }
       route({ request: e }) {
         return !!e.url.startsWith(location.origin + this.config.prefix);
       }
       async fetch({ request: e }) {
-        let o;
+        let s;
         try {
           if (!e.url.startsWith(location.origin + this.config.prefix))
             return await fetch(e);
-          let t = new d(this.config);
+          let t = new h(this.config);
           typeof this.config.construct == "function" &&
             this.config.construct(t, "service");
-          let g = await t.cookie.db();
+          let v = await t.cookie.db();
           (t.meta.origin = location.origin),
             (t.meta.base = t.meta.url = new URL(t.sourceUrl(e.url)));
-          let i = new b(
+          let o = new w(
             e,
             t,
-            x.includes(e.method.toUpperCase()) ? null : await e.blob(),
+            E.includes(e.method.toUpperCase()) ? null : await e.blob(),
           );
           if (
             (t.meta.url.protocol === "blob:" &&
-              ((i.blob = !0), (i.base = i.url = new URL(i.url.pathname))),
+              ((o.blob = !0), (o.base = o.url = new URL(o.url.pathname))),
             e.referrer && e.referrer.startsWith(location.origin))
           ) {
-            let s = new URL(t.sourceUrl(e.referrer));
-            (i.headers.origin ||
-              (t.meta.url.origin !== s.origin && e.mode === "cors")) &&
-              (i.headers.origin = s.origin),
-              (i.headers.referer = s.href);
+            let i = new URL(t.sourceUrl(e.referrer));
+            (o.headers.origin ||
+              (t.meta.url.origin !== i.origin && e.mode === "cors")) &&
+              (o.headers.origin = i.origin),
+              (o.headers.referer = i.href);
           }
-          let u = (await t.cookie.getCookies(g)) || [],
-            y = t.cookie.serialize(u, t.meta, !1);
-          (i.headers["user-agent"] = navigator.userAgent),
-            y && (i.headers.cookie = y);
-          let f = new h(i, null, null);
-          if ((this.emit("request", f), f.intercepted)) return f.returnValue;
-          o = i.blob ? "blob:" + location.origin + i.url.pathname : i.url;
-          let a = await this.bareClient.fetch(o, {
-              headers: i.headers,
-              method: i.method,
-              body: i.body,
-              credentials: i.credentials,
-              mode: i.mode,
-              cache: i.cache,
-              redirect: i.redirect,
+          let f = (await t.cookie.getCookies(v)) || [],
+            x = t.cookie.serialize(f, t.meta, !1);
+          (o.headers["user-agent"] = navigator.userAgent),
+            x && (o.headers.cookie = x);
+          let p = new u(o, null, null);
+          if ((this.emit("request", p), p.intercepted)) return p.returnValue;
+          s = o.blob ? "blob:" + location.origin + o.url.pathname : o.url;
+          let c = await this.bareClient.fetch(s, {
+              headers: o.headers,
+              method: o.method,
+              body: o.body,
+              credentials: o.credentials,
+              mode: o.mode,
+              cache: o.cache,
+              redirect: o.redirect,
             }),
-            r = new m(i, a),
-            c = new h(r, null, null);
-          if ((this.emit("beforemod", c), c.intercepted)) return c.returnValue;
-          for (let s of v) r.headers[s] && delete r.headers[s];
+            r = new y(o, c),
+            l = new u(r, null, null);
+          if ((this.emit("beforemod", l), l.intercepted)) return l.returnValue;
+          for (let i of C) r.headers[i] && delete r.headers[i];
           if (
             (r.headers.location &&
               (r.headers.location = t.rewriteUrl(r.headers.location)),
             ["document", "iframe"].includes(e.destination))
           ) {
-            let s = r.getHeader("content-disposition");
-            if (!/\s*?((inline|attachment);\s*?)filename=/i.test(s)) {
-              let l = /^\s*?attachment/i.test(s) ? "attachment" : "inline",
-                [w] = new URL(a.finalURL).pathname.split("/").slice(-1);
+            let i = r.getHeader("content-disposition");
+            if (!/\s*?((inline|attachment);\s*?)filename=/i.test(i)) {
+              let n = /^\s*?attachment/i.test(i) ? "attachment" : "inline",
+                [m] = new URL(c.finalURL).pathname.split("/").slice(-1);
               r.headers["content-disposition"] =
-                `${l}; filename=${JSON.stringify(w)}`;
+                `${n}; filename=${JSON.stringify(m)}`;
             }
           }
           if (
             (r.headers["set-cookie"] &&
               (Promise.resolve(
-                t.cookie.setCookies(r.headers["set-cookie"], g, t.meta),
+                t.cookie.setCookies(r.headers["set-cookie"], v, t.meta),
               ).then(() => {
-                self.clients.matchAll().then(function (s) {
-                  s.forEach(function (l) {
-                    l.postMessage({
+                self.clients.matchAll().then(function (i) {
+                  i.forEach(function (n) {
+                    n.postMessage({
                       msg: "updateCookies",
                       url: t.meta.url.href,
                     });
@@ -109,54 +109,72 @@
           )
             switch (e.destination) {
               case "script":
-                r.body = t.js.rewrite(await a.text());
+                r.body = t.js.rewrite(await c.text());
                 break;
               case "worker":
                 {
-                  let s = [
+                  let i = [
                     t.bundleScript,
                     t.clientScript,
                     t.configScript,
                     t.handlerScript,
                   ]
-                    .map((l) => JSON.stringify(l))
+                    .map((n) => JSON.stringify(n))
                     .join(",");
-                  (r.body = `(async ()=>{${t.createJsInject(t.cookie.serialize(u, t.meta, !0), e.referrer)} importScripts(${s}); await __uv$promise;
+                  (r.body = `(async ()=>{${t.createJsInject(t.cookie.serialize(f, t.meta, !0), e.referrer)} importScripts(${i}); await __uv$promise;
 `),
-                    (r.body += t.js.rewrite(await a.text())),
+                    (r.body += t.js.rewrite(await c.text())),
                     (r.body += `
 })()`);
                 }
                 break;
               case "style":
-                r.body = t.rewriteCSS(await a.text());
+                r.body = t.rewriteCSS(await c.text());
                 break;
               case "iframe":
               case "document":
-                r.getHeader("content-type").startsWith("text/html") &&
-                  (r.body = t.rewriteHtml(await a.text(), {
+                if (r.getHeader("content-type").startsWith("text/html")) {
+                  let i = await c.text();
+                  if (Array.isArray(this.config.inject)) {
+                    let n = i.indexOf("</head>"),
+                      m = i.indexOf("</HEAD>"),
+                      b = i.indexOf("</body>"),
+                      k = i.indexOf("</BODY>"),
+                      S = new URL(s),
+                      U = this.config.inject;
+                    for (let d of U)
+                      new RegExp(d.host).test(S.host) &&
+                        (d.injectTo === "head"
+                          ? (n !== -1 || m !== -1) &&
+                            (i = i.slice(0, n) + `${d.html}` + i.slice(n))
+                          : d.injectTo === "body" &&
+                            (b !== -1 || k !== -1) &&
+                            (i = i.slice(0, b) + `${d.html}` + i.slice(b)));
+                  }
+                  r.body = t.rewriteHtml(i, {
                     document: !0,
                     injectHead: t.createHtmlInject(
                       t.handlerScript,
                       t.bundleScript,
                       t.clientScript,
                       t.configScript,
-                      t.cookie.serialize(u, t.meta, !0),
+                      t.cookie.serialize(f, t.meta, !0),
                       e.referrer,
                     ),
-                  }));
+                  });
+                }
                 break;
               default:
                 break;
             }
           return (
-            i.headers.accept === "text/event-stream" &&
+            o.headers.accept === "text/event-stream" &&
               (r.headers["content-type"] = "text/event-stream"),
             crossOriginIsolated &&
               (r.headers["Cross-Origin-Embedder-Policy"] = "require-corp"),
-            this.emit("response", c),
-            c.intercepted
-              ? c.returnValue
+            this.emit("response", l),
+            l.intercepted
+              ? l.returnValue
               : new Response(r.body, {
                   headers: r.headers,
                   status: r.status,
@@ -165,24 +183,24 @@
           );
         } catch (t) {
           return ["document", "iframe"].includes(e.destination)
-            ? (console.error(t), S(t, o))
+            ? (console.error(t), R(t, s))
             : new Response(void 0, { status: 500 });
         }
       }
-      static Ultraviolet = d;
+      static Ultraviolet = h;
     };
-  self.UVServiceWorker = p;
-  var m = class {
-      constructor(e, o) {
+  self.UVServiceWorker = g;
+  var y = class {
+      constructor(e, s) {
         (this.request = e),
-          (this.raw = o),
+          (this.raw = s),
           (this.ultraviolet = e.ultraviolet),
           (this.headers = {});
-        for (let t in o.rawHeaders)
-          this.headers[t.toLowerCase()] = o.rawHeaders[t];
-        (this.status = o.status),
-          (this.statusText = o.statusText),
-          (this.body = o.body);
+        for (let t in s.rawHeaders)
+          this.headers[t.toLowerCase()] = s.rawHeaders[t];
+        (this.status = s.status),
+          (this.statusText = s.statusText),
+          (this.body = s.body);
       }
       get url() {
         return this.request.url;
@@ -199,9 +217,9 @@
           : this.headers[e];
       }
     },
-    b = class {
-      constructor(e, o, t = null) {
-        (this.ultraviolet = o),
+    w = class {
+      constructor(e, s, t = null) {
+        (this.ultraviolet = s),
           (this.request = e),
           (this.headers = Object.fromEntries(e.headers.entries())),
           (this.method = e.method),
@@ -225,14 +243,14 @@
         this.ultraviolet.meta.base = e;
       }
     },
-    h = class {
+    u = class {
       #e;
       #t;
-      constructor(e = {}, o = null, t = null) {
+      constructor(e = {}, s = null, t = null) {
         (this.#e = !1),
           (this.#t = null),
           (this.data = e),
-          (this.target = o),
+          (this.target = s),
           (this.that = t);
       }
       get intercepted() {
@@ -245,13 +263,13 @@
         (this.#t = e), (this.#e = !0);
       }
     };
-  function k(n, e) {
-    let o = `
-        errorTrace.value = ${JSON.stringify(n)};
+  function O(a, e) {
+    let s = `
+        errorTrace.value = ${JSON.stringify(a)};
         fetchedURL.textContent = ${JSON.stringify(e)};
         for (const node of document.querySelectorAll("#uvHostname")) node.textContent = ${JSON.stringify(location.hostname)};
         reload.addEventListener("click", () => location.reload());
-        uvVersion.textContent = ${JSON.stringify("3.2.4")};
+        uvVersion.textContent = ${JSON.stringify("3.2.5")};
     `;
     return `<!DOCTYPE html>
         <html>
@@ -285,17 +303,17 @@
         <button id="reload">Reload</button>
         <hr />
         <p><i>Ultraviolet v<span id="uvVersion"></span></i></p>
-        <script src="${"data:application/javascript," + encodeURIComponent(o)}"><\/script>
+        <script src="${"data:application/javascript," + encodeURIComponent(s)}"><\/script>
         </body>
         </html>
         `;
   }
-  function S(n, e) {
-    let o = { "content-type": "text/html" };
+  function R(a, e) {
+    let s = { "content-type": "text/html" };
     return (
       crossOriginIsolated &&
-        (o["Cross-Origin-Embedder-Policy"] = "require-corp"),
-      new Response(k(String(n), e), { status: 500, headers: o })
+        (s["Cross-Origin-Embedder-Policy"] = "require-corp"),
+      new Response(O(String(a), e), { status: 500, headers: s })
     );
   }
 })();
