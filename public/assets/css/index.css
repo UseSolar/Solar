@@ -1,5 +1,21 @@
+:root {
+  --bg-color: #313244;
+  --nav-bg-color: #585b70;
+  --link-hover-bg-color: #8c8fa1;
+  --text-color: #cdd6f4;
+  --highlight-color: #797593;
+  --border-radius: 20px;
+  --transition-speed: 0.3s;
+  --icon-size: 38px;
+  --logo-height: 34px;
+  --search-input-width: 368px;
+  --search-input-hover-width: 632px;
+  --max-suggestions-height: 200px;
+  --time-height: 48px;
+}
+
 body {
-  background-color: #313244;
+  background-color: var(--bg-color);
   font-family: "Inter", sans-serif;
 }
 
@@ -7,26 +23,23 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #585b70;
+  background-color: var(--nav-bg-color);
   padding: 0 24px;
   height: 54px;
   width: 938px;
-  border: none;
-  margin-top: 10px;
-  border-radius: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: var(--border-radius);
+  margin: 10px auto 0;
 }
 
 .logo img {
-  height: 34px;
+  height: var(--logo-height);
   transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+    background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
 }
 
 .logo img:hover {
-  background-color: #8c8fa1;
+  background-color: var(--link-hover-bg-color);
   transform: scale(0.9);
   border-radius: 10px;
 }
@@ -47,15 +60,15 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  color: #cdd6f4;
+  color: var(--text-color);
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
   transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+    background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
 }
 
 .nav-links a img {
@@ -63,7 +76,7 @@ body {
 }
 
 .nav-links a:hover {
-  background-color: #8c8fa1;
+  background-color: var(--link-hover-bg-color);
   border-radius: 10px;
   transform: scale(0.9);
 }
@@ -83,30 +96,30 @@ body {
 
 #search-input {
   margin-top: 32px;
-  width: 368px;
+  width: var(--search-input-width);
   height: 62px;
   padding-left: 36px;
   font-size: 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   text-align: center;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 24px 24px;
-  background-color: #585b70;
-  color: #cdd6f4;
+  background-color: var(--nav-bg-color);
+  color: var(--text-color);
   margin-right: 20px;
-  transition: width 0.3s ease;
+  transition: width var(--transition-speed) ease;
 }
 
 #search-input:hover,
 #search-input:focus {
-  width: 632px;
+  width: var(--search-input-hover-width);
 }
 
 ::placeholder {
-  color: #cdd6f4;
+  color: var(--text-color);
   opacity: 1;
 }
 
@@ -115,24 +128,20 @@ body {
   width: 162px;
   margin-top: 33px;
   border-radius: 16px;
-  background-color: #585b70;
-  color: #cdd6f4;
+  background-color: var(--nav-bg-color);
+  color: var(--text-color);
   font-size: 16px;
   margin-right: 15px;
   text-align: center;
   border: none;
 }
 
-.suggestion-item {
-  color: #cdd6f4;
-}
-
 #suggestions-list {
   position: absolute;
   width: 440px;
   margin-left: 110px;
-  background-color: #585b70;
-  max-height: 200px;
+  background-color: var(--nav-bg-color);
+  max-height: var(--max-suggestions-height);
   overflow-y: auto;
   margin-top: 106px;
   padding: 0;
@@ -153,14 +162,14 @@ body {
 }
 
 #suggestions-list li:hover {
-  background-color: #8c8fa1;
+  background-color: var(--link-hover-bg-color);
   border-radius: 10px;
 }
 
 .dot {
   width: 4px;
   height: 4px;
-  background-color: #cdd6f4;
+  background-color: var(--text-color);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -170,47 +179,39 @@ body {
 .icon-container {
   position: fixed;
   bottom: 20px;
-  text-align: center;
-  background-color: #585b70;
+  right: 25px;
+  background-color: var(--nav-bg-color);
   height: 46px;
   width: 142px;
-  border-radius: 20px;
-  justify-content: center;
-  right: 25px;
-  border: none;
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 }
 
 .icon {
-  width: 38px;
-  height: 38px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   cursor: pointer;
-  border: none;
 }
 
 .icon img {
   width: 72%;
   height: 72%;
-  border: none;
-  background-size: cover;
-  background-position: center;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   transition:
-    background-color 0.3s ease,
-    transform 0.3s ease;
+    background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
 }
 
 .icon img:hover {
-  background-color: #8c8fa1;
+  background-color: var(--link-hover-bg-color);
   transform: scale(0.9);
-  border-radius: 10px;
 }
 
 .icon:hover .tooltip {
@@ -218,10 +219,10 @@ body {
 }
 
 h1 {
-  color: #797593;
+  color: var(--highlight-color);
   text-align: center;
-  font-size: 38.5px;
-  margin-top: 66px;
+  font-size: 62.5px;
+  margin: 66px 0 0 76px;
 }
 
 p {
@@ -238,15 +239,6 @@ p {
   width: 35px;
   height: 35px;
   margin-right: 5px;
-}
-
-h1 {
-  color: #797593;
-  text-align: center;
-  margin-left: 76px;
-  text-align: center;
-  font-size: 62.5px;
-  margin-top: 66px;
 }
 
 .settings {
@@ -266,14 +258,14 @@ h1 {
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  height: 48px;
+  height: var(--time-height);
   width: 174px;
-  background-color: #585b70;
+  background-color: var(--nav-bg-color);
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #cdd6f4;
+  color: var(--text-color);
   font-size: 16px;
 }

@@ -33,15 +33,17 @@ if (cloakingStatus === "o") {
       faviconLink.href = pageIcon;
 
       iframeElement.src = location.href;
-      iframeStyle.position = "fixed";
-      iframeStyle.top = "0";
-      iframeStyle.bottom = "0";
-      iframeStyle.left = "0";
-      iframeStyle.right = "0";
-      iframeStyle.border = "none";
-      iframeStyle.outline = "none";
-      iframeStyle.width = "100vw";
-      iframeStyle.height = "100vh";
+      Object.assign(iframeStyle, {
+        position: "fixed",
+        top: "0",
+        bottom: "0",
+        left: "0",
+        right: "0",
+        border: "none",
+        outline: "none",
+        width: "100vw",
+        height: "100vh",
+      });
 
       popupDocument.head.appendChild(faviconLink);
       popupDocument.body.appendChild(iframeElement);
@@ -72,54 +74,48 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-function ocgh() {
-  let choice = prompt(`Would you like Github to be Proxied or not?
-  Type the letter of the corresponding choice:
-  A - Yes - Use Github Proxied
-  B - No  - Use Github Not Proxied`);
-
+function promptForChoice(
+  message,
+  yesUrl,
+  noUrl,
+  yesChoice = "A",
+  noChoice = "B",
+) {
+  let choice = prompt(message);
   if (choice) {
     choice = choice.toUpperCase();
-    if (choice === "A") {
-      let url = "https://github.com/GoStarLight/StarLight";
+    if (choice === yesChoice) {
       localStorage.setItem(
         "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url),
+        __uv$config.prefix + __uv$config.encodeUrl(yesUrl),
       );
       window.location.href = "./g";
-    } else if (choice === "B") {
-      window.location.href = "https://github.com/GoStarLight/StarLight";
+    } else if (choice === noChoice) {
+      window.location.href = noUrl;
     } else {
-      console.log("Invalid choice. Please choose 'A' or 'B'.");
+      console.log(
+        `Invalid choice. Please choose '${yesChoice}' or '${noChoice}'.`,
+      );
     }
   } else {
     console.log("You didn't choose anything.");
   }
 }
 
-function ocdc() {
-  let choice = prompt(`Would you like Discord to be Proxied or not?
-  Type the letter of the corresponding choice:
-  A - Yes | Use Discord Proxied
-  B - No  | Use Discord Not Proxied`);
+function ocgh() {
+  promptForChoice(
+    `Would you like Github to be Proxied or not?\nType the letter of the corresponding choice:\nA - Yes - Use Github Proxied\nB - No  - Use Github Not Proxied`,
+    "https://github.com/GoStarLight/StarLight",
+    "https://github.com/GoStarLight/StarLight",
+  );
+}
 
-  if (choice) {
-    choice = choice.toUpperCase();
-    if (choice === "A") {
-      let url = "https://discord.gg/H65c2HqfY8";
-      localStorage.setItem(
-        "Iframe",
-        __uv$config.prefix + __uv$config.encodeUrl(url),
-      );
-      window.location.href = "./g";
-    } else if (choice === "B") {
-      window.location.href = "https://discord.gg/H65c2HqfY8";
-    } else {
-      console.log("Invalid choice. Please choose 'A' or 'B'.");
-    }
-  } else {
-    console.log("You didn't choose anything.");
-  }
+function ocdc() {
+  promptForChoice(
+    `Would you like Discord to be Proxied or not?\nType the letter of the corresponding choice:\nA - Yes | Use Discord Proxied\nB - No  | Use Discord Not Proxied`,
+    "https://discord.gg/H65c2HqfY8",
+    "https://discord.gg/H65c2HqfY8",
+  );
 }
 
 const input = document.getElementById("search-input");
@@ -131,28 +127,21 @@ input.addEventListener("keydown", function (event) {
 });
 
 function enter() {
-  let input = document.getElementById("search-input").value.trim();
+  const input = document.getElementById("search-input").value.trim();
   let baseUrl;
   let url;
   const urlRegex = /^(https?:\/\/)?(?:\w+\.)+\w{2,}(?:\/\S*)?$/;
 
   if (urlRegex.test(input)) {
-    if (
-      !input.includes("www") &&
-      !input.startsWith("http://") &&
-      !input.startsWith("https://")
-    ) {
-      url = "https://www." + input;
-    } else {
-      if (!input.includes("www.")) {
-        url = "https://www." + input;
-      } else {
-        url = input;
-      }
-    }
+    url =
+      input.includes("www") ||
+      input.startsWith("http://") ||
+      input.startsWith("https://")
+        ? input
+        : `https://www.${input.includes("www.") ? input : `www.${input}`}`;
   } else {
     baseUrl = localStorage.getItem("se") || "https://www.google.com/search?q=";
-    url = baseUrl + input;
+    url = `${baseUrl}${input}`;
   }
 
   localStorage.setItem(
@@ -162,95 +151,92 @@ function enter() {
   window.location.href = "./g";
 }
 
-// search engine picker
-getSI();
-
-function getSI() {
-  let SIvalue = localStorage.getItem("sevalue");
-  if (!SIvalue) {
-    SIvalue = "google";
-    localStorage.setItem("sevalue", SIvalue);
-  }
-  const dropdown = document.getElementById("search-engine");
-  dropdown.value = SIvalue;
-}
-document
-  .getElementById("search-engine")
-  .addEventListener("change", function (event) {
-    const selectedOption = event.target.value;
-    let searchInput = document.getElementById("search-input");
-
-    if (selectedOption == "brave") {
-      localStorage.setItem("se", "https://search.brave.com/search?q=");
-      localStorage.setItem("sevalue", "brave");
-      searchInput.placeholder = "Search with Brave or with a URL";
-    } else if (selectedOption == "google") {
-      localStorage.setItem("se", "https://www.google.com/search?q=");
-      localStorage.setItem("sevalue", "google");
-      searchInput.placeholder = "Search with Google or with a URL";
-    } else if (selectedOption == "bing") {
-      localStorage.setItem("se", "https://www.bing.com/search?q=");
-      localStorage.setItem("sevalue", "bing");
-      searchInput.placeholder = "Search with Bing or with a URL";
-    } else if (selectedOption == "duckduckgo") {
-      localStorage.setItem("se", "https://duckduckgo.com/?q=");
-      localStorage.setItem("sevalue", "duckduckgo");
-      searchInput.placeholder = "Search with DuckDuckGo or with a URL";
-    }
-  });
-
-document.getElementById("search-input").addEventListener("click", (event) => {
-  const input = event.target;
-  const imageWidth = 24;
-  const inputRect = input.getBoundingClientRect();
-  const clickX = event.clientX - inputRect.left;
-
-  const imageOffsetX = 10;
-
-  if (clickX <= imageOffsetX + imageWidth) {
-    event.preventDefault();
-    enter();
-  }
-});
-
-let searchInput = document.getElementById("search-input");
-searchInput.placeholder =
-  "Search with " + localStorage.getItem("sevalue") + " or with a url";
-
-// Search Suggestions
+// Search engine picker
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search-input");
   const suggestionsList = document.getElementById("suggestions-list");
+  const dropdown = document.getElementById("search-engine");
 
-  async function fetchSuggestions(query) {
-    try {
-      const baseUrl = `${window.location.protocol}//${window.location.host}`;
-      const response = await fetch(`${baseUrl}/suggest?q=${query}`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching suggestions:", error);
-      return [];
-    }
+  function setSearchEngine(engine, url, placeholder) {
+    localStorage.setItem("se", url);
+    localStorage.setItem("sevalue", engine);
+    searchInput.placeholder = placeholder;
   }
 
-  function renderSuggestions(suggestions) {
-    suggestionsList.innerHTML = suggestions
-      .map(
-        (suggestion) =>
-          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`,
-      )
-      .join("");
+  function getSI() {
+    const SIvalue = localStorage.getItem("sevalue") || "google";
+    setSearchEngine(
+      SIvalue,
+      `https://www.${SIvalue}.com/search?q=`,
+      `Search with ${SIvalue} or with a URL`,
+    );
+    dropdown.value = SIvalue;
   }
 
-  searchInput.addEventListener("input", async () => {
-    const query = searchInput.value;
-    if (query.length > 0) {
-      const suggestions = await fetchSuggestions(query);
-      renderSuggestions(suggestions);
-    } else {
-      suggestionsList.innerHTML = "";
+  dropdown.addEventListener("change", (event) => {
+    const selectedOption = event.target.value;
+    switch (selectedOption) {
+      case "brave":
+        setSearchEngine(
+          "brave",
+          "https://search.brave.com/search?q=",
+          "Search with Brave or with a URL",
+        );
+        break;
+      case "google":
+        setSearchEngine(
+          "google",
+          "https://www.google.com/search?q=",
+          "Search with Google or with a URL",
+        );
+        break;
+      case "bing":
+        setSearchEngine(
+          "bing",
+          "https://www.bing.com/search?q=",
+          "Search with Bing or with a URL",
+        );
+        break;
+      case "duckduckgo":
+        setSearchEngine(
+          "duckduckgo",
+          "https://duckduckgo.com/?q=",
+          "Search with DuckDuckGo or with a URL",
+        );
+        break;
     }
+  });
+
+  searchInput.addEventListener("click", (event) => {
+    const inputRect = searchInput.getBoundingClientRect();
+    const clickX = event.clientX - inputRect.left;
+    if (clickX <= 34) {
+      event.preventDefault();
+      enter();
+    }
+  });
+
+  searchInput.placeholder = `Search with ${localStorage.getItem("sevalue")} or with a url`;
+
+  let debounceTimeout;
+  searchInput.addEventListener("input", () => {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(async () => {
+      const query = searchInput.value;
+      if (query.length > 0) {
+        try {
+          const baseUrl = `${window.location.protocol}//${window.location.host}`;
+          const response = await fetch(`${baseUrl}/suggest?q=${query}`);
+          const suggestions = await response.json();
+          renderSuggestions(suggestions);
+        } catch (error) {
+          console.error("Error fetching suggestions:", error);
+          suggestionsList.innerHTML = "";
+        }
+      } else {
+        suggestionsList.innerHTML = "";
+      }
+    }, 300);
   });
 
   searchInput.addEventListener("blur", () => {
@@ -276,4 +262,15 @@ document.addEventListener("DOMContentLoaded", () => {
       enter();
     }
   });
+
+  function renderSuggestions(suggestions) {
+    suggestionsList.innerHTML = suggestions
+      .map(
+        (suggestion) =>
+          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zZWFyY2giPjxjaXJjbGUgY3g9IjExIiBjeT0iMTEiIHI9IjgiLz48cGF0aCBkPSJtMjEgMjEtNC4zLTQuMyIvPjwvc3ZnPg==" alt="StarLight">${suggestion}</div></li>`,
+      )
+      .join("");
+  }
+
+  getSI();
 });
