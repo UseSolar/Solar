@@ -133,7 +133,7 @@ p {
   background-color: var(--input-bg-color);
   border: none;
   color: var(--text-color);
-  margin: 0 auto;
+  margin-top: 16px;
   box-sizing: border-box;
 }
 

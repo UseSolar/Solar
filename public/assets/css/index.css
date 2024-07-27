@@ -269,3 +269,15 @@ p {
   color: var(--text-color);
   font-size: 16px;
 }
+
+iframe#iframeWindow {
+  position: fixed; /* Fixed positioning to stay in view */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  border: none;
+  box-sizing: border-box;
+  z-index: 9999; /* Ensure it is on top of other content */
+  pointer-events: auto; /* Allow pointer events if needed */
+}

@@ -7,4 +7,4 @@ self.__uv$config = {
   bundle: "/u/bundle.js",
   config: "/u/config.js",
   sw: "/u/sw.js",
-};
+}
