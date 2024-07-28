@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-<h1>cool</h1>
-=======
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home - Google Drive</title>
-    <script src="/b/index.js?v=3" defer></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
     <link
       rel="icon"
       type="image/x-icon"
@@ -21,7 +14,21 @@
       rel="apple-touch-icon"
       href="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png"
     />
-    <link rel="stylesheet" href="/assets/css/index.css?v=3" />
+
+    <link rel="stylesheet" href="/assets/css/games.css?v=3" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BGXSFL382V"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-BGXSFL382V");
+    </script>
   </head>
   <body>
     <nav class="navbar">
@@ -60,39 +67,20 @@
         </li>
       </ul>
     </nav>
-    <h1>
-      <img
-        class="star"
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zcGFya2xlcyI+PHBhdGggZD0iTTkuOTM3IDE1LjVBMiAyIDAgMCAwIDguNSAxNC4wNjNsLTYuMTM1LTEuNTgyYS41LjUgMCAwIDEgMC0uOTYyTDguNSA5LjkzNkEyIDIgMCAwIDAgOS45MzcgOC41bDEuNTgyLTYuMTM1YS41LjUgMCAwIDEgLjk2MyAwTDE0LjA2MyA4LjVBMiAyIDAgMCAwIDE1LjUgOS45MzdsNi4xMzUgMS41ODFhLjUuNSAwIDAgMSAwIC45NjRMMTUuNSAxNC4wNjNhMiAyIDAgMCAwLTEuNDM3IDEuNDM3bC0xLjU4MiA2LjEzNWEuNS41IDAgMCAxLS45NjMgMHoiLz48cGF0aCBkPSJNMjAgM3Y0Ii8+PHBhdGggZD0iTTIyIDVoLTQiLz48cGF0aCBkPSJNNCAxN3YyIi8+PHBhdGggZD0iTTUgMThIMyIvPjwvc3ZnPg=="
-      />StarLight
-    </h1>
+
     <div class="search-container">
-      <div class="search">
-        <select id="search-engine">
-          <option value="google">Google (Default)</option>
-          <option value="brave">Brave</option>
-          <option value="bing">Bing</option>
-          <option value="duckduckgo">DuckDuckGo</option>
-        </select>
-        <input type="text" class="input" id="search-input" />
-      </div>
-      <ul id="suggestions-list"></ul>
+      <input
+        type="text"
+        class="input"
+        id="search-input"
+        placeholder="Search..."
+      />
     </div>
-    <div class="icon-container">
-      <div class="icon github" onclick="ocgh()">
-        <img src="./assets/img/github.png" alt="GitHub Icon" />
-      </div>
-      <span class="dot"></span>
-      <div class="icon discord" onclick="ocdc()">
-        <img src="./assets/img/dc.png" alt="Discord Icon" />
-      </div>
-    </div>
-    <div class="settings" id="settings"></div>
-    <div class="time" id="time"></div>
-    <script src="/assets/js/index.js?v=3"></script>
-    <script src="/assets/js/time.js?v=3"></script>
+
+    <div class="g" id="image-container"></div>
+
+    <script src="/assets/js/games.js?v=3"></script>
     <script src="/u/bundle.js?v=3"></script>
     <script src="/u/config.js?v=3"></script>
   </body>
 </html>
->>>>>>> refs/remotes/origin/main
