@@ -24,18 +24,15 @@ app.use((req, res) => {
 const server = http.createServer((req, res) => {
 app(req, res);
 });
-
 server.on("upgrade", (req, socket, head) => {
   if (req.url.endsWith("/w/"))
     wisp.routeRequest(req, socket, head);
   else
     socket.end();
 });
-
 server.on('listening', () => {
 	console.log('Listening on ',port);
 });
-
 server.listen({
     port: port,
 })
