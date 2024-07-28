@@ -20,12 +20,15 @@ iframe.sandbox =
   "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
 iframe.id = "iframeWindow";
 document.body.appendChild(iframe);
-
 function setBackground() {
-  const tabimg = document.getElementById("tabimg");
-  tabimg.style.backgroundImage = `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhP...`;
+  const tabimg = document.getElementById("favicon");
+  if (!tabimg) {
+    console.error('Element with id "tabimg" not found.');
+    return;
+  }
+  const imageUrl = "./assets/img/fail.png";
+  tabimg.style.backgroundImage = `url("${imageUrl}")`;
 }
-
 window.onload = async function () {
   setBackground();
 
@@ -42,29 +45,34 @@ window.onload = async function () {
   setInterval(updateUrl, 1000);
   setInterval(updateFavicon, 1000);
 };
-
 function updateFavicon() {
-const faviconUrl = `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${iframe.contentWindow.__uv$location.origin}/&size=256`;
-const fallbackImageUrl = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1nbG9iZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMmExNC41IDE0LjUgMCAwIDAgMCAyMCAxNC41IDE0LjUgMCAwIDAgMC0yMCIvPjxwYXRoIGQ9Ik0yIDEyaDIwIi8+PC9zdmc+';  
-function checkFavicon(url) {
+  if (!iframe || !iframe.contentWindow) {
+    console.error('Iframe or its contentWindow not found.');
+    return;
+  }
+
+  const origin = iframe.contentWindow.__uv$location.origin;
+  const faviconUrl = `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${origin}/&size=256`;
+  const fallbackImageUrl = `./assets/img/fail.png`;  
+
+  function checkFavicon(url) {
     return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => resolve(url);
-        img.onerror = () => reject(url);
-        img.src = url;
+      const img = new Image();
+      img.onload = () => resolve(url);
+      img.onerror = () => reject(url);
+      img.src = url;
+    });
+  }
+
+  checkFavicon(faviconUrl)
+    .then((validUrl) => {
+      document.getElementById('favicon').style.backgroundImage = `url(${validUrl})`;
+    })
+    .catch(() => {
+      document.getElementById('favicon').style.backgroundImage = `url(${fallbackImageUrl})`;
     });
 }
 
-checkFavicon(faviconUrl)
-    .then((validUrl) => {
-        document.getElementById('favicon').style.backgroundImage = `url(${validUrl})`;
-    })
-    .catch(() => {
-        
-        document.getElementById('favicon').style.backgroundImage = `url(${fallbackImageUrl})`;
-    });
-  }
-  
 let previousUrl = "";
 function updateUrl() {
   const currentUrl = iframe.contentWindow.__uv$location.href;
