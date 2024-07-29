@@ -6,6 +6,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
+import { SocketAddress } from "node:net";
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -31,7 +32,7 @@ server.on("upgrade", (req, socket, head) => {
     socket.end();
 });
 server.on('listening', () => {
-	console.log('Listening on ',port);
+	console.log('Listening on');
 });
 server.listen({
     port: port,
