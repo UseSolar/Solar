@@ -1,0 +1,116 @@
+:root {
+  --bg-color: #313244;
+  --navbar-bg-color: #6c6a8a;
+  --link-hover-bg-color: #8c8fa1;
+  --text-color: #cdd6f4;
+  --input-bg-color: #585b70;
+  --border-radius: 20px;
+  --transition-speed: 0.3s;
+  --favicon-size: 43.3px;
+  --icon-size: 28px;
+  --navbar-height: 48px;
+  --search-input-width: 380px;
+  --search-input-height: 46px;
+}
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+}
+
+.favicon {
+  border-radius: 50%;
+  height: var(--favicon-size);
+  width: var(--favicon-size);
+  background-size: cover;
+  background-color: grey;
+  background-position: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: var(--navbar-bg-color);
+  padding: 0 20px;
+  height: var(--navbar-height);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+#search-input {
+  width: var(--search-input-width);
+  height: var(--search-input-height);
+  padding-left: 36px;
+  margin-left: 15px;
+  font-size: 16px;
+  border: none;
+  border-color: #6c6a8a;
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 5px;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+}
+
+.nav-links a img {
+  margin-left: 5px;
+  height: var(--icon-size);
+  width: var(--icon-size);
+}
+
+.nav-links a:hover {
+  border-radius: 10px;
+  background-color: var(--link-hover-bg-color);
+  transform: scale(0.9);
+}
+
+iframe#iframeWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - var(--navbar-height));
+  border: none;
+  box-sizing: border-box;
+  z-index: 1001;
+}

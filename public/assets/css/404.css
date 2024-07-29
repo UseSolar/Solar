@@ -1,0 +1,44 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(to right, #1e1e2e, #313244);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  background-image: linear-gradient(to bottom, #f9e2af, #f5c2e7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 4em;
+  text-align: center;
+  margin-top: 5px;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 20px;
+  color: #f9e2af;
+}
+
+main {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.gr {
+  background-color: #585b70;
+  color: #f9e2af;
+  padding: 10px 20px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 1.5em;
+}
