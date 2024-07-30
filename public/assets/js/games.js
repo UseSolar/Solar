@@ -34,7 +34,7 @@ fetch("./assets/json/g.json?v=3")
       altText.style.textAlign = "center";
       altText.style.marginTop = "10px";
 
-      imageElement.addEventListener("click", function () {
+      imageElement.addEventListener("click", function (event) {
         gtag("event", "click", {
           event_category: "Game Click",
           event_label: image.title,
@@ -71,21 +71,27 @@ fetch("./assets/json/g.json?v=3")
   });
 
 const searchBox = document.getElementById("search-input");
+const imagesContainer = document.getElementById("image-container");
 
 searchBox.addEventListener("keyup", function () {
   const searchTerm = this.value.toLowerCase();
-  const images = imageContainer.querySelectorAll("img");
+  const images = imagesContainer.querySelectorAll("img");
 
-  images.forEach((image) => {
+  images.forEach(function (image) {
     const altText = image.alt.toLowerCase();
     const parentLink = image.parentElement.parentElement;
 
-    parentLink.style.display = altText.includes(searchTerm) ? "block" : "none";
+    if (altText.includes(searchTerm)) {
+      parentLink.style.display = "block";
+    } else {
+      parentLink.style.display = "none";
+    }
   });
 
   updateGridLayout();
 });
 
+// Update Game Layout
 function updateGridLayout() {
   const imageElements = Array.from(
     document.querySelectorAll("#image-container > a"),

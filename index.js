@@ -5,23 +5,16 @@ import http from "node:http";
 import express from "express";
 import basicAuth from "express-basic-auth";
 import { join } from "node:path";
-import fs from "fs";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
 import cors from "cors";
-import compression from "compression";
 import { pass, authenticate } from "./p.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = join(__filename, "..");
 const bare = createBareServer("/bs/");
-const maindir = "public";
+const maindir = "public"; // Change this to the folder with the files in it
 const app = express();
-
-const getVersion = () => {
-  const stats = fs.statSync(join(__dirname, maindir));
-  return stats.mtime.getTime().toString();
-};
 
 if (pass.challenge) {
   console.log("Password Protection is enabled, here is a list of logins: ");
@@ -37,7 +30,7 @@ if (pass.challenge) {
       authorizeAsync: false,
       challenge: true,
       unauthorizedResponse: () => `
-           <!doctype html>
+      <!doctype html>
 <html>
   <head>
     <title>Welcome to nginx!</title>
@@ -71,25 +64,16 @@ if (pass.challenge) {
     <p><em>Thank you for using nginx.</em></p>
   </body>
 </html>
+
       `,
     })(req, res, next);
   });
 }
-app.use(cors());
-app.use(compression());
-app.use(
-  express.static(join(__dirname, maindir), {
-    setHeaders: function (res, path, stat) {
-      const version = getVersion();
-      res.setHeader("Cache-Control", "public, max-age=86400");
-      res.setHeader("ETag", version);
-    },
-  }),
-);
 
 app.use("/bm/", express.static(bareModulePath));
 app.use("/b/", express.static(baremuxPath));
 
+app.use(cors());
 app.get("/suggest", async (req, res) => {
   const query = req.query.q;
   if (!query) {
@@ -105,19 +89,39 @@ app.get("/suggest", async (req, res) => {
   }
 });
 
-app.get("/gms", (req, res) =>
-  res.sendFile(join(__dirname, maindir, "games.html")),
-);
-app.get("/g", (req, res) => res.sendFile(join(__dirname, maindir, "go.html")));
-app.get("/fu", (req, res) =>
-  res.sendFile(join(__dirname, maindir, "fun.html")),
-);
-app.get("/cdits", (req, res) =>
-  res.sendFile(join(__dirname, maindir, "credits.html")),
+app.use(
+  express.static(join(__dirname, maindir), {
+    maxAge: "1d",
+    setHeaders: function (res, path, stat) {
+      const version = Date.now();
+      res.setHeader("Cache-Control", "public, max-age=86400");
+      res.setHeader("Cache-Control", "no-cache");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
+      res.setHeader("ETag", version);
+    },
+  }),
 );
 
+app.get("/gms", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "games.html"));
+});
+
+app.get("/g", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "go.html"));
+});
+
+app.get("/fu", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "fun.html"));
+});
+
+app.get("/cdits", (req, res) => {
+  res.sendFile(join(__dirname, maindir, "credits.html"));
+});
+
 app.use((req, res) => {
-  res.status(404).sendFile(join(__dirname, maindir, "404.html"));
+  res.status(404);
+  res.sendFile(join(__dirname, maindir, "404.html"));
 });
 
 const server = http.createServer((req, res) => {
@@ -136,8 +140,10 @@ server.on("upgrade", (req, socket, head) => {
   }
 });
 
-const port = process.env.PORT || 8080;
-server.listen(port, () => {
+let port = parseInt(process.env.PORT || "", 10);
+if (isNaN(port)) port = 8080; // Change this to whatever port you want
+
+server.on("listening", () => {
   const address = server.address();
   console.log("StarLight is listening on:");
   console.log(`\thttp://localhost:${address.port}`);
@@ -147,3 +153,5 @@ server.listen(port, () => {
     }:${address.port}`,
   );
 });
+
+server.listen(port);

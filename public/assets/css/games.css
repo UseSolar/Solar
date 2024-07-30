@@ -1,19 +1,5 @@
-:root {
-  --bg-color: #313244;
-  --navbar-bg-color: #585b70;
-  --link-hover-bg-color: #8c8fa1;
-  --text-color: #cdd6f4;
-  --input-bg-color: #1e2030;
-  --input-width: 550px;
-  --input-height: 58px;
-  --border-radius: 20px;
-  --transition-speed: 0.3s;
-  --image-margin-right: 25px;
-  --image-margin-bottom: 40px;
-}
-
 body {
-  background-color: var(--bg-color);
+  background-color: #313244;
   font-family: "Inter", sans-serif;
   display: flex;
   justify-content: center;
@@ -27,12 +13,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--navbar-bg-color);
+  background-color: #585b70;
   padding: 0 24px;
   height: 54px;
   width: 938px;
-  border-radius: var(--border-radius);
+  border: none;
   margin-top: 10px;
+  border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -40,12 +27,12 @@ body {
 .logo img {
   height: 34px;
   transition:
-    background-color var(--transition-speed) ease,
-    transform var(--transition-speed) ease;
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .logo img:hover {
-  background-color: var(--link-hover-bg-color);
+  background-color: #8c8fa1;
   transform: scale(0.9);
   border-radius: 10px;
 }
@@ -66,15 +53,15 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  color: var(--text-color);
+  color: #cdd6f4;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
   cursor: pointer;
   transition:
-    background-color var(--transition-speed) ease,
-    transform var(--transition-speed) ease;
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .nav-links a img {
@@ -82,46 +69,42 @@ body {
 }
 
 .nav-links a:hover {
-  background-color: var(--link-hover-bg-color);
+  background-color: #8c8fa1;
   border-radius: 10px;
   transform: scale(0.9);
 }
 
 .game-name {
-  color: var(--text-color);
+  color: #cdd6f4;
   font-family: "Inter", sans-serif;
 }
 
 #image-container {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
   overflow: hidden;
 }
 
 #image-container a {
   flex: 0 0 auto;
-  margin-right: var(--image-margin-right);
-  margin-bottom: var(--image-margin-bottom);
-  transition: transform var(--transition-speed) ease;
+  margin-right: 25px;
+  margin-bottom: 40px;
+  float: left;
 }
-
 #image-container a:hover {
   transform: scale(0.9);
 }
-
 .classy {
-  border-radius: var(--border-radius);
+  border-radius: 20px;
 }
 
 p {
   margin-top: 10px;
   text-align: center;
-  color: var(--text-color);
 }
-
 #search-input {
-  width: var(--input-width);
-  height: var(--input-height);
+  width: 550px;
+  height: 58px;
   padding-left: 36px;
   font-size: 20px;
   border-radius: 5px;
@@ -130,11 +113,10 @@ p {
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 29px 29px;
-  background-color: var(--input-bg-color);
+  background-color: #1e2030;
   border: none;
-  color: var(--text-color);
-  margin-top: 16px;
-  box-sizing: border-box;
+  color: #cdd6f4;
+  margin: 0 auto;
 }
 
 .index {

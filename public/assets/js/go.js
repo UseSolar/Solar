@@ -14,74 +14,85 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+const tabimg = document.getElementById("tabimg");
 const iframe = document.createElement("iframe");
 iframe.className = "iframe";
 iframe.sandbox =
   "allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-same-origin allow-scripts";
 iframe.id = "iframeWindow";
-document.body.appendChild(iframe);
-function setBackground() {
-  const tabimg = document.getElementById("favicon");
-  if (!tabimg) {
-    console.error('Element with id "tabimg" not found.');
-    return;
-  }
-  const imageUrl = "./assets/img/fail.png";
-  tabimg.style.backgroundImage = `url("${imageUrl}")`;
-}
+
 window.onload = async function () {
-  setBackground();
-
+  tabimg.style.backgroundImage = `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBhbmVsLXJpZ2h0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTE1IDN2MTgiLz48L3N2Zz4=")`;
   let connection = new BareMux.BareMuxConnection("/b/worker.js");
-  let bareUrl = `${location.protocol}//${location.host}/bs/`;
-
+  let bareUrl =
+    (location.protocol === "https:" ? "https" : "http") +
+    "://" +
+    location.host +
+    "/bs/";
   if ((await connection.getTransport()) !== "/bm/index.mjs") {
     await connection.setTransport("/bm/index.mjs", [bareUrl]);
   }
-
   let encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
-
+  document.body.appendChild(iframe);
   setInterval(updateUrl, 1000);
-  setInterval(updateFavicon, 1000);
+  setInterval(updateF, 1000);
 };
-function updateFavicon() {
-  if (!iframe || !iframe.contentWindow) {
-    console.error('Iframe or its contentWindow not found.');
-    return;
+
+function updateF() {
+  const contentWindow = iframe.contentWindow;
+
+  const faviconLink = contentWindow.document.querySelector(
+    "link[rel='icon'], link[rel='shortcut icon'], link[rel='apple-touch-icon']",
+  );
+  let faviconUrl = `${contentWindow.__uv$location.origin}/favicon.ico`;
+  if (faviconLink instanceof HTMLLinkElement && faviconLink.href) {
+    faviconUrl = faviconLink.href;
+  }
+  const defaultFaviconPaths = [
+    "/favicon.ico",
+    "/apple-touch-icon.png",
+    "/apple-touch-icon-precomposed.png",
+  ];
+  function updateFaviconDisplay(url) {
+    const faviconDiv = document.getElementById("favicon");
+    if (faviconDiv) {
+      faviconDiv.style.backgroundImage = `url(${url})`;
+    }
+  }
+  function handleFaviconError() {
+    updateFaviconDisplay(
+      "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1nbG9iZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMmExNC41IDE0LjUgMCAwIDAgMCAyMCAxNC41IDE0LjUgMCAwIDAgMC0yMCIvPjxwYXRoIGQ9Ik0yIDEyaDIwIi8+PC9zdmc+",
+    );
+  }
+  function loadFaviconFromPaths(paths, index) {
+    if (index >= paths.length) {
+      handleFaviconError();
+      return;
+    }
+
+    const faviconUrl = `${contentWindow.__uv$location.origin}${paths[index]}`;
+    const img = new Image();
+    img.onload = function () {
+      updateFaviconDisplay(faviconUrl);
+    };
+    img.onerror = function () {
+      loadFaviconFromPaths(paths, index + 1);
+    };
+    img.src = faviconUrl;
   }
 
-  const origin = iframe.contentWindow.__uv$location.origin;
-  const faviconUrl = `https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${origin}/&size=256`;
-  const fallbackImageUrl = `./assets/img/fail.png`;  
-
-  function checkFavicon(url) {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.onload = () => resolve(url);
-      img.onerror = () => reject(url);
-      img.src = url;
-    });
-  }
-
-  checkFavicon(faviconUrl)
-    .then((validUrl) => {
-      document.getElementById('favicon').style.backgroundImage = `url(${validUrl})`;
-    })
-    .catch(() => {
-      document.getElementById('favicon').style.backgroundImage = `url(${fallbackImageUrl})`;
-    });
+  loadFaviconFromPaths(defaultFaviconPaths, 0);
 }
 
 let previousUrl = "";
 function updateUrl() {
   const currentUrl = iframe.contentWindow.__uv$location.href;
-  const searchInput = document.getElementById("search-input");
-
+  const inpute = document.getElementById("search-input");
   if (currentUrl !== previousUrl) {
-    searchInput.value = currentUrl;
-    previousUrl = currentUrl;
+    inpute.value = `${currentUrl}`;
   }
+  previousUrl = currentUrl;
 }
 
 function refresh() {
@@ -92,18 +103,18 @@ function home() {
   window.location.href = "./";
 }
 
-function forward() {
+function forw() {
   iframe.contentWindow.history.forward();
 }
 
-function back() {
+function ba() {
   iframe.contentWindow.history.back();
 }
 
 function toggleFullScreen() {
-  document.fullscreenElement
-    ? document.exitFullscreen()
-    : document.documentElement.requestFullscreen();
+  iframe.fullscreenElement
+    ? iframe.exitFullscreen()
+    : iframe.requestFullscreen();
 }
 
 document.addEventListener("keydown", (event) => {
@@ -112,7 +123,8 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.getElementById("search-input").addEventListener("keydown", (event) => {
+const inpu = document.getElementById("search-input");
+inpu.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     enter();
@@ -121,20 +133,28 @@ document.getElementById("search-input").addEventListener("keydown", (event) => {
 
 function enter() {
   let input = document.getElementById("search-input").value.trim();
-  const urlRegex = /^(https?:\/\/)?(?:\w+\.)+\w{2,}(?:\/\S*)?$/;
+  let baseUrl;
   let url;
+  const urlRegex = /^(https?:\/\/)?(?:\w+\.)+\w{2,}(?:\/\S*)?$/;
 
   if (urlRegex.test(input)) {
-    url = input.includes("://") ? input : `https://www.${input}`;
+    if (!input.includes(".") || !input.includes("https")) {
+      url = "https://www." + input;
+    } else {
+      if (!input.includes("www.")) {
+        url = input;
+      }
+    }
   } else {
-    const baseUrl =
-      localStorage.getItem("se") || "https://www.google.com/search?q=";
-    url = `${baseUrl}${input}`;
+    baseUrl = localStorage.getItem("se") || "https://www.google.com/search?q=";
+    url = baseUrl + input;
   }
 
   localStorage.setItem(
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
   );
-  iframe.src = localStorage.getItem("Iframe");
+  encUrl = localStorage.getItem("Iframe");
+  iframe.src = encUrl;
+  document.body.appendChild(iframe);
 }

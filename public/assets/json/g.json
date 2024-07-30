@@ -11,222 +11,259 @@
     "link": "https://discord.com/login",
     "alert": ""
   },
+
   {
     "title": "Character.ai",
     "logo": "./assets/img/ai.png",
     "link": "https://character.ai",
     "alert": ""
   },
+
   {
     "title": "Slope",
     "logo": "./assets/img/slopegame.png",
     "link": "https://slopegame.online",
     "alert": ""
   },
+
   {
     "title": "CoolMathGames",
     "logo": "./assets/img/cmg.png",
     "link": "https://coolmathgames.com",
     "alert": ""
   },
+
   {
-    "title": "Github",
+    "title" : "Github",
     "logo": "./assets/img/github image.png",
     "link": "https://github.com",
     "alert": ""
   },
+
   {
     "title": "shuttle.lol",
     "logo": "./assets/img/shuttle.png",
     "link": "https://shuttle.lol",
     "alert": ""
   },
+
   {
     "title": "Smash Karts",
     "logo": "./assets/img/sk.png",
     "link": "https://smashkarts.io",
     "alert": ""
   },
+
   {
     "title": "Poki",
     "logo": "./assets/img/poki.png",
     "link": "https://poki.com",
     "alert": ""
   },
+
   {
     "title": "CrazyGames",
     "logo": "./assets/img/cg.png",
     "link": "https://crazygames.com",
     "alert": ""
   },
+
   {
     "title": "1v1.lol",
     "logo": "./assets/img/1v1.png",
     "link": "https://1v1.lol",
     "alert": ""
   },
+
   {
     "title": "idle breakout",
     "logo": "./assets/img/ib.png",
     "link": "https://useproton.github.io/games/Idle-Breakout/index.html",
     "alert": ""
   },
+
   {
     "title": "Idle Startup Tycoon",
     "logo": "./assets/img/ist.png",
     "link": "https://www.mortgagecalculator.org/money-games/idle-startup-tycoon/",
     "alert": ""
   },
+
   {
     "title": "OvO",
     "logo": "./assets/img/ovo.png",
     "link": "https://www.coolmathgames.com/0-ovo/play",
     "alert": ""
   },
+
   {
     "title": "Paper.Io",
     "logo": "./assets/img/pi2.png",
     "link": "https://www.paper-io.com/",
     "alert": ""
   },
+
   {
     "title": "yohoho.io",
     "logo": "./assets/img/yhh.png",
     "link": "https://yohoho.io/",
     "alert": ""
   },
+
   {
     "title": "Monkey Mart",
     "logo": "./assets/img/mm.png",
     "link": "https://useproton.github.io/games/Monkey-Mart/monkey-mart/index.html",
     "alert": ""
   },
+
   {
     "title": "Slice Masters",
     "logo": "./assets/img/sm.png",
     "link": "https://www.coolmathgames.com/0-slice-master/play",
     "alert": ""
   },
+
   {
     "title": "Drive Mad",
     "logo": "./assets/img/dm.png",
     "link": "https://useproton.github.io/games/DriveMad/index.html",
     "alert": ""
   },
+
   {
     "title": "2048",
     "logo": "./assets/img/2048.png",
     "link": "https://useproton.github.io/games/2048/index.html",
     "alert": ""
   },
+
   {
     "title": "Core Ball",
     "logo": "./assets/img/cb.png",
     "link": "https://useproton.github.io/games/core-ball/index.html",
     "alert": ""
   },
+
   {
     "title": "Tiny Fishing",
     "logo": "./assets/img/tf.png",
     "link": "https://useproton.github.io/games/tiny-fishing/index.html",
     "alert": ""
   },
+
   {
     "title": "Wordle",
     "logo": "./assets/img/word.png",
     "link": "https://www.nytimes.com/games/wordle/index.html",
     "alert": ""
   },
+
   {
     "title": "mut.gg",
     "logo": "./assets/img/mut.png",
     "link": "https://www.mut.gg/",
     "alert": ""
   },
+
   {
     "title": "NFL",
     "logo": "./assets/img/nfl.png",
     "link": "https://www.nfl.com/",
     "alert": ""
   },
+
   {
     "title": "123 Movies",
     "logo": "./assets/img/123.png",
     "link": "https://ww16.0123movie.net/",
     "alert": ""
   },
+
   {
     "title": "MLB",
     "logo": "./assets/img/nlb.png",
     "link": "https://www.mlb.com/",
     "alert": ""
   },
+
   {
     "title": "NBA",
     "logo": "./assets/img/nba.png",
     "link": "https://www.nba.com/",
     "alert": ""
   },
+
   {
-    "title": "OneFootball",
+    "title": "OneFootBall",
     "logo": "./assets/img/ofb.png",
     "link": "https://onefootball.com/en/home",
     "alert": ""
   },
+
   {
     "title": "Gforce Now",
     "logo": "./assets/img/gn.png",
     "link": "https://www.nvidia.com/en-us/geforce-now/",
     "alert": ""
   },
+
   {
     "title": "Vercel",
     "logo": "./assets/img/vercel.png",
     "link": "https://www.vercel.app",
     "alert": ""
   },
+
   {
     "title": "Garlic Phone",
     "logo": "./assets/img/gp.png",
     "link": "https://garticphone.com",
     "alert": ""
   },
+
   {
     "title": "Tiktok",
     "logo": "./assets/img/tk.png",
     "link": "https://www.tiktok.com",
     "alert": ""
   },
+
   {
     "title": "Youtube",
     "logo": "./assets/img/yt.png",
     "link": "https://www.youtube.com",
     "alert": ""
   },
+
   {
     "title": "Revolt",
     "logo": "./assets/img/revolt.png",
     "link": "https://www.revolt.chat",
     "alert": ""
   },
+
   {
     "title": "Guilded",
     "logo": "./assets/img/guilded.png",
     "link": "https://www.guilded.gg",
     "alert": ""
   },
+
   {
     "title": "VS Code",
     "logo": "./assets/img/vsc.png",
     "link": "https://code.visualstudio.com/",
     "alert": ""
   },
+
   {
     "title": "Youtube Playables",
     "logo": "./assets/img/ytp.png",
     "link": "https://www.youtube.com/playables",
     "alert": ""
   },
+
   {
     "title": "ChatGPT",
     "logo": "./assets/img/cgpt.png",
