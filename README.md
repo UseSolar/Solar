@@ -142,3 +142,17 @@ Thank you to the Contributors who helped!
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
 </a>
+ 
+# Credits
+
+Starlight is thankful for our persevering and challenge-overcoming dev team. We truly wouldn’t do it without you. Our team is owski9 and Bearcat (team leaders) and )(dev team)
+
+.Unlimited money
+
+.Evicly  
+
+.Foxymanontop
+
+
+
+

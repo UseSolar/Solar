@@ -15,7 +15,11 @@ if (cloakingStatus === "o") {
 
     if (!popupWindow || popupWindow.closed) {
       alert(
-        "Please Allow Popup & Redirects so this tab cloaks into about://blank, if you cannot for whatever reason you can turn this message off in settings!",
+        "Enjoy using Starlight proxy",
+
+      );
+      alert(
+        "please clear cache",
       );
     } else {
       const popupDocument = popupWindow.document;
