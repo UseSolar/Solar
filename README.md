@@ -145,7 +145,7 @@ Thank you to the Contributors who helped!
  
 # Credits
 
-Starlight is thankful for our persevering and challenge-overcoming dev team. We truly wouldn’t do it without you. Our team is owski9 and Bearcat (team leaders) and )(dev team)
+Starlight is thankful for our persevering and challenge-overcoming dev team. We truly wouldn’t do it without you. Our team is owski9 and Bearcat (team leaders) and our dev team 
 
 .Unlimited money
 
