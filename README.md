@@ -12,10 +12,14 @@ Our goal is to make StarLight fast and easy to use, deploy & customize.
 - Ad Free
 - Mobile Support
 
+
+> [!IMPORTANT]  
+> if you like what you saw or forked this repo, Star this repo!
+
 # Deploy Options
 
 > [!IMPORTANT]  
-> If you forked this repo, Please ⭐️ this one!
+> Vercel doesn't work anymore for deploying anymore
 
 ## Console
 
@@ -133,26 +137,15 @@ git pull --force --allow-unrelated-histories
 
 ## More Help or Tutorials
 
-If you are having any kind of issues or error make a [Github Issue](https://github.com/GoStarLight/StarLight/issues) or join [Discord Server](https://discord.gg/Y9tGpfCwUf) for more tutorials and help
+If you are having any kind of issues or error make a [Github Issue](https://github.com/GoStarLight/StarLight/issues) or join [Discord Server](https://discord.gg/Y9tGpfCwUf) for more tutorials,help
+& links
 
 # Contributors
 
-Thank you to the Contributors who helped!
+Thank you to the all the Contributors!
 
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
 </a>
- 
-# Credits
-
-Starlight is thankful for our persevering and challenge-overcoming dev team. We truly wouldn’t do it without you. Our team is owski9 and Bearcat (team leaders) and our dev team 
-
-.Unlimited money
-
-.Evicly  
-
-.Foxymanontop
-
-
 
 
