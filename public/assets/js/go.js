@@ -24,14 +24,10 @@ iframe.id = "iframeWindow";
 window.onload = async function () {
   tabimg.style.backgroundImage = `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBhbmVsLXJpZ2h0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTE1IDN2MTgiLz48L3N2Zz4=")`;
   let connection = new BareMux.BareMuxConnection("/b/worker.js");
-  let bareUrl =
-    (location.protocol === "https:" ? "https" : "http") +
-    "://" +
-    location.host +
-    "/bs/";
-  if ((await connection.getTransport()) !== "/bm/index.mjs") {
-    await connection.setTransport("/bm/index.mjs", [bareUrl]);
-  }
+  let wispUrl = (location.protocol === "https:" ? "wss" : "ws") + "://" + location.host + "/w/";
+	if (await connection.getTransport() !== "/e/index.mjs") {
+		await connection.setTransport("/e/index.mjs", [{ wisp: wispUrl }]);
+	}
   let encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
   document.body.appendChild(iframe);
