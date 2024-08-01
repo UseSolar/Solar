@@ -281,3 +281,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function toggleSettingsMenu() {
+  const menu = document.getElementById('settings-menu');
+  const isVisible = menu.classList.toggle('visible');
+  localStorage.setItem('getsetvis', isVisible);
+}
+
+function toggleFeature() {
+  const button = document.getElementById('toggle-btn');
+  if (button.textContent === 'On') {
+      button.textContent = 'Off';
+      localStorage.setItem("abcloak", "0");
+  } else {
+      button.textContent = 'On';
+      localStorage.setItem("abcloak", "1");
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const getsetvis = localStorage.getItem("getsetvis");
+  if (getsetvis === "true") {
+      toggleSettingsMenu();
+  }
+
+  const abcloak = localStorage.getItem("abcloak");
+  const button = document.getElementById('toggle-btn');
+  if (abcloak === "1") {
+      button.textContent = "On";
+  } else {
+      button.textContent = "Off";
+  }
+
+  document.getElementById('settings').addEventListener('click', toggleSettingsMenu);
+  button.addEventListener('click', toggleFeature);
+});
