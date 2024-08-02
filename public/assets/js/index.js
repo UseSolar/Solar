@@ -1,64 +1,3 @@
-let isInFrame;
-const cloakingStatus = localStorage.getItem("AB") || "on";
-
-try {
-  isInFrame = window !== top;
-} catch (e) {
-  isInFrame = true;
-  localStorage.setItem("re", "true");
-}
-
-if (cloakingStatus === "o") {
-  // Change Before publish to "on"
-  if (!isInFrame && !navigator.userAgent.includes("Firefox")) {
-    const popupWindow = window.open("about:blank", "_blank");
-
-    if (!popupWindow || popupWindow.closed) {
-      alert(
-        "Enjoy using Starlight proxy",
-
-      );
-      alert(
-        "please clear cache",
-      );
-    } else {
-      const popupDocument = popupWindow.document;
-      const iframeElement = popupDocument.createElement("iframe");
-      const iframeStyle = iframeElement.style;
-      const faviconLink = popupDocument.createElement("link");
-
-      const pageTitle = localStorage.getItem("name") || "Home - Google Drive";
-      const pageIcon =
-        localStorage.getItem("icon") ||
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png";
-
-      popupDocument.title = pageTitle;
-      faviconLink.rel = "icon";
-      faviconLink.href = pageIcon;
-
-      iframeElement.src = location.href;
-      iframeStyle.position = "fixed";
-      iframeStyle.top = "0";
-      iframeStyle.bottom = "0";
-      iframeStyle.left = "0";
-      iframeStyle.right = "0";
-      iframeStyle.border = "none";
-      iframeStyle.outline = "none";
-      iframeStyle.width = "100vw";
-      iframeStyle.height = "100vh";
-
-      popupDocument.head.appendChild(faviconLink);
-      popupDocument.body.appendChild(iframeElement);
-
-      const redirectLink =
-        localStorage.getItem(encodeURI("redirlink")) ||
-        "https://www.google.com";
-      location.replace(redirectLink);
-    }
-  }
-} else {
-  console.log("Tab Cloaking is off");
-}
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -166,6 +105,7 @@ function enter() {
   window.location.href = "./g";
 }
 
+
 // search engine picker
 getSI();
 
@@ -177,31 +117,27 @@ function getSI() {
   }
   const dropdown = document.getElementById("search-engine");
   dropdown.value = SIvalue;
-}
-document
-  .getElementById("search-engine")
-  .addEventListener("change", function (event) {
-    const selectedOption = event.target.value;
-    let searchInput = document.getElementById("search-input");
+}document.getElementById("search-engine").addEventListener("change", function (event) {
+  const { value: selectedOption } = event.target;
+  const searchEngines = {
+    brave: "https://search.brave.com/search?q=",
+    google: "https://www.google.com/search?q=",
+    bing: "https://www.bing.com/search?q=",
+    duckduckgo: "https://duckduckgo.com/?q="
+  };
+  const placeholders = {
+    brave: "Search with Brave or with a URL",
+    google: "Search with Google or with a URL",
+    bing: "Search with Bing or with a URL",
+    duckduckgo: "Search with DuckDuckGo or with a URL"
+  };
 
-    if (selectedOption == "brave") {
-      localStorage.setItem("se", "https://search.brave.com/search?q=");
-      localStorage.setItem("sevalue", "brave");
-      searchInput.placeholder = "Search with Brave or with a URL";
-    } else if (selectedOption == "google") {
-      localStorage.setItem("se", "https://www.google.com/search?q=");
-      localStorage.setItem("sevalue", "google");
-      searchInput.placeholder = "Search with Google or with a URL";
-    } else if (selectedOption == "bing") {
-      localStorage.setItem("se", "https://www.bing.com/search?q=");
-      localStorage.setItem("sevalue", "bing");
-      searchInput.placeholder = "Search with Bing or with a URL";
-    } else if (selectedOption == "duckduckgo") {
-      localStorage.setItem("se", "https://duckduckgo.com/?q=");
-      localStorage.setItem("sevalue", "duckduckgo");
-      searchInput.placeholder = "Search with DuckDuckGo or with a URL";
-    }
-  });
+  if (searchEngines[selectedOption]) {
+    localStorage.setItem("se", searchEngines[selectedOption]);
+    localStorage.setItem("sevalue", selectedOption);
+    document.getElementById("search-input").placeholder = placeholders[selectedOption];
+  }
+});
 
 document.getElementById("search-input").addEventListener("click", (event) => {
   const input = event.target;
