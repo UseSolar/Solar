@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
+  margin:  0;
   padding: 0;
 }
 
@@ -86,8 +86,10 @@ body {
 }
 
 #image-container a {
+  
+  background-color: #51576d;
   flex: 0 0 auto;
-  margin-right: 25px;
+  margin-right:  40px;
   margin-bottom: 40px;
   float: left;
 }
@@ -131,3 +133,10 @@ p {
   margin: 0 auto;
   text-align: center;
 }
+
+
+
+
+
+
+
