@@ -80,7 +80,7 @@ try {
   const address = await app.listen({ port });
   console.log("StarLight is listening on:");
   console.log(`\thttp://localhost:${port}`);
-  console.log(`\thttp://${address}:${port}`);
+  console.log(`\t${address}`);
 } catch (err) {
   console.error(err);
   process.exit(1);

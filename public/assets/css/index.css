@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+  text-shadow: 0px 0px 5px #ffffff;
+}
+
 body {
-  background-color: #313244;
-  font-family: "Inter", sans-serif;
+  background: rgb(27,18,53);
+  font-family: "Rubik", sans-serif;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #585b70;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   padding: 0 24px;
   height: 54px;
   width: calc(100vw - 185px);
@@ -16,6 +23,31 @@ body {
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  
+}
+
+.content img {
+  width: 100px;
 }
 
 .logo img {
@@ -47,7 +79,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  color: #cdd6f4;
+  color: #ffffff;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
@@ -82,6 +114,7 @@ body {
 }
 
 #search-input {
+  font-family: "Rubik", sans-serif;
   margin-top: 32px;
   width: 368px;
   height: 62px;
@@ -94,8 +127,9 @@ body {
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 24px 24px;
-  background-color: #585b70;
-  color: #cdd6f4;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
   margin-right: 20px;
   transition: width 0.3s ease;
 }
@@ -106,17 +140,19 @@ body {
 }
 
 ::placeholder {
-  color: #cdd6f4;
+  color: #ffffff;
   opacity: 1;
 }
 
 #search-engine {
+  font-family: "Rubik", sans-serif;
   height: 64px;
   width: 162px;
   margin-top: 33px;
   border-radius: 16px;
-  background-color: #585b70;
-  color: #cdd6f4;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
   font-size: 16px;
   margin-right: 15px;
   text-align: center;
@@ -124,14 +160,15 @@ body {
 }
 
 .suggestion-item {
-  color: #cdd6f4;
+  color: #ffffff;
 }
 
 #suggestions-list {
   position: absolute;
   width: 440px;
   margin-left: 110px;
-  background-color: #585b70;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   max-height: 200px;
   overflow-y: auto;
   margin-top: 106px;
@@ -153,14 +190,16 @@ body {
 }
 
 #suggestions-list li:hover {
-  background-color: #8c8fa1;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   border-radius: 10px;
 }
 
 .dot {
   width: 4px;
   height: 4px;
-  background-color: #cdd6f4;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -171,7 +210,8 @@ body {
   position: fixed;
   bottom: 20px;
   text-align: center;
-  background-color: #585b70;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   height: 46px;
   width: 142px;
   border-radius: 20px;
@@ -208,7 +248,8 @@ body {
 }
 
 .icon img:hover {
-  background-color: #8c8fa1;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   transform: scale(0.9);
   border-radius: 10px;
 }
@@ -218,10 +259,10 @@ body {
 }
 
 h1 {
-  color: #797593;
+  color: #ffffff;
   text-align: center;
-  font-size: 38.5px;
-  margin-top: 66px;
+  font-size: 70px;
+  margin: 0;
 }
 
 p {
@@ -238,15 +279,6 @@ p {
   width: 35px;
   height: 35px;
   margin-right: 5px;
-}
-
-h1 {
-  color: #797593;
-  text-align: center;
-  margin-left: 76px;
-  text-align: center;
-  font-size: 62.5px;
-  margin-top: 66px;
 }
 
 .settings {
@@ -268,13 +300,14 @@ h1 {
   transform: translateX(-50%);
   height: 48px;
   width: 174px;
-  background-color: #585b70;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #cdd6f4;
+  color: #ffffff;
   font-size: 16px;
 }
 
