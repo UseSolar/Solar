@@ -5,32 +5,33 @@
     "description": "StarLight is a web proxy that has many features.",
     "main": "index.js",
     "scripts": {
-      "start": "node index.js",
-      "pretty": "prettier --write '**/*.{js,css,html,md}'"
+        "start": "node index.js",
+        "pretty": "prettier --write '**/*.{js,css,html,md}'"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/GoStarLight/StarLight.git"
+        "type": "git",
+        "url": "git+https://github.com/GoStarLight/StarLight.git"
     },
     "keywords": [
-      "educational"
+        "educational"
     ],
     "author": "bwigal22116",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/GoStarLight/StarLight/issues"
+        "url": "https://github.com/GoStarLight/StarLight/issues"
     },
     "homepage": "https://github.com/GoStarLight/StarLight#readme",
     "dependencies": {
-      "@mercuryworkshop/bare-mux": "^2.0.2",
-      "@mercuryworkshop/epoxy-transport": "^2.1.3",
-      "express": "^4.19.2",
-      "express-basic-auth": "^1.2.1",
-      "wisp-server-node": "^1.1.3",
-      "axios": "^1.7.2",
-      "cors": "^2.8.5"
+        "@fastify/compress": "^7.0.3",
+        "@fastify/cors": "^9.0.1",
+        "@fastify/static": "^7.0.4",
+        "@mercuryworkshop/bare-mux": "^2.0.2",
+        "@mercuryworkshop/epoxy-transport": "^2.1.5",
+        "axios": "^1.7.3",
+        "fastify": "^4.28.1",
+        "wisp-server-node": "^1.1.3"
     },
     "devDependencies": {
-      "prettier": "^3.3.0"
+        "prettier": "^3.3.0"
     }
-  }
+}

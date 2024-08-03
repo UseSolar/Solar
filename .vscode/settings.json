@@ -1,4 +1,5 @@
 {
     "files.autoSave": "onWindowChange",
-    "editor.experimentalInlineEdit.enabled": true
+    "editor.experimentalInlineEdit.enabled": true,
+    "vscord.enabled": true
 }

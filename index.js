@@ -1,150 +1,87 @@
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
-import wisp from "wisp-server-node"
-import http from "node:http";
-import express from "express";
-import basicAuth from "express-basic-auth";
-import { join } from "node:path";
+import wisp from "wisp-server-node";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
-import cors from "cors";
-import { pass, authenticate } from "./p.js";
+import fastify from "fastify";
+import fastifyStatic from "@fastify/static";
+import fastifyCors from "@fastify/cors";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = join(__filename, "..");
-const maindir = "public"; // Change this to the folder with the files in it
-const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const maindir = "public";
+const port = 8080;
+const app = fastify();
 
-if (pass.challenge) {
-  console.log("Password Protection is enabled, here is a list of logins: ");
-  for (const [username, password] of Object.entries(pass.users)) {
-    console.log(`[username: ${username}, password: ${password}]`);
-  }
-  app.use((req, res, next) => {
-    if (req.path === "/f") {
-      return next();
-    }
-    basicAuth({
-      authorizer: (username, password) => authenticate(username, password),
-      authorizeAsync: false,
-      challenge: true,
-      unauthorizedResponse: () => `
-      <!doctype html>
-<html>
-  <head>
-    <title>Welcome to nginx!</title>
-    <style>
-      html {
-        color-scheme: light dark;
-      }
-      body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to nginx!</h1>
-    <p>
-      If you see this page, the nginx web server is successfully installed and
-      working. Further configuration is required. If you are expecting another
-      page, please check your network or
-      <a href="/" id="rcheck"><b>Refresh this page</b></a>
-    </p>
+await app.register(import('@fastify/compress'), { global: true });
 
-    <p>
-      For online documentation and support please refer to
-      <a href="http://nginx.org/">nginx.org</a>.<br />
-      Commercial support is available at
-      <a href="http://nginx.com/">nginx.com</a>.
-    </p>
+app.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+});
 
-    <p><em>Thank you for using nginx.</em></p>
-  </body>
-</html>
+app.register(fastifyStatic, {
+  root: path.join(__dirname, maindir),
+  prefix: '/',
+});
 
-      `,
-    })(req, res, next);
-  });
-}
+app.register(fastifyStatic, {
+  root: path.resolve(epoxyPath),
+  prefix: '/e/',
+  decorateReply: false
+});
 
-app.use(cors());
-app.use("/e/", express.static(epoxyPath));
-app.use("/b/", express.static(baremuxPath));
-app.get("/suggest", async (req, res) => {
-  const query = req.query.q;
+app.register(fastifyStatic, {
+  root: path.resolve(baremuxPath),
+  prefix: '/b/',
+  decorateReply: false
+});
+
+app.get('/suggest', async (request, reply) => {
+  const query = request.query.q;
   if (!query) {
-    return res.status(400).send("Query parameter is required");
+    return reply.status(400).send('Query parameter is required');
   }
   try {
     const response = await axios.get(`https://duckduckgo.com/ac/?q=${query}`);
-    const suggestions = response.data.map((item) => item.phrase);
-    res.json(suggestions);
+    const suggestions = response.data.map(item => item.phrase);
+    reply.send(suggestions);
   } catch (error) {
-    console.error("Error fetching suggestions:", error);
-    res.status(500).send("Error fetching suggestions");
+    console.error('Error fetching suggestions:', error);
+    reply.status(500).send('Error fetching suggestions');
   }
 });
 
-app.use(
-  express.static(join(__dirname, maindir), {
-    maxAge: "1d",
-    setHeaders: function (res, path, stat) {
-      const version = Date.now();
-      res.setHeader("Cache-Control", "public, max-age=86400");
-      res.setHeader("Cache-Control", "no-cache");
-      res.setHeader("Pragma", "no-cache");
-      res.setHeader("Expires", "0");
-      res.setHeader("ETag", version);
-    },
-  }),
-);
-
-app.get("/gms", (req, res) => {
-  res.sendFile(join(__dirname, maindir, "games.html"));
+app.get("/gms", (request, reply) => {
+  reply.sendFile("games.html");
 });
 
-app.get("/g", (req, res) => {
-  res.sendFile(join(__dirname, maindir, "go.html"));
+app.get("/g", (request, reply) => {
+  reply.sendFile("go.html");
 });
 
-app.get("/fu", (req, res) => {
-  res.sendFile(join(__dirname, maindir, "fun.html"));
+app.get("/fu", (request, reply) => {
+  reply.sendFile("fun.html");
 });
 
-app.get("/cdits", (req, res) => {
-  res.sendFile(join(__dirname, maindir, "credits.html"));
+app.get("/cdits", (request, reply) => {
+  reply.sendFile("credits.html");
 });
 
-app.use((req, res) => {
-  res.status(404);
-  res.sendFile(join(__dirname, maindir, "404.html"));
-});
-
-const server = http.createServer((req, res) => {
-app(req, res)
-});
-
-server.on("upgrade", (req, socket, head) => {
-  if (req.url.endsWith("/w/"))
+app.server.on("upgrade", (req, socket, head) => {
+  if (req.url.endsWith("/w/")) {
     wisp.routeRequest(req, socket, head);
-  else
+  } else {
     socket.end();
+  }
 });
 
-let port = parseInt(process.env.PORT || "", 10);
-if (isNaN(port)) port = 8080; // Change this to whatever port you want
-
-server.on("listening", () => {
-  const address = server.address();
+try {
+  const address = await app.listen({ port });
   console.log("StarLight is listening on:");
-  console.log(`\thttp://localhost:${address.port}`);
-  console.log(
-    `\thttp://${
-      address.family === "IPv6" ? `[${address.address}]` : address.address
-    }:${address.port}`,
-  );
-});
-
-server.listen(port);
+  console.log(`\thttp://localhost:${port}`);
+  console.log(`\thttp://${address}:${port}`);
+} catch (err) {
+  console.error(err);
+  process.exit(1);
+}
