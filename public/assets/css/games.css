@@ -1,27 +1,54 @@
-body {
-  background-color: #313244;
-  font-family: "Inter", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin:  0;
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+* {
+  text-shadow: 0px 0px 5px #ffffff;
 }
+
+body {
+  background: rgb(27,18,53);
+  font-family: "Rubik", sans-serif;
+}
+
 
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #585b70;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
   padding: 0 24px;
   height: 54px;
-  width: 938px;
+  width: calc(100vw - 185px);
   border: none;
   margin-top: 10px;
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  
+}
+
+.content img {
+  width: 100px;
 }
 
 .logo img {
@@ -53,7 +80,7 @@ body {
   display: flex;
   align-items: center;
   padding: 10px;
-  color: #cdd6f4;
+  color: #ffffff;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
@@ -76,7 +103,8 @@ body {
 
 .game-name {
   color: #cdd6f4;
-  font-family: "Inter", sans-serif;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
 }
 
 #image-container {
@@ -88,16 +116,30 @@ body {
 
 #image-container a {
   border-radius: 10px;
-  background-color: #51576d;
   margin: 0 20px 20px 0; 
   flex: 0 1 auto;
+  background: rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
 #image-container a:hover {
   transform: scale(0.9);
 }
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.image-container img {
+  align-self: flex-start; 
+}
+
 .classy {
+  width: 138px;
+  height: 138px;
   border-radius: 20px;
 }
 
@@ -105,9 +147,11 @@ p {
   margin-top: 10px;
   text-align: center;
 }
+
 #search-input {
   width: 550px;
   height: 58px;
+  font-family: "Rubik", sans-serif;
   padding-left: 36px;
   font-size: 20px;
   border-radius: 5px;
@@ -116,9 +160,11 @@ p {
   background-repeat: no-repeat;
   background-position: 10px center;
   background-size: 29px 29px;
-  background-color: #1e2030;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
   border: none;
-  color: #cdd6f4;
+  transition: width 0.3s ease;
   margin: 0 auto;
 }
 
@@ -128,16 +174,13 @@ p {
   text-align: center;
   overflow: hidden;
 }
+::placeholder {
+  color: #ffffff;
+  opacity: 1;
+}
 
 .search-container {
   width: 80%;
   margin: 0 auto;
   text-align: center;
 }
-
-
-
-
-
-
-

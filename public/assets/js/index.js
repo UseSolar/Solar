@@ -229,6 +229,7 @@ function toggleFeature() {
   if (button.textContent === 'On') {
       button.textContent = 'Off';
       localStorage.setItem("abcloak", "0");
+      console.error("abcloak is off")
   } else {
       button.textContent = 'On';
       localStorage.setItem("abcloak", "1");
