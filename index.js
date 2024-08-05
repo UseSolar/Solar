@@ -2,6 +2,7 @@ import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import wisp from "wisp-server-node";
 import path from "node:path";
+import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
 import fastify from "fastify";
@@ -28,6 +29,12 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
   root: path.resolve(epoxyPath),
   prefix: '/e/',
+  decorateReply: false
+});
+
+app.register(fastifyStatic, {
+  root: path.resolve(libcurlPath),
+  prefix: '/l/',
   decorateReply: false
 });
 

@@ -74,6 +74,7 @@ input.addEventListener("keydown", function (event) {
 });
 
 function enter() {
+  localStorage.setItem("transtype","epoxy")
   let input = document.getElementById("search-input").value.trim();
   let baseUrl;
   let url;
