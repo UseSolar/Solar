@@ -24,8 +24,8 @@ fetch("./assets/json/g.json?v=3")
       const img = document.createElement("img");
       img.src = image.logo;
       img.alt = image.title || "ERROR";
-      img.style.width = "138px";
-      img.style.height = "138px";
+      img.style.width = "148px";
+      img.style.height = "148px";
       img.className = "classy";
 
       const altText = document.createElement("div");

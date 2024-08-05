@@ -136,7 +136,7 @@ input:checked + .slider:before {
 }
 
 body {
-  background-color: #313244;
+  background: rgba(0, 0, 0, 0.3);
   cursor: none;
 }
 
@@ -188,6 +188,19 @@ body {
                                                                             .hidden {
                                                                                 display: none;
                                                                                 }
+                                                                              
+                                                                                
+                                                                                @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+                                                                                * {
+                                                                                  text-shadow: 0px 0px 5px #ffffff;
+                                                                                  }
+
+                                                                                  body {
+                                                                                    background: rgb(27,18,53);
+                                                                                      font-family: "Rubik", sans-serif;
+                                                                                      }
+                                                                                    
                                                                                 
                                                                                         
                                                                 
