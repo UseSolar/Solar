@@ -16,6 +16,7 @@ body {
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 30px;
 }
 
 .logo img {
@@ -69,6 +70,7 @@ body {
 }
 
 .background {
+  margin-bottom: 30px;
   width: 300px;
   padding: 20px;
   background: rgba(0, 0, 0, 0.3);
