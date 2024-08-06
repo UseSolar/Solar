@@ -7,7 +7,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #585b70;
+  background:rgba(0, 0, 0, 0.3);
   padding: 0 24px;
   height: 54px;
   width: 938px;
@@ -71,8 +71,7 @@ body {
 .background {
   width: 300px;
   padding: 20px;
-  background-color:#585b70;
-  border: 2px solid #585b70;
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -80,12 +79,12 @@ body {
 }
 
 h1 {
-  color:#313244;
+  color:#ffffff;
   margin-bottom: 10px;
 }
 
 p {
-  color:#313244;
+  color:#ffffff;
   margin-bottom: 20px;
 }
 
