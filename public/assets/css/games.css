@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 
 * {
   text-shadow: 0px 0px 5px #ffffff;
 }
 
 body {
-  background: rgb(27,18,53);
+  background: rgb(27, 18, 53);
   font-family: "Rubik", sans-serif;
 }
-
 
 .navbar {
   display: flex;
@@ -44,7 +43,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  
 }
 
 .content img {
@@ -111,12 +109,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  justify-content: flex-start; 
+  justify-content: flex-start;
 }
 
 #image-container a {
   border-radius: 10px;
-  margin: 0 20px 20px 0; 
+  margin: 0 20px 20px 0;
   flex: 0 1 auto;
   background: rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
@@ -134,7 +132,7 @@ body {
 }
 
 .image-container img {
-  align-self: flex-start; 
+  align-self: flex-start;
 }
 
 .classy {

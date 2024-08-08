@@ -1,13 +1,13 @@
 function getTimeZoneAbbreviation() {
   // Create a DateTimeFormat object for the user's locale
-  const formatter = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' });
-  
+  const formatter = new Intl.DateTimeFormat("en-US", { timeZoneName: "short" });
+
   // Format a dummy date to get the timezone abbreviation
   const parts = formatter.formatToParts(new Date());
-  
+
   // Extract the time zone abbreviation
-  const timeZonePart = parts.find(part => part.type === 'timeZoneName');
-  return timeZonePart ? timeZonePart.value : 'unknown';
+  const timeZonePart = parts.find((part) => part.type === "timeZoneName");
+  return timeZonePart ? timeZonePart.value : "unknown";
 }
 
 function updateTime() {

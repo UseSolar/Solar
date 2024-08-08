@@ -12,7 +12,6 @@ Our goal is to make StarLight fast and easy to use, deploy & customize.
 - Ad Free
 - Mobile Support
 
-
 > [!IMPORTANT]  
 > if you like what you saw or forked this repo, Star this repo!
 
@@ -147,5 +146,3 @@ Thank you to the all the Contributors!
 <a href="https://github.com/GoStarLight/StarLight/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=GoStarLight/StarLight" />
 </a>
-
-

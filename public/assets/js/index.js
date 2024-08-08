@@ -1,4 +1,3 @@
-
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -74,7 +73,7 @@ input.addEventListener("keydown", function (event) {
 });
 
 function enter() {
-  localStorage.setItem("transtype","epoxy")
+  localStorage.setItem("transtype", "epoxy");
   let input = document.getElementById("search-input").value.trim();
   let baseUrl;
   let url;
@@ -106,7 +105,6 @@ function enter() {
   window.location.href = "./g";
 }
 
-
 // search engine picker
 getSI();
 
@@ -118,27 +116,31 @@ function getSI() {
   }
   const dropdown = document.getElementById("search-engine");
   dropdown.value = SIvalue;
-}document.getElementById("search-engine").addEventListener("change", function (event) {
-  const { value: selectedOption } = event.target;
-  const searchEngines = {
-    brave: "https://search.brave.com/search?q=",
-    google: "https://www.google.com/search?q=",
-    bing: "https://www.bing.com/search?q=",
-    duckduckgo: "https://duckduckgo.com/?q="
-  };
-  const placeholders = {
-    brave: "Search with Brave or with a URL",
-    google: "Search with Google or with a URL",
-    bing: "Search with Bing or with a URL",
-    duckduckgo: "Search with DuckDuckGo or with a URL"
-  };
+}
+document
+  .getElementById("search-engine")
+  .addEventListener("change", function (event) {
+    const { value: selectedOption } = event.target;
+    const searchEngines = {
+      brave: "https://search.brave.com/search?q=",
+      google: "https://www.google.com/search?q=",
+      bing: "https://www.bing.com/search?q=",
+      duckduckgo: "https://duckduckgo.com/?q=",
+    };
+    const placeholders = {
+      brave: "Search with Brave or with a URL",
+      google: "Search with Google or with a URL",
+      bing: "Search with Bing or with a URL",
+      duckduckgo: "Search with DuckDuckGo or with a URL",
+    };
 
-  if (searchEngines[selectedOption]) {
-    localStorage.setItem("se", searchEngines[selectedOption]);
-    localStorage.setItem("sevalue", selectedOption);
-    document.getElementById("search-input").placeholder = placeholders[selectedOption];
-  }
-});
+    if (searchEngines[selectedOption]) {
+      localStorage.setItem("se", searchEngines[selectedOption]);
+      localStorage.setItem("sevalue", selectedOption);
+      document.getElementById("search-input").placeholder =
+        placeholders[selectedOption];
+    }
+  });
 
 document.getElementById("search-input").addEventListener("click", (event) => {
   const input = event.target;
@@ -220,37 +222,39 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function toggleSettingsMenu() {
-  const menu = document.getElementById('settings-menu');
-  const isVisible = menu.classList.toggle('visible');
-  localStorage.setItem('getsetvis', isVisible);
+  const menu = document.getElementById("settings-menu");
+  const isVisible = menu.classList.toggle("visible");
+  localStorage.setItem("getsetvis", isVisible);
 }
 
 function toggleFeature() {
-  const button = document.getElementById('toggle-btn');
-  if (button.textContent === 'On') {
-      button.textContent = 'Off';
-      localStorage.setItem("abcloak", "0");
-      console.error("abcloak is off")
+  const button = document.getElementById("toggle-btn");
+  if (button.textContent === "On") {
+    button.textContent = "Off";
+    localStorage.setItem("abcloak", "0");
+    console.error("abcloak is off");
   } else {
-      button.textContent = 'On';
-      localStorage.setItem("abcloak", "1");
+    button.textContent = "On";
+    localStorage.setItem("abcloak", "1");
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const getsetvis = localStorage.getItem("getsetvis");
   if (getsetvis === "true") {
-      toggleSettingsMenu();
+    toggleSettingsMenu();
   }
 
   const abcloak = localStorage.getItem("abcloak");
-  const button = document.getElementById('toggle-btn');
+  const button = document.getElementById("toggle-btn");
   if (abcloak === "1") {
-      button.textContent = "On";
+    button.textContent = "On";
   } else {
-      button.textContent = "Off";
+    button.textContent = "Off";
   }
 
-  document.getElementById('settings').addEventListener('click', toggleSettingsMenu);
-  button.addEventListener('click', toggleFeature);
+  document
+    .getElementById("settings")
+    .addEventListener("click", toggleSettingsMenu);
+  button.addEventListener("click", toggleFeature);
 });

@@ -14,48 +14,48 @@ const maindir = "public";
 const port = 8080;
 const app = fastify();
 
-await app.register(import('@fastify/compress'), { global: true });
+await app.register(import("@fastify/compress"), { global: true });
 
 app.register(fastifyCors, {
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
 app.register(fastifyStatic, {
   root: path.join(__dirname, maindir),
-  prefix: '/',
+  prefix: "/",
 });
 
 app.register(fastifyStatic, {
   root: path.resolve(epoxyPath),
-  prefix: '/e/',
-  decorateReply: false
+  prefix: "/e/",
+  decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: path.resolve(libcurlPath),
-  prefix: '/l/',
-  decorateReply: false
+  prefix: "/l/",
+  decorateReply: false,
 });
 
 app.register(fastifyStatic, {
   root: path.resolve(baremuxPath),
-  prefix: '/b/',
-  decorateReply: false
+  prefix: "/b/",
+  decorateReply: false,
 });
 
-app.get('/suggest', async (request, reply) => {
+app.get("/suggest", async (request, reply) => {
   const query = request.query.q;
   if (!query) {
-    return reply.status(400).send('Query parameter is required');
+    return reply.status(400).send("Query parameter is required");
   }
   try {
     const response = await axios.get(`https://duckduckgo.com/ac/?q=${query}`);
-    const suggestions = response.data.map(item => item.phrase);
+    const suggestions = response.data.map((item) => item.phrase);
     reply.send(suggestions);
   } catch (error) {
-    console.error('Error fetching suggestions:', error);
-    reply.status(500).send('Error fetching suggestions');
+    console.error("Error fetching suggestions:", error);
+    reply.status(500).send("Error fetching suggestions");
   }
 });
 
