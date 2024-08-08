@@ -173,18 +173,18 @@ function enter() {
   const urlRegex = /^(https?:\/\/)?(?:\w+\.)+\w{2,}(?:\/\S*)?$/;
 
   if (urlRegex.test(input)) {
-    if (!input.includes(".") || !input.includes("https")) {
+    if (
+      !input.startsWith("http://") &&
+      !input.startsWith("https://")
+    ) {
       url = "https://www." + input;
     } else {
-      if (!input.includes("www.")) {
         url = input;
       }
-    }
   } else {
     baseUrl = localStorage.getItem("se") || "https://www.google.com/search?q=";
     url = baseUrl + input;
   }
-
   localStorage.setItem(
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),

@@ -81,18 +81,13 @@ function enter() {
 
   if (urlRegex.test(input)) {
     if (
-      !input.includes("www") &&
       !input.startsWith("http://") &&
       !input.startsWith("https://")
     ) {
       url = "https://www." + input;
     } else {
-      if (!input.includes("www.")) {
-        url = "https://www." + input;
-      } else {
         url = input;
       }
-    }
   } else {
     baseUrl = localStorage.getItem("se") || "https://www.google.com/search?q=";
     url = baseUrl + input;
