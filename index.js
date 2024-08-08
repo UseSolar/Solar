@@ -1,6 +1,9 @@
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
+import { bareModulePath } from "@mercuryworkshop/bare-as-module3";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import wisp from "wisp-server-node";
+import { createServer } from 'node:http';
+import { createBareServer } from "@tomphttp/bare-server-node";
 import path from "node:path";
 import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import { fileURLToPath } from "node:url";
@@ -12,7 +15,24 @@ import fastifyCors from "@fastify/cors";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const maindir = "public";
 const port = 8080;
-const app = fastify();
+const bare = createBareServer("/bs/");
+
+const serverFactory = (handler) => {
+  return createServer()
+    .on('request', (req, res) => {
+      if (bare.shouldRoute(req)) {
+        bare.routeRequest(req, res);
+      } else {
+        handler(req, res);
+      }
+    })
+    .on('upgrade', (req, socket, head) => {
+    if (req.url.endsWith('/w/'))
+        wisp.routeRequest(req, socket, head);
+    });
+};
+
+const app = fastify({ logger: false, serverFactory: serverFactory });
 
 await app.register(import("@fastify/compress"), { global: true });
 
@@ -41,6 +61,12 @@ app.register(fastifyStatic, {
 app.register(fastifyStatic, {
   root: path.resolve(baremuxPath),
   prefix: "/b/",
+  decorateReply: false,
+});
+
+app.register(fastifyStatic, {
+  root: path.resolve(bareModulePath),
+  prefix: "/bm/",
   decorateReply: false,
 });
 
@@ -73,14 +99,6 @@ app.get("/fu", (request, reply) => {
 
 app.get("/cdits", (request, reply) => {
   reply.sendFile("credits.html");
-});
-
-app.server.on("upgrade", (req, socket, head) => {
-  if (req.url.endsWith("/w/")) {
-    wisp.routeRequest(req, socket, head);
-  } else {
-    socket.end();
-  }
 });
 
 try {

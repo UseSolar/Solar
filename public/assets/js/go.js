@@ -23,13 +23,18 @@ iframe.id = "iframeWindow";
 
 window.onload = async function () {
   tabimg.style.backgroundImage = `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXBhbmVsLXJpZ2h0Ij48cmVjdCB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHg9IjMiIHk9IjMiIHJ4PSIyIi8+PHBhdGggZD0iTTE1IDN2MTgiLz48L3N2Zz4=")`;
-
+ 
   let connection = new BareMux.BareMuxConnection("/b/worker.js");
   let wispUrl =
     (location.protocol === "https:" ? "wss" : "ws") +
     "://" +
     location.host +
     "/w/";
+    let bareUrl =
+    (location.protocol === "https:" ? "https" : "http") +
+    "://" +
+    location.host +
+    "/bs/";
   if (localStorage.getItem("transtype") == "epoxy") {
     if ((await connection.getTransport()) !== "/e/index.mjs") {
       await connection.setTransport("/e/index.mjs", [{ wisp: wispUrl }]);
@@ -41,12 +46,18 @@ window.onload = async function () {
         await connection.setTransport("/l/index.mjs", [{ wisp: wispUrl }]);
         console.log("Transport set to libcurl");
       }
+    } else {
+      if (localStorage.getItem("transtype") == "bare") {
+        if ((await connection.getTransport()) !== "/bm/index.mjs") {
+          await connection.setTransport("/bm/index.mjs", [bareUrl]);
+          console.log("Transport set to bare")
+        }
+      }
     }
   }
   let encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
   document.body.appendChild(iframe);
-
   setInterval(updateUrl, 1000);
   setInterval(updateF, 1000);
 };
@@ -66,29 +77,17 @@ function updateF() {
     "/apple-touch-icon.png",
     "/apple-touch-icon-precomposed.png",
   ];
-
   function updateFaviconDisplay(url) {
     const faviconDiv = document.getElementById("favicon");
     if (faviconDiv) {
       faviconDiv.style.backgroundImage = `url(${url})`;
     }
   }
-
   function handleFaviconError() {
     updateFaviconDisplay(
       "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNjZGQ2ZjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1nbG9iZSI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cGF0aCBkPSJNMTIgMmExNC41IDE0LjUgMCAwIDAgMCAyMCAxNC41IDE0LjUgMCAwIDAgMC0yMCIvPjxwYXRoIGQ9Ik0yIDEyaDIwIi8+PC9zdmc+",
     );
   }
-
-  iframe.contentWindow.open = (url) => {
-    try {
-      iframe.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-      document.body.appendChild(iframe);
-    } catch (error) {
-      console.error("Error opening new page", error);
-    }
-  };
-
   function loadFaviconFromPaths(paths, index) {
     if (index >= paths.length) {
       handleFaviconError();
@@ -137,7 +136,7 @@ function ba() {
 
 function toggleFullScreen() {
   iframe.fullscreenElement
-    ? document.exitFullscreen()
+    ? iframe.exitFullscreen()
     : iframe.requestFullscreen();
 }
 
@@ -155,17 +154,6 @@ inpu.addEventListener("keydown", function (event) {
   }
 });
 
-function inj() {
-  const injsite = prompt(
-    "What site do you want this code to run on (include https:// && www)",
-  );
-  const injcode = prompt("Enter JavaScript that you want to execute");
-  let existingData = localStorage.getItem("injData");
-  let data = existingData ? JSON.parse(existingData) : [];
-  data.push({ site: injsite, code: injcode });
-  localStorage.setItem("injData", JSON.stringify(data));
-}
-
 function enter() {
   let input = document.getElementById("search-input").value.trim();
   let baseUrl;
@@ -173,18 +161,18 @@ function enter() {
   const urlRegex = /^(https?:\/\/)?(?:\w+\.)+\w{2,}(?:\/\S*)?$/;
 
   if (urlRegex.test(input)) {
-    if (
-      !input.startsWith("http://") &&
-      !input.startsWith("https://")
-    ) {
+    if (!input.includes(".") || !input.includes("https")) {
       url = "https://www." + input;
     } else {
+      if (!input.includes("www.")) {
         url = input;
       }
+    }
   } else {
     baseUrl = localStorage.getItem("se") || "https://www.google.com/search?q=";
     url = baseUrl + input;
   }
+
   localStorage.setItem(
     "Iframe",
     __uv$config.prefix + __uv$config.encodeUrl(url),
