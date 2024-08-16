@@ -1,6 +1,6 @@
 # About Us
 
-**Solar is a webproxy that is fast, has a sleek UI, and is easy to use**
+Solar is a webproxy that is fast, has a sleek UI, and is easy to use
 
 # Deploying 
 
