@@ -1,8 +1,8 @@
 {
     "type": "module",
-    "name": "starlight",
+    "name": "solar",
     "version": "1.1.2",
-    "description": "StarLight is a web proxy that has many features.",
+    "description": "",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/GoStarLight/StarLight.git"
+        "url": "https://github.com/usesolar/solar.git"
     },
     "keywords": [
         "educational"
@@ -18,9 +18,9 @@
     "author": "bwigal22116",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/GoStarLight/StarLight/issues"
+        "url": "https://github.com/usesolar/solar/issues"
     },
-    "homepage": "https://github.com/GoStarLight/StarLight#readme",
+    "homepage": "https://github.com/usesolar/solar#readme",
     "dependencies": {
         "@fastify/compress": "^7.0.3",
         "@fastify/cors": "^9.0.1",
