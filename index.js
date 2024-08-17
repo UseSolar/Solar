@@ -2,7 +2,7 @@ import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
 import wisp from "wisp-server-node";
-import { createServer } from 'node:http';
+import { createServer } from "node:http";
 import { createBareServer } from "@tomphttp/bare-server-node";
 import path from "node:path";
 import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
@@ -19,16 +19,15 @@ const bare = createBareServer("/bs/");
 
 const serverFactory = (handler) => {
   return createServer()
-    .on('request', (req, res) => {
+    .on("request", (req, res) => {
       if (bare.shouldRoute(req)) {
         bare.routeRequest(req, res);
       } else {
         handler(req, res);
       }
     })
-    .on('upgrade', (req, socket, head) => {
-    if (req.url.endsWith('/w/'))
-        wisp.routeRequest(req, socket, head);
+    .on("upgrade", (req, socket, head) => {
+      if (req.url.endsWith("/w/")) wisp.routeRequest(req, socket, head);
     });
 };
 
