@@ -9,6 +9,29 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
+.container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.content img {
+  width: 100px;
+}
 .navbar {
   display: flex;
   justify-content: space-between;

@@ -1,3 +1,43 @@
+const data = {
+  items: [
+    {
+      favicon:
+        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
+      title: "Home - Google Drive",
+      redir: "https://drive.google.com/drive/u/0/home",
+    },
+    {
+      favicon:
+        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
+      title: "Home",
+      redir: "https://classroom.google.com/",
+    },
+    {
+      favicon: "",
+      title: "Grades & Attendance",
+      redir: "https://www.powerschool.com/sign-in/",
+    },
+    {
+      favicon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
+      title: "Gmail",
+      redir: "https://mail.google.com/mail/u/1/#inbox",
+    },
+    {
+      favicon: "https://static.canva.com/static/images/favicon-1.ico",
+      title: "Home - Canva",
+      redir: "https://canva.com",
+    },
+  ],
+};
+
+const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
+let link =
+  document.querySelector("link[rel='icon']") || document.createElement("link");
+link.rel = "icon";
+link.href = randomItem.favicon;
+document.head.appendChild(link);
+document.title = randomItem.title;
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -30,29 +70,11 @@ window.onload = async function () {
     "://" +
     location.host +
     "/w/";
-  let bareUrl =
-    (location.protocol === "https:" ? "https" : "http") +
-    "://" +
-    location.host +
-    "/bs/";
+  locationbar;
   if (localStorage.getItem("transtype") == "epoxy") {
     if ((await connection.getTransport()) !== "/e/index.mjs") {
       await connection.setTransport("/e/index.mjs", [{ wisp: wispUrl }]);
       console.log("Transport set to epoxy");
-    }
-  } else {
-    if (localStorage.getItem("transtype") == "libcurl") {
-      if ((await connection.getTransport()) !== "/l/index.mjs") {
-        await connection.setTransport("/l/index.mjs", [{ wisp: wispUrl }]);
-        console.log("Transport set to libcurl");
-      }
-    } else {
-      if (localStorage.getItem("transtype") == "bare") {
-        if ((await connection.getTransport()) !== "/bm/index.mjs") {
-          await connection.setTransport("/bm/index.mjs", [bareUrl]);
-          console.log("Transport set to bare");
-        }
-      }
     }
   }
   let encUrl = localStorage.getItem("Iframe");

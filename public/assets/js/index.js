@@ -1,3 +1,78 @@
+const data = {
+  items: [
+    {
+      favicon:
+        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
+      title: "Home - Google Drive",
+      redir: "https://drive.google.com/drive/u/0/home",
+    },
+    {
+      favicon:
+        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
+      title: "Home",
+      redir: "https://classroom.google.com/",
+    },
+    {
+      favicon: "",
+      title: "Grades & Attendance",
+      redir: "https://www.powerschool.com/sign-in/",
+    },
+    {
+      favicon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
+      title: "Gmail",
+      redir: "https://mail.google.com/mail/u/1/#inbox",
+    },
+    {
+      favicon: "https://static.canva.com/static/images/favicon-1.ico",
+      title: "Home - Canva",
+      redir: "https://canva.com",
+    },
+  ],
+};
+
+const windowName = "tbclk";
+if (window.name !== windowName) {
+  const win = window.open("", windowName);
+  if (!win || win.closed) {
+    alert("Consider allowing popups to use about:blank");
+    const randomItem =
+      data.items[Math.floor(Math.random() * data.items.length)];
+    let link =
+      document.querySelector("link[rel='icon']") ||
+      document.createElement("link");
+    link.rel = "icon";
+    link.href = randomItem.favicon;
+    document.head.appendChild(link);
+    document.title = randomItem.title;
+  }
+  if (win) {
+    win.document.body.style.margin = "0";
+    win.document.body.style.height = "100vh";
+    let iframe = win.document.querySelector("iframe");
+    if (!iframe) {
+      iframe = win.document.createElement("iframe");
+      iframe.style.border = "none";
+      iframe.style.width = "100vw";
+      iframe.style.height = "100vh";
+      iframe.style.margin = "0";
+      iframe.src = location.href;
+      win.document.body.appendChild(iframe);
+      const randomItem =
+        data.items[Math.floor(Math.random() * data.items.length)];
+      let link =
+        win.document.querySelector("link[rel='icon']") ||
+        win.document.createElement("link");
+      link.rel = "icon";
+      link.href = randomItem.favicon;
+      win.document.head.appendChild(link);
+      win.document.title = randomItem.title;
+      location.replace(randomItem.redir);
+    }
+  } else {
+    console.info("Failed to open the new window.");
+  }
+}
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -25,7 +100,7 @@ function handleProxyChoice(service, url) {
       );
       window.location.href = "./g";
     } else if (upperChoice === "B") {
-      window.location.href = url;
+      location.replace(url);
     } else {
       console.log("Invalid choice. Please choose 'A' or 'B'.");
     }
@@ -35,10 +110,10 @@ function handleProxyChoice(service, url) {
 }
 
 function ocgh() {
-  handleProxyChoice("Github", "https://github.com/GoStarLight/StarLight");
+  handleProxyChoice("Github", "https://github.com/usesolar/solar");
 }
 function ocdc() {
-  handleProxyChoice("Discord", "https://discord.gg/H65c2HqfY8");
+  handleProxyChoice("Discord", "https://dsc.gg/usesolar");
 }
 
 const input = document.getElementById("search-input");
@@ -139,45 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-const data = {
-  items: [
-    {
-      favicon:
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
-      title: "Home - Google Drive",
-    },
-    {
-      favicon:
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
-      title: "Home",
-    },
-    {
-      favicon: "https://nasd.powerschool.com/apple-touch-icon.png",
-      title: "Grades & Attendance",
-    },
-    {
-      favicon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
-      title: "Gmail",
-    },
-    {
-      favicon: "https://static.canva.com/static/images/fb_cover-1.jpg",
-      title: "Home - Canva",
-    },
-  ],
-};
-
-function setRandomFaviconAndTitle() {
-  const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
-  let link =
-    document.querySelector("link[rel='icon']") ||
-    document.createElement("link");
-  link.rel = "icon";
-  link.href = randomItem.favicon;
-  document.head.appendChild(link);
-  document.title = randomItem.title;
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeSearchEngine();
-  setRandomFaviconAndTitle();
 });
