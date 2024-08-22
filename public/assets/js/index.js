@@ -2,7 +2,7 @@ async function getData() {
   try {
     const response = await fetch("../assets/json/tabs.json");
     if (!response.ok) {
-      alert('File not found');
+      alert("File not found");
     }
     const jsonData = await response.json();
     return jsonData;
@@ -17,7 +17,7 @@ async function cloak() {
 
     openWindow(data);
   } catch (error) {
-    console.error('Error in cloak function:', error);
+    console.error("Error in cloak function:", error);
     throw error;
   }
 
@@ -29,9 +29,12 @@ async function cloak() {
       if (!win || win.closed) {
         alert("Consider allowing popups to use about:blank");
 
-        const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
+        const randomItem =
+          data.items[Math.floor(Math.random() * data.items.length)];
 
-        let link = document.querySelector("link[rel='icon']") || document.createElement("link");
+        let link =
+          document.querySelector("link[rel='icon']") ||
+          document.createElement("link");
         link.rel = "icon";
         link.href = randomItem.favicon;
         document.head.appendChild(link);
@@ -52,9 +55,12 @@ async function cloak() {
           iframe.src = location.href;
           win.document.body.appendChild(iframe);
 
-          const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
+          const randomItem =
+            data.items[Math.floor(Math.random() * data.items.length)];
 
-          let link = win.document.querySelector("link[rel='icon']") || win.document.createElement("link");
+          let link =
+            win.document.querySelector("link[rel='icon']") ||
+            win.document.createElement("link");
           link.rel = "icon";
           link.href = randomItem.favicon;
           win.document.head.appendChild(link);
