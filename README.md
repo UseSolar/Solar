@@ -61,4 +61,4 @@ git pull --force --allow-unrelated-histories
 
 # Contributors
 
-Thank you to everyone who helped make solar.
+Thank you to everyone who helped make solar possible

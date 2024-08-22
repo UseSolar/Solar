@@ -102,7 +102,7 @@ app.get("/cdits", (request, reply) => {
 
 try {
   const address = await app.listen({ port });
-  console.log("StarLight is listening on:");
+  console.log("Solar is listening on:");
   console.log(`\thttp://localhost:${port}`);
   console.log(`\t${address}`);
 } catch (err) {
