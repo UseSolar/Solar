@@ -2,6 +2,7 @@ const pass = {
   challenge: false, // Set to true if you want to enable password protection.
   users: {
     // Add more users in the format username: "password",
+    // Dont forget to put , at the end like username: "password", or it wont work
     username: "password",
     anotheruser: "anotherpassword",
   },

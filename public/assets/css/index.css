@@ -117,9 +117,10 @@ body {
 #search-input {
   font-family: "Rubik", sans-serif;
   margin-top: 32px;
-  width: 368px;
+  width: 400px;
   height: 62px;
-  padding-left: 36px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: 20px;
   border: none;
   border-radius: 20px;
@@ -137,12 +138,15 @@ body {
 
 #search-input:hover,
 #search-input:focus {
-  width: 458px;
+  width: 425px;
 }
 
 ::placeholder {
   color: #ffffff;
   opacity: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #search-engine {

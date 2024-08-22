@@ -1,58 +1,16 @@
-const data = {
-  items: [
-    {
-      favicon:
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
-      title: "Home - Google Drive",
-      redir: "https://drive.google.com/drive/u/0/home",
-    },
-    {
-      favicon:
-        "https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png",
-      title: "Home",
-      redir: "https://classroom.google.com/",
-    },
-    {
-      favicon: "",
-      title: "Grades & Attendance",
-      redir: "https://www.powerschool.com/sign-in/",
-    },
-    {
-      favicon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico",
-      title: "Gmail",
-      redir: "https://mail.google.com/mail/u/1/#inbox",
-    },
-    {
-      favicon: "https://static.canva.com/static/images/favicon-1.ico",
-      title: "Home - Canva",
-      redir: "https://canva.com",
-    },
-  ],
-};
+/* 
 const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
 let link =
   document.querySelector("link[rel='icon']") || document.createElement("link");
 link.rel = "icon";
 link.href = randomItem.favicon;
 document.head.appendChild(link);
-document.title = randomItem.title;
-
-window.addEventListener("load", () => {
-  navigator.serviceWorker
-    .register("./sw.js?v=3")
-    .then(() => {
-      navigator.serviceWorker.ready.then(() => {
-        console.log("Successfully Registered Service Workers");
-      });
-    })
-    .catch((error) => {
-      console.error("Service Worker registration failed:", error);
-    });
-});
+document.title = randomItem.title; 
+*/
 
 const imageContainer = document.getElementById("image-container");
 
-fetch("./assets/json/g.json?v=3")
+fetch("./assets/json/games.json?v=3")
   .then((response) => response.json())
   .then((data) => {
     data.forEach((image) => {

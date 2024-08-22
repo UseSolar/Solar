@@ -16,7 +16,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-  background: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   border-radius: 5px;
 }
@@ -32,6 +32,7 @@ body {
 .content img {
   width: 100px;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -131,13 +132,14 @@ body {
 #image-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px auto;
   overflow: hidden;
-  justify-content: flex-start;
 }
 
 #image-container a {
   border-radius: 10px;
-  margin: 0 20px 20px 0;
+  margin: 10px;
   flex: 0 1 auto;
   background: rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
@@ -145,6 +147,7 @@ body {
 
 #image-container a:hover {
   transform: scale(0.9);
+  cursor: pointer;
 }
 
 .image-container {
@@ -173,7 +176,8 @@ p {
   width: 550px;
   height: 58px;
   font-family: "Rubik", sans-serif;
-  padding-left: 36px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: 20px;
   border-radius: 5px;
   text-align: center;
@@ -186,7 +190,7 @@ p {
   color: #ffffff;
   border: none;
   transition: width 0.3s ease;
-  margin: 0 auto;
+  margin-top: 15px;
 }
 
 .index {
