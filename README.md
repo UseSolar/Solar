@@ -1,4 +1,4 @@
-# About Us
+# Im sorry bearcat
 
 Solar is a webproxy that is fast, has a sleek UI, and is easy to use
 
