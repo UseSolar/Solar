@@ -55,7 +55,7 @@ Updating to the latest version will give you benefits like
 > This may overwrite any changes
 
 ```
-cd StarLight
+cd Solar
 git pull --force --allow-unrelated-histories
 ```
 
