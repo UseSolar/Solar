@@ -1,11 +1,11 @@
 import { epoxyPath } from "@mercuryworkshop/epoxy-transport";
 import { bareModulePath } from "@mercuryworkshop/bare-as-module3";
 import { baremuxPath } from "@mercuryworkshop/bare-mux/node";
+import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import wisp from "wisp-server-node";
 import { createServer } from "node:http";
 import { createBareServer } from "@tomphttp/bare-server-node";
-import path from "node:path";
-import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
+import path, { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
 import fastify from "fastify";
@@ -15,6 +15,7 @@ import fastifyCors from "@fastify/cors";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const maindir = "public";
 const port = 8080;
+
 const bare = createBareServer("/bs/");
 
 const serverFactory = (handler) => {
@@ -31,43 +32,29 @@ const serverFactory = (handler) => {
     });
 };
 
-const app = fastify({ logger: false, serverFactory: serverFactory });
+const app = fastify({ logger: false, serverFactory });
 
 await app.register(import("@fastify/compress"), { global: true });
-
 app.register(fastifyCors, {
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
-app.register(fastifyStatic, {
-  root: path.join(__dirname, maindir),
-  prefix: "/",
-});
+const routes = [
+  { path: maindir, prefix: "/" },
+  { path: epoxyPath, prefix: "/e/" },
+  { path: libcurlPath, prefix: "/l/" },
+  { path: baremuxPath, prefix: "/b/" },
+  { path: bareModulePath, prefix: "/bm/" },
+];
 
-app.register(fastifyStatic, {
-  root: path.resolve(epoxyPath),
-  prefix: "/e/",
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: path.resolve(libcurlPath),
-  prefix: "/l/",
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: path.resolve(baremuxPath),
-  prefix: "/b/",
-  decorateReply: false,
-});
-
-app.register(fastifyStatic, {
-  root: path.resolve(bareModulePath),
-  prefix: "/bm/",
-  decorateReply: false,
-});
+routes.forEach(({ path, prefix }) =>
+  app.register(fastifyStatic, {
+    root: resolve(path),
+    prefix,
+    decorateReply: false,
+  }),
+);
 
 app.get("/suggest", async (request, reply) => {
   const query = request.query.q;
@@ -84,21 +71,16 @@ app.get("/suggest", async (request, reply) => {
   }
 });
 
-app.get("/gms", (request, reply) => {
-  reply.sendFile("games.html");
-});
+const files = [
+  { route: "/gms", file: "games.html" },
+  { route: "/g", file: "go.html" },
+  { route: "/fu", file: "fun.html" },
+  { route: "/cdits", file: "credits.html" },
+];
 
-app.get("/g", (request, reply) => {
-  reply.sendFile("go.html");
-});
-
-app.get("/fu", (request, reply) => {
-  reply.sendFile("fun.html");
-});
-
-app.get("/cdits", (request, reply) => {
-  reply.sendFile("credits.html");
-});
+files.forEach(({ route, file }) =>
+  app.get(route, (request, reply) => reply.sendFile(file)),
+);
 
 try {
   const address = await app.listen({ port });
