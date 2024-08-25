@@ -41,11 +41,10 @@ app.register(fastifyCors, {
   methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
-// Register the main directory with `decorateReply: true` only once
 app.register(fastifyStatic, {
   root: path.resolve(maindir),
   prefix: "/",
-  decorateReply: true, // Only this instance decorates the reply object
+  decorateReply: true, 
 });
 
 const routes = [
