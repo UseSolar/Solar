@@ -20,8 +20,7 @@ const port = 8080;
 const bare = createBareServer("/bs/");
 
 const serverFactory = (handler) => {
-  return http
-    .createServer()
+  return createServer()
     .on("request", (req, res) => {
       if (bare.shouldRoute(req)) {
         bare.routeRequest(req, res);
