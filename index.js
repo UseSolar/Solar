@@ -15,7 +15,7 @@ import fastifyCompress from "@fastify/compress";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const maindir = "public";
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const bare = createBareServer("/bs/");
 
