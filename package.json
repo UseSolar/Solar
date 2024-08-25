@@ -19,9 +19,6 @@
       "url": "https://github.com/usesolar/solar/issues"
     },
     "homepage": "https://github.com/usesolar/solar#readme",
-    "engines": {
-      "node": ">=18.0.0"
-    },
     "dependencies": {
       "@fastify/compress": "^7.0.3",
       "@fastify/cors": "^9.0.1",
