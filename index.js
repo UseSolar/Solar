@@ -5,12 +5,13 @@ import { libcurlPath } from "@mercuryworkshop/libcurl-transport";
 import wisp from "wisp-server-node";
 import { createServer } from "node:http";
 import { createBareServer } from "@tomphttp/bare-server-node";
-import path, { resolve } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
 import fastify from "fastify";
 import fastifyStatic from "@fastify/static";
 import fastifyCors from "@fastify/cors";
+import fastifyCompress from "@fastify/compress";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const maindir = "public";
@@ -34,26 +35,33 @@ const serverFactory = (handler) => {
 
 const app = fastify({ logger: false, serverFactory });
 
-await app.register(import("@fastify/compress"), { global: true });
+await app.register(fastifyCompress, { global: true });
 app.register(fastifyCors, {
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
 });
 
+// Register the main directory with `decorateReply: true` only once
+app.register(fastifyStatic, {
+  root: path.resolve(maindir),
+  prefix: "/",
+  decorateReply: true, // Only this instance decorates the reply object
+});
+
 const routes = [
-  { path: maindir, prefix: "/" },
-  { path: epoxyPath, prefix: "/e/" },
-  { path: libcurlPath, prefix: "/l/" },
-  { path: baremuxPath, prefix: "/b/" },
-  { path: bareModulePath, prefix: "/bm/" },
+  { pathDir: epoxyPath, prefix: "/e/" },
+  { pathDir: libcurlPath, prefix: "/l/" },
+  { pathDir: baremuxPath, prefix: "/b/" },
+  { pathDir: bareModulePath, prefix: "/bm/" },
 ];
 
-routes.forEach(({ path, prefix }) =>
+// Register other static file routes without `decorateReply`
+routes.forEach(({ pathDir, prefix }) =>
   app.register(fastifyStatic, {
-    root: resolve(path),
+    root: path.resolve(pathDir), 
     prefix,
-    decorateReply: false,
-  }),
+    decorateReply: false, // Disable decoration to avoid conflicts
+  })
 );
 
 app.get("/suggest", async (request, reply) => {
@@ -79,7 +87,7 @@ const files = [
 ];
 
 files.forEach(({ route, file }) =>
-  app.get(route, (request, reply) => reply.sendFile(file)),
+  app.get(route, (request, reply) => reply.sendFile(file))
 );
 
 try {
