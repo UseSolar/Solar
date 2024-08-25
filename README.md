@@ -29,8 +29,8 @@ npm start
 
 1. Fork this repo
 2. Press the blue code button
-3. then press the codespace tab
-4. press the blue create codespace on main branch button
+3. Then press the codespace tab
+4. Press the blue create codespace on main branch button
 5. Open ternimal in the codespace and run
 
 ```
@@ -49,7 +49,7 @@ Updating to the latest version will give you benefits like
 
 - Security Updates
 - Features
-- Bug fixes
+- Bug Fixes
 - Faster
 
 ## Console & Github Codespace
