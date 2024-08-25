@@ -69,13 +69,9 @@ window.onload = async function () {
     "://" +
     location.host +
     "/w/";
-  locationbar;
-  if (localStorage.getItem("transtype") == "epoxy") {
     if ((await connection.getTransport()) !== "/e/index.mjs") {
       await connection.setTransport("/e/index.mjs", [{ wisp: wispUrl }]);
-      console.log("Transport set to epoxy");
     }
-  }
   let encUrl = localStorage.getItem("Iframe");
   iframe.src = encUrl;
   document.body.appendChild(iframe);

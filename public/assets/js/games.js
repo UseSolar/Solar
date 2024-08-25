@@ -14,7 +14,6 @@ async function getData() {
 async function cloak() {
   try {
     const data = await getData();
-
     openWindow(data);
   } catch (error) {
     console.error("Error in cloak function:", error);
@@ -107,43 +106,6 @@ function updateGridLayout() {
     `repeat(auto-fill, minmax(${imageWidth}px, 1fr))`;
 }
 
-async function cloak() {
-  try {
-    const data = await getData();
-    openWindow(data);
-  } catch (error) {
-    console.error("Error in cloak function:", error);
-    throw error;
-  }
-
-  function openWindow(data) {
-    const randomItem =
-      data.items[Math.floor(Math.random() * data.items.length)];
-
-    let link =
-      document.querySelector("link[rel='icon']") ||
-      document.createElement("link");
-    link.rel = "icon";
-    link.href = randomItem.favicon;
-    document.head.appendChild(link);
-    document.title = randomItem.title;
-  }
-}
-
-async function getData() {
-  try {
-    const response = await fetch("../assets/json/tabs.json");
-    if (!response.ok) {
-      alert("File not found");
-    }
-    const jsonData = await response.json();
-    return jsonData;
-  } catch (error) {
-    throw error;
-  }
-}
-
-cloak();
 fetchAndRenderImages();
 
 const searchBox = document.getElementById("search-input");

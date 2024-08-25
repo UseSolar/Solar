@@ -3,22 +3,24 @@ async function getData() {
     const response = await fetch("../assets/json/tabs.json");
     if (!response.ok) {
       alert("File not found");
+      return null; // Return null if the response is not OK
     }
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    throw error;
+    console.error("Error fetching data:", error);
+    return null; // Return null in case of an error
   }
 }
 
 async function cloak() {
   try {
     const data = await getData();
-
-    openWindow(data);
+    if (data) {
+      openWindow(data);
+    }
   } catch (error) {
     console.error("Error in cloak function:", error);
-    throw error;
   }
 
   function openWindow(data) {
@@ -29,12 +31,10 @@ async function cloak() {
       if (!win || win.closed) {
         alert("Consider allowing popups to use about:blank");
 
-        const randomItem =
-          data.items[Math.floor(Math.random() * data.items.length)];
+        const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
 
-        let link =
-          document.querySelector("link[rel='icon']") ||
-          document.createElement("link");
+        // Set favicon and title for the main window
+        let link = document.querySelector("link[rel='icon']") || document.createElement("link");
         link.rel = "icon";
         link.href = randomItem.favicon;
         document.head.appendChild(link);
@@ -43,7 +43,10 @@ async function cloak() {
 
       if (win) {
         win.document.body.style.margin = "0";
+        win.document.body.style.padding = "0"; 
         win.document.body.style.height = "100vh";
+        win.document.body.style.width = "100vw";
+        win.document.documentElement.style.height = "100%"; 
 
         let iframe = win.document.querySelector("iframe");
         if (!iframe) {
@@ -52,15 +55,13 @@ async function cloak() {
           iframe.style.width = "100vw";
           iframe.style.height = "100vh";
           iframe.style.margin = "0";
+          iframe.style.padding = "0"; 
           iframe.src = location.href;
           win.document.body.appendChild(iframe);
 
-          const randomItem =
-            data.items[Math.floor(Math.random() * data.items.length)];
+          const randomItem = data.items[Math.floor(Math.random() * data.items.length)];
 
-          let link =
-            win.document.querySelector("link[rel='icon']") ||
-            win.document.createElement("link");
+          let link = win.document.querySelector("link[rel='icon']") || win.document.createElement("link");
           link.rel = "icon";
           link.href = randomItem.favicon;
           win.document.head.appendChild(link);
@@ -188,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     suggestionsList.innerHTML = suggestions
       .map(
         (suggestion) =>
-          `<li><div class="suggestion-item"><img class="search-icon" src="data:image/svg+xml;base64,..." alt="StarLight">${suggestion}</div></li>`,
+          `<li><div class="suggestion-item"><img class="search-icon" src="./assets/img/search.png" alt="StarLight">${suggestion}</div></li>`,
       )
       .join("");
   }

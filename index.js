@@ -15,7 +15,7 @@ import fastifyCompress from "@fastify/compress";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const maindir = "public";
-const Port = process.env.PORT || 8080;
+const port = 8080;
 
 const bare = createBareServer("/bs/");
 
@@ -79,9 +79,7 @@ app.get("/suggest", async (request, reply) => {
 
 const files = [
   { route: "/gms", file: "games.html" },
-  { route: "/g", file: "go.html" },
-  { route: "/fu", file: "fun.html" },
-  { route: "/cdits", file: "credits.html" },
+  { route: "/g", file: "go.html" }
 ];
 
 files.forEach(({ route, file }) =>
@@ -89,9 +87,9 @@ files.forEach(({ route, file }) =>
 );
 
 try {
-  const address = app.listen({ Port });
+  const address = await app.listen({ port });
   console.log("Solar is listening on:");
-  console.log(`\thttp://localhost:${Port}`);
+  console.log(`\thttp://localhost:${port}`);
   console.log(`\t${address}`);
 } catch (err) {
   console.error(err);

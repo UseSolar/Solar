@@ -2,11 +2,14 @@
 
 * {
   text-shadow: 0px 0px 5px #ffffff;
+  box-sizing: border-box; /* Ensure padding and borders don't affect width calculations */
 }
 
 body {
   background: rgb(27, 18, 53);
   font-family: "Rubik", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -15,7 +18,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 80%; /* Increased width for better mobile fit */
+  max-width: 1200px; /* Set a max-width for large screens */
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   border-radius: 5px;
@@ -41,36 +45,10 @@ body {
   backdrop-filter: blur(5px);
   padding: 0 24px;
   height: 54px;
-  width: calc(100vw - 185px);
+  width: calc(100% - 40px); 
   border: none;
-  margin-top: 10px;
   border-radius: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.container {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  border-radius: 5px;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.content img {
-  width: 100px;
+  margin: 10px auto;
 }
 
 .logo img {
@@ -127,6 +105,8 @@ body {
   color: #cdd6f4;
   font-family: "Rubik", sans-serif;
   text-align: center;
+  font-size: 14px; 
+  margin-top: 5px; 
 }
 
 #image-container {
@@ -135,6 +115,7 @@ body {
   justify-content: center;
   margin: 25px auto;
   overflow: hidden;
+  padding: 0 10px; 
 }
 
 #image-container a {
@@ -173,7 +154,8 @@ p {
 }
 
 #search-input {
-  width: 550px;
+  width: 100%;
+  max-width: 550px; 
   height: 58px;
   font-family: "Rubik", sans-serif;
   padding-left: 15px;
@@ -199,6 +181,7 @@ p {
   text-align: center;
   overflow: hidden;
 }
+
 ::placeholder {
   color: #ffffff;
   opacity: 1;
