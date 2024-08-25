@@ -13,7 +13,7 @@ Solar is a webproxy that is fast, has a sleek UI, and is easy to use
 ## Ternimal
 
 > [!IMPORTANT]
-> You will need to install [Node.js](https://nodejs.org/en/download/package-manager) if you haven't already.
+> You will need to install [Node.js](https://nodejs.org/en/download/prebuilt-installer) if you haven't already.
 
 ```
 git clone https://github.com/UseSolar/Solar
@@ -40,6 +40,9 @@ npm start
 
 6. After those commands press the make public button on the right
 
+## More Tutorials
+
+For additional tutorials and premade links, join our [Discord Community](https://dsc.gg/usesolar).
 # Updating
 
 Updating to the latest version will give you benefits like
