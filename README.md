@@ -43,6 +43,7 @@ npm start
 ## More Tutorials
 
 For additional tutorials and premade links, join our [Discord Community](https://dsc.gg/usesolar).
+
 # Updating
 
 Updating to the latest version will give you benefits like

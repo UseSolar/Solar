@@ -20,7 +20,8 @@ const port = 8080;
 const bare = createBareServer("/bs/");
 
 const serverFactory = (handler) => {
-  return createServer()
+  return http
+    .createServer()
     .on("request", (req, res) => {
       if (bare.shouldRoute(req)) {
         bare.routeRequest(req, res);
@@ -44,7 +45,7 @@ app.register(fastifyCors, {
 app.register(fastifyStatic, {
   root: path.resolve(maindir),
   prefix: "/",
-  decorateReply: true, 
+  decorateReply: true,
 });
 
 const routes = [
@@ -54,13 +55,12 @@ const routes = [
   { pathDir: bareModulePath, prefix: "/bm/" },
 ];
 
-// Register other static file routes without `decorateReply`
 routes.forEach(({ pathDir, prefix }) =>
   app.register(fastifyStatic, {
-    root: path.resolve(pathDir), 
+    root: path.resolve(pathDir),
     prefix,
-    decorateReply: false, // Disable decoration to avoid conflicts
-  })
+    decorateReply: false,
+  }),
 );
 
 app.get("/suggest", async (request, reply) => {
@@ -86,7 +86,7 @@ const files = [
 ];
 
 files.forEach(({ route, file }) =>
-  app.get(route, (request, reply) => reply.sendFile(file))
+  app.get(route, (request, reply) => reply.sendFile(file)),
 );
 
 try {

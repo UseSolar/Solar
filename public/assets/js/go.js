@@ -22,16 +22,16 @@ async function cloak() {
   }
 
   function openWindow(data) {
-        const randomItem =
-          data.items[Math.floor(Math.random() * data.items.length)];
+    const randomItem =
+      data.items[Math.floor(Math.random() * data.items.length)];
 
-        let link =
-          document.querySelector("link[rel='icon']") ||
-          document.createElement("link");
-        link.rel = "icon";
-        link.href = randomItem.favicon;
-        document.head.appendChild(link);
-        document.title = randomItem.title;
+    let link =
+      document.querySelector("link[rel='icon']") ||
+      document.createElement("link");
+    link.rel = "icon";
+    link.href = randomItem.favicon;
+    document.head.appendChild(link);
+    document.title = randomItem.title;
   }
 }
 

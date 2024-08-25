@@ -22,26 +22,29 @@ async function cloak() {
   }
 
   function openWindow(data) {
-        const randomItem =
-          data.items[Math.floor(Math.random() * data.items.length)];
+    const randomItem =
+      data.items[Math.floor(Math.random() * data.items.length)];
 
-        let link =
-          document.querySelector("link[rel='icon']") ||
-          document.createElement("link");
-        link.rel = "icon";
-        link.href = randomItem.favicon;
-        document.head.appendChild(link);
-        document.title = randomItem.title;
+    let link =
+      document.querySelector("link[rel='icon']") ||
+      document.createElement("link");
+    link.rel = "icon";
+    link.href = randomItem.favicon;
+    document.head.appendChild(link);
+    document.title = randomItem.title;
   }
 }
 
 cloak();
 
-const imageContainer = document.getElementById("image-container");
+async function fetchAndRenderImages() {
+  try {
+    const response = await fetch("./assets/json/games.json?v=3");
+    if (!response.ok) throw new Error("Failed to fetch games.json");
+    const data = await response.json();
 
-fetch("./assets/json/games.json?v=3")
-  .then((response) => response.json())
-  .then((data) => {
+    const fragment = document.createDocumentFragment();
+
     data.forEach((image) => {
       const imageElement = document.createElement("a");
       const imgContainer = document.createElement("div");
@@ -50,15 +53,18 @@ fetch("./assets/json/games.json?v=3")
       const img = document.createElement("img");
       img.src = image.logo;
       img.alt = image.title || "ERROR";
-      img.style.width = "148px";
-      img.style.height = "148px";
       img.className = "classy";
+      img.loading = "lazy";
 
       const altText = document.createElement("div");
       altText.className = "game-name";
       altText.textContent = image.title;
-      altText.style.textAlign = "center";
-      altText.style.marginTop = "10px";
+
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(altText);
+
+      imageElement.appendChild(imgContainer);
+      fragment.appendChild(imageElement);
 
       imgContainer.addEventListener("click", function (event) {
         event.preventDefault();
@@ -77,17 +83,68 @@ fetch("./assets/json/games.json?v=3")
           alert(image.alert);
         }
       });
-
-      imgContainer.appendChild(img);
-      imgContainer.appendChild(altText);
-
-      imageElement.appendChild(imgContainer);
-      imageContainer.appendChild(imageElement);
     });
-  })
-  .catch((error) => {
-    console.error("Error fetching JSON data:", error);
-  });
+
+    document.getElementById("image-container").appendChild(fragment);
+    updateGridLayout();
+  } catch (error) {
+    console.error("Error fetching and rendering images:", error);
+  }
+}
+
+function updateGridLayout() {
+  const imageElements = Array.from(
+    document.querySelectorAll("#image-container > a"),
+  );
+  const visibleImageElements = imageElements.filter(
+    (imageElement) => imageElement.style.display !== "none",
+  );
+  const containerWidth = document.getElementById("image-container").clientWidth;
+  const imageWidth = 150;
+  const numColumns = Math.floor(containerWidth / imageWidth);
+
+  document.getElementById("image-container").style.gridTemplateColumns =
+    `repeat(auto-fill, minmax(${imageWidth}px, 1fr))`;
+}
+
+async function cloak() {
+  try {
+    const data = await getData();
+    openWindow(data);
+  } catch (error) {
+    console.error("Error in cloak function:", error);
+    throw error;
+  }
+
+  function openWindow(data) {
+    const randomItem =
+      data.items[Math.floor(Math.random() * data.items.length)];
+
+    let link =
+      document.querySelector("link[rel='icon']") ||
+      document.createElement("link");
+    link.rel = "icon";
+    link.href = randomItem.favicon;
+    document.head.appendChild(link);
+    document.title = randomItem.title;
+  }
+}
+
+async function getData() {
+  try {
+    const response = await fetch("../assets/json/tabs.json");
+    if (!response.ok) {
+      alert("File not found");
+    }
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    throw error;
+  }
+}
+
+cloak();
+fetchAndRenderImages();
 
 const searchBox = document.getElementById("search-input");
 const imagesContainer = document.getElementById("image-container");
@@ -109,18 +166,3 @@ searchBox.addEventListener("keyup", function () {
 
   updateGridLayout();
 });
-
-// Update Game Layout
-function updateGridLayout() {
-  const imageElements = Array.from(
-    document.querySelectorAll("#image-container > a"),
-  );
-  const visibleImageElements = imageElements.filter(
-    (imageElement) => imageElement.style.display !== "none",
-  );
-  const containerWidth = imageContainer.clientWidth;
-  const imageWidth = 150;
-  const numColumns = Math.floor(containerWidth / imageWidth);
-
-  imageContainer.style.gridTemplateColumns = `repeat(auto-fill, minmax(${imageWidth}px, 1fr))`;
-}
