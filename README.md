@@ -10,7 +10,7 @@ Solar is a webproxy that is fast, has a sleek UI, and is easy to use
 [![Deploy with Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repositoryurl=https://github.com/usesolar/solar)
 [![Deploy to Koyeb](https://binbashbanana.github.io/deploy-buttons/buttons/remade/koyeb.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/usesolar/solar)
 
-## Ternimal
+## Terminal
 
 > [!IMPORTANT]
 > You'll need to install [Node.js](https://nodejs.org/en/download/prebuilt-installer) version 18.x.x or higher installed. If you haven't done so already.
