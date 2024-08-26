@@ -33,10 +33,10 @@ npm start
 4. Press the blue create codespace on main branch button
 5. Open ternimal in the codespace and run
 
-```bash
+`
 npm i
 npm start
-```
+`
 
 6. After those commands press the make public button on the right
 
@@ -59,7 +59,7 @@ Updating to the latest version will give you benefits like
 > This may overwrite any changes
 
 ```
-cd Solar # if you arent already inside the Solar folder
+cd Solar # if you arent already 
 git pull --force --allow-unrelated-histories
 ```
 
