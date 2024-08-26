@@ -15,7 +15,7 @@ Solar is a webproxy that is fast, has a sleek UI, and is easy to use
 > [!IMPORTANT]
 > You'll need to install [Node.js](https://nodejs.org/en/download/prebuilt-installer) version 18.x.x or higher installed. If you haven't done so already.
 
-```bash
+```
 git clone https://github.com/UseSolar/Solar
 cd Solar
 npm i
@@ -33,10 +33,10 @@ npm start
 4. Press the blue create codespace on main branch button
 5. Open ternimal in the codespace and run
 
-`
+```
 npm i
 npm start
-`
+```
 
 6. After those commands press the make public button on the right
 
@@ -59,7 +59,7 @@ Updating to the latest version will give you benefits like
 > This may overwrite any changes
 
 ```
-cd Solar # if you arent already 
+cd Solar 
 git pull --force --allow-unrelated-histories
 ```
 
