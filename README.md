@@ -59,7 +59,7 @@ Updating to the latest version will give you benefits like
 > This may overwrite any changes
 
 ```
-cd Solar
+cd Solar # if you arent already inside the Solar folder
 git pull --force --allow-unrelated-histories
 ```
 
