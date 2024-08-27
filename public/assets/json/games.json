@@ -275,5 +275,24 @@
     "logo": "./assets/img/yt.png",
     "link": "https://invidious.incogniweb.net/",
     "alert": ""
-  }
+  }, 
+  {
+    "title": "Voicemod Soundboard",
+    "logo": "./assets/img/download.png",
+    "link": "https://tuna.voicemod.net/memes",
+    "alert": ""
+  },
+  {
+    "title": "Krunker",
+    "logo": "./assets/img/krunker.png",
+    "link": "https://krunker.io/",
+    "alert": ""
+  },
+
+{
+    "title": "Venge",
+    "logo": "./assets/img/vengeshooter.jpg",
+    "link": "https://venge.io/",
+    "alert": ""
+}
 ]
