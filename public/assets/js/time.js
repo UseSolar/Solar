@@ -14,11 +14,13 @@ function updateTime() {
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
   const period = hours >= 12 ? "PM" : "AM";
   const formattedHours = hours % 12 || 12;
   const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
   const timeZoneAbbreviation = getTimeZoneAbbreviation();
-  const timeString = `${formattedHours}:${formattedMinutes} ${period} ${timeZoneAbbreviation}`;
+  const timeString = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${period} ${timeZoneAbbreviation}`;
   document.getElementById("time").textContent = timeString;
 }
 
