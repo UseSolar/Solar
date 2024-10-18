@@ -19,19 +19,14 @@ const port = 8080;
 
 const bare = createBareServer("/bs/");
 
-const serverFactory = (handler) => {
-  return createServer()
-    .on("request", (req, res) => {
-      if (bare.shouldRoute(req)) {
-        bare.routeRequest(req, res);
-      } else {
-        handler(req, res);
-      }
-    })
-    .on("upgrade", (req, socket, head) => {
-      if (req.url.endsWith("/w/")) wisp.routeRequest(req, socket, head);
-    });
-};
+const serverFactory = (handler) => 
+  createServer(handler).on("upgrade", (req, socket, head) => {
+    if (req.url && req.url.startsWith("/w")) {
+      wisp.routeRequest(req, socket, head);
+    } else {
+      socket.destroy();
+    }
+  });
 
 const app = fastify({ logger: false, serverFactory });
 
